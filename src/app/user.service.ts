@@ -31,7 +31,7 @@ export class UserService {
 
 
 
-      SingUp(body : any){
+      SignUp(body : any){
 
         const options : any = {
           headers: { 'Content-Type': 'application/json' }
