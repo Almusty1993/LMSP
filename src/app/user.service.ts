@@ -13,7 +13,7 @@ export class UserService {
 
   getUsers(){
 
-    return this.http.get<Iusers[]>('http://localhost:3000/person/fetchPersons');}
+    return this.http.get<Iusers[]>('http://localhost:3000/fetchPersons');}
 
 
 
@@ -31,9 +31,28 @@ export class UserService {
 
 
 
+      SingUp(body : any){
+
+        const options : any = {
+          headers: { 'Content-Type': 'application/json' }
+        };
+    
+        console.log(body);
+        return this.http.post('http://localhost:3000/SignUp', body, options);
+      }
 
 
 
+
+
+  LogIn(body:any){
+    const options : any = {
+      headers: { 'Content-Type': 'application/json' }
+    };
+
+    console.log(body);
+    return this.http.post('http://localhost:3000/postLogIn', body, options);
+  }
 
 
 

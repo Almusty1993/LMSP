@@ -9,6 +9,7 @@ import { UserService } from './user.service';
 export class AppComponent {
   users: any;
   books: any;
+  borrowbooks: any;
 
   constructor(private userSrvObj: UserService) {
 
@@ -17,7 +18,7 @@ export class AppComponent {
 onGetusers(){
   console.log("all users");
   this.userSrvObj.getUsers().subscribe((response: any)=>{
-    console.log("response");
+    console.log("user response");
     this.users=response
   })
 }
@@ -25,11 +26,17 @@ onGetusers(){
 onGetbooks(){
   console.log("all books");
   this.userSrvObj.getbooks().subscribe((response: any)=>{
-    console.log("response");
+    console.log("books response");
     this.books=response
   })
 }
 
-
+onGetborrowedbooks(){
+  console.log("all borrowed books");
+  this.userSrvObj.getborrowedbooks().subscribe((response: any)=>{
+    console.log(" borrow response");
+    this.borrowbooks=response
+  })
+}
   title = 'LMSP';
 }
