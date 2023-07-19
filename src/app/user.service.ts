@@ -7,6 +7,7 @@ import { Iborrow } from './borrow.model';
   providedIn: 'root'
 })
 export class UserService {
+  loggedIn: boolean | undefined;
 
   constructor(private http : HttpClient) { }
 

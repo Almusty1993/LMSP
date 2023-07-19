@@ -91,7 +91,7 @@ export class LogInComponent {
     onResetPassword(email:any){
     email=this.new_email;
     console.log(email)
-    this.userSrvObj.updatename(email, {password: "23224" }).subscribe((resut:any) => {
+    this.userSrvObj.updatename(email).subscribe((resut:any) => {
       console.log('updated !!!');
       
   })
