@@ -57,5 +57,29 @@ export class UserService {
 
 
 
+  // updatename(email :any, data : any){
+
+  //   const options : any = {
+  //     headers : {'Content-Type': 'application/json'}
+  //   };
+
+  //   return this.http.put('http://localhost:3000/person/updatePassword/'+email, data, options );
+   
+
+  // }
+
+  updatename(email :any){
+
+    const options : any = {
+      headers : {'Content-Type': 'application/json'}
+    };
+
+    return this.http.put('http://localhost:3000/person/updatePassword/'+email, options );
+   
+
+  }
+
 
 }
+
+
