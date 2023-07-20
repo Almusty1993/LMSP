@@ -7,9 +7,34 @@ import { Iborrow } from './borrow.model';
   providedIn: 'root'
 })
 export class UserService {
-  loggedIn: boolean | undefined;
 
   constructor(private http : HttpClient) { }
+
+
+  
+
+  private isLoggedIn: boolean = false;
+  private isUser: any = '';
+
+  get loggedIn(): boolean {
+    return this.isLoggedIn;
+  }
+
+  set loggedIn(value : boolean) {
+    this.isLoggedIn = value;
+  }
+
+  get user(): any {
+    return this.isUser;
+  }
+
+  set user(value : any) {
+    this.isUser = value;
+  }
+
+
+
+
 
 
   getUsers(){
