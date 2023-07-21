@@ -1,0 +1,47 @@
+
+<main>
+
+    <!-- <div class="user-message user-message--error"> errorMessage </div> -->
+
+<div class="login-form" *ngIf="!passwordReset">
+    <div class="form-control">
+        <label for="email">E-Mail</label>
+        <input 
+        [(ngModel)]="login_email"
+            type="email" 
+            name="email" 
+            id="email" 
+            value="">
+
+            <label for="password">Password</label>
+            <input 
+                
+                type="password" 
+                name="password" 
+                id="password" 
+                value=""
+                [(ngModel)]="login_password">
+
+                <button class="btn btn-primary" type="submit" (click)="onLogIn()">Login</button>
+                   {{message}}
+                   {{errorMessage}}
+    </div>
+   
+</div>
+</main>
+<div class="centered">
+    <a style="cursor: pointer;" (click)="onResetPwd()">Reset Password</a>
+</div>
+
+<div class="login-form" *ngIf="passwordReset">
+    <div class="form-control">
+        <label for="email">E-Mail</label>
+        <input type="email" name="email" id="email" [(ngModel)]="new_email">
+    </div>
+ 
+   
+    <button class="btn btn-warning" type="submit" (click)="onResetPassword(new_email)">Reset Password</button>
+    <button class="btn btn-primary" type="submit" (click)="displayLogIn()">Back to LogIN</button>
+</div>
+
+
