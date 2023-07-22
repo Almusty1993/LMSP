@@ -1,9 +1,4 @@
 import { Component } from '@angular/core';
-import { UserService } from './user.service';
-import { CookieService } from 'ngx-cookie-service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Iusers } from './user.model';
-import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +6,6 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  users: any;
-  books: any;
-  borrowbooks: any;
-
-
-
-
   title = 'LMSP';
 
   isLoggedIn = false;
