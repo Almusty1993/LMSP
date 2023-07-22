@@ -6,19 +6,19 @@
 <div class="login-form" *ngIf="!passwordReset">
     <div class="form-control">
         <label for="email">E-Mail</label>
-        <input 
+        <input
         [(ngModel)]="login_email"
-            type="email" 
-            name="email" 
-            id="email" 
+            type="email"
+            name="email"
+            id="email"
             value="">
 
             <label for="password">Password</label>
-            <input 
-                
-                type="password" 
-                name="password" 
-                id="password" 
+            <input
+
+                type="password"
+                name="password"
+                id="password"
                 value=""
                 [(ngModel)]="login_password">
 
@@ -26,7 +26,7 @@
                    {{message}}
                    {{errorMessage}}
     </div>
-   
+
 </div>
 </main>
 <div class="centered">
@@ -38,10 +38,10 @@
         <label for="email">E-Mail</label>
         <input type="email" name="email" id="email" [(ngModel)]="new_email">
     </div>
- 
-   
+
+
     <button class="btn btn-warning" type="submit" (click)="onResetPassword(new_email)">Reset Password</button>
-    <button class="btn btn-primary" type="submit" (click)="displayLogIn()">Back to LogIN</button>
+    <button class="btn btn-primary" type="submit" (click)="displayLogIn()">Back to Login</button>
 </div>
 
 
