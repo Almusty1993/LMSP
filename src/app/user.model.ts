@@ -1,5 +1,5 @@
 export interface Iusers{
-    id ?: any,
+    user_id ?: any,
     fullname ?: any,
     address ?:any,
     phone ?: any,

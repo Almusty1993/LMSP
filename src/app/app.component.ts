@@ -21,6 +21,7 @@ export class AppComponent {
   title = 'LMSP';
 
   isLoggedIn = false;
+  overduebooks: any;
 
   constructor(private userObj : UserService,
     private router : Router, 
@@ -115,7 +116,7 @@ onLogOut(){
 
 // onGetusers(){
 //   console.log("all users");
-//   this.userSrvObj.getUsers().subscribe((response: any)=>{
+//   this.userObj.getUsers().subscribe((response: any)=>{
 //     console.log("user response");
 //     this.users=response
 //   })
@@ -123,23 +124,92 @@ onLogOut(){
 
 // onGetbooks(){
 //   console.log("all books");
-//   this.userSrvObj.getbooks().subscribe((response: any)=>{
+//   this.userObj.getbooks().subscribe((response: any)=>{
 //     console.log("books response");
 //     this.books=response
 //   })
 // }
 
-// onGetborrowedbooks(){
-//   console.log("all borrowed books");
-//   this.userSrvObj.getborrowedbooks().subscribe((response: any)=>{
-//     console.log(" borrow response");
-//     this.borrowbooks=response
-//   })
-// }
 
+onGetoverduebooks(){
+  console.log("all overdue books");
+  this.userObj.getoverduebooks().subscribe((response: any)=>{
+    console.log("over due books response");
+    this.overduebooks=response
+  })
 }
 
 
 
 
 
+onGetborrowedbooks(){
+  console.log("all borrowed books");
+  this.userObj.getborrowedbooks().subscribe((response: any)=>{
+    console.log(" borrow response");
+    this.borrowbooks=response
+  })
+}
+
+
+ delayTime = 86400000;
+
+
+
+ oncheckoverdue(){
+  for (let borrow of this.borrowbooks) {
+          if (new Date() > borrow.duedate) {
+
+            for (let overduebook of this.overduebooks) {
+
+
+            if(overduebook.borrow_id= borrow.borrow_id){
+              this.userObj.updatefine(borrow.borrow_id,{duedate:borrow.duedate}).subscribe((response: any) => {
+                console.log(borrow.title + "was updated in overdue table");
+              });
+ }else{this.userObj.addOverdue(borrow).subscribe((response: any) => {
+  console.log(borrow.title + " was added to overdue table");
+});
+
+ }
+            }}}
+
+
+            const runOnCheckOverdue = () => {
+              this.oncheckoverdue(); 
+            
+              setInterval(() => {
+                this.oncheckoverdue();
+              }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+            }
+            
+            // Start running the function on an interval
+            runOnCheckOverdue();
+
+
+
+
+
+            
+
+// oncheckoverdue(): void {
+//   setTimeout(() => {
+//     const currentDate = new Date();
+//     for (let borrow of this.borrowbooks) {
+//       if (currentDate > borrow.duedate) {
+//           this.userObj.addOverdue(borrow).subscribe((response: any) => {
+//           console.log(borrow.title + " was added to overdue table");
+//         });
+//       }
+//     }
+    
+//     this.oncheckoverdue();
+//   }, 86400000);
+// }
+
+
+
+
+
+          }
+}

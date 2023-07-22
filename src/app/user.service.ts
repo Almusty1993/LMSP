@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Iusers } from './user.model';
 import { Ibooks } from './books.model';
 import { Iborrow } from './borrow.model';
+import { Ioverdue } from './overduebooks.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -57,6 +58,7 @@ export class UserService {
 
 
 
+
       SignUp(body : any){
 
         const options : any = {
@@ -83,16 +85,9 @@ export class UserService {
 
 
 
-  // updatename(email :any, data : any){
 
-  //   const options : any = {
-  //     headers : {'Content-Type': 'application/json'}
-  //   };
 
-  //   return this.http.put('http://localhost:3000/person/updatePassword/'+email, data, options );
-   
 
-  // }
 
   updatename(email :any){
 
@@ -104,6 +99,50 @@ export class UserService {
    
 
   }
+
+
+  addOverdue(body : any){
+
+    const options : any = {
+      headers: { 'Content-Type': 'application/json' }
+    };
+
+    console.log(body);
+    return this.http.post('http://localhost:3000/addoverdue', body, options);
+  }
+
+
+ 
+  
+
+
+  getoverduebooks(){
+
+    return this.http.get<Ioverdue[]>('http://localhost:3000/fetchoverduebooks');}
+
+
+
+
+
+    
+
+    updatefine(borrow_id :any ,data : any){
+
+      const options : any = {
+        headers : {'Content-Type': 'application/json'}
+      };
+  
+      return this.http.put('http://localhost:3000/updateoverdue/'+borrow_id,data, options );
+     
+  
+    }
+
+    
+   
+
+
+
+
 
 
 }
