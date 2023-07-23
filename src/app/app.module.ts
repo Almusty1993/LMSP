@@ -11,6 +11,8 @@ import { LogInComponent } from './log-in/log-in.component';
 import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SelectionPageComponent } from './selection-page/selection-page.component';
 
 
 
@@ -20,6 +22,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     BorrowerComponent,
     SignUpComponent,
     LogInComponent,
+    DashboardComponent,
+    SelectionPageComponent,
    
     
   ],
