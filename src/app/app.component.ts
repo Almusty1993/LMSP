@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from './user.service';
+import { CookieService } from 'ngx-cookie-service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Iusers } from './user.model';
+import { NavigationEnd, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -6,6 +12,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  users: any;
+  books: any;
+  borrowbooks: any;
+
+
+
+
   title = 'LMSP';
 
   isLoggedIn = false;
@@ -32,12 +45,11 @@ export class AppComponent {
 
  ngOnInit(): void {
 
-
-
 console.log('Page Refresh/Browser restart');
 
    this.isLoggedIn = this.userObj.loggedIn;
   const sessionId = this.cookieservice.get('sessionId');//cookie avalable in the browser.
+  
   if(sessionId){
 
    console.log(sessionId);
@@ -57,7 +69,7 @@ console.log('Page Refresh/Browser restart');
 
 retrieveUserData(sessionId : string){
 
-  
+  console.log("ddd")
  const header = new HttpHeaders(
  
   {
@@ -68,7 +80,9 @@ retrieveUserData(sessionId : string){
  
  );
  this.http.get<Iusers>('http://localhost:3000/validateSession',{headers:header}).subscribe( 
-   (response:any)=>{ //{isLoggedIn: true , user}
+   (response:any)=>{ 
+    console.log(response)
+      //{isLoggedIn: true , user}
      //logic here upon receiving the response
      if(response.isLoggedIn){
        this.isLoggedIn = true;//for ngIf
@@ -178,7 +192,7 @@ onGetborrowedbooks(){
 
 
 
-
+            
 
 // oncheckoverdue(): void {
 //   setTimeout(() => {
@@ -195,7 +209,7 @@ onGetborrowedbooks(){
 //   }, 86400000);
 // }
 
-///testing
+
 
 
 
