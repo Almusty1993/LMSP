@@ -1,41 +1,170 @@
-<main>
-    
+<!-- <main>
+
     <div class="login-form">
         <div class="form-control">
-            <label for="name">Name </label>
-            <input 
-               
-                type="name" 
-                name="name" 
-                id="name" 
+
+
+            <label for="fullname">fullname </label>
+            <input
+            [(ngModel)]="fullname"
+                type="fullname"
+                name="fullname"
+                id="fullname"
                 value="">
 
+                <label for="adress">address </label>
+                <input
+                [(ngModel)]="address"
+                    type="address"
+                    name="address"
+                    id="address"
+                    value="">
+                    <label for="phone">phone </label>
+                    <input
+                    [(ngModel)]="phone"
+                        type="number"
+                        name="phone"
+                        id="phone"
+                        value="">
+
             <label for="email">E-Mail</label>
-            <input 
-               
-                type="email" 
-                name="email" 
-                id="email" 
+            <input
+            [(ngModel)]="email"
+                type="email"
+                name="email"
+                id="email"
                 value="">
 
                 <label for="password">Password</label>
-                <input 
-                   
-                    type="password" 
-                    name="password" 
-                    id="password" 
+                <input
+                [(ngModel)]="password"
+                    type="number"
+                    name="password"
+                    id="password"
                     value="">
 
                     <label for="confirmPassword">Confirm Password</label>
-                    <input 
-                      
-                        type="password" 
-                        name="confirmPassword" 
-                        id="confirmPassword" 
+                    <input
+                    [(ngModel)]="confirmpassword"
+                        type="number"
+                        name="confirmPassword"
+                        id="confirmPassword"
                         value="">
+
+
+                        <label for="dateofbirth">date of birth</label>
+                        <input
+                        [(ngModel)]="dateofbirth"
+                            type="date"
+                            name="dateofbirth"
+                            id="dateofbirth"
+                            value="">
+
+
+                            <label for="membership">membership</label>
+                            <input
+                            [(ngModel)]="membership"
+                                type="membership"
+                                name="membership"
+                                id="membership"
+                                value="">
+
+                                <label for="position">position</label>
+                                <input
+                                [(ngModel)]="position"
+                                    type="position"
+                                    name="position"
+                                    id="position"
+                                    value="">
+
+
+
+
         </div>
-      
-      
-        <button class="btn btn-primary" type="submit" (click)="onSignup">Signup</button>
+        {{errorSignUpMessage}}
+
+        <button class="btn btn-primary" type="submit" (click)="onSignup()">Signup</button>
+        {{errorSignUpMessage}}
     </div>
-</main>
+</main> -->
+
+
+<div class="container-fluid" style="margin-top: 4%;">
+  <div class="row">
+    <div class="col-md-8">
+      <img src="../assets/loginpage.jpg" alt="Forest" style="width:100%; height: 100vh; margin-bottom: 5px; border-radius: 7px;">
+    </div>
+    <div class="col-md-4" >
+      <div style="text-align: center;">
+        <h3 >LOGIN PAGE</h3>
+      <p >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
+      </div>
+
+      <div style="text-align: center;">
+        <form>
+          <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Full Name</label>
+            <div>
+              <input type="email" class="form-control" id="inputEmail3">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Address</label>
+              <input type="password" class="form-control" id="inputPassword3">
+          </div>
+          <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Phone</label>
+            <div>
+              <input type="email" class="form-control" id="inputEmail3">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
+              <input type="password" class="form-control" id="inputPassword3">
+          </div>
+          <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Password</label>
+            <div>
+              <input type="email" class="form-control" id="inputEmail3">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="inputPassword3">
+          </div>
+          <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">D.O.B</label>
+            <div>
+              <input type="email" class="form-control" id="inputEmail3">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Membership</label>
+              <input type="password" class="form-control" id="inputPassword3">
+          </div>
+          <div class="row mb-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Position</label>
+              <input type="password" class="form-control" id="inputPassword3">
+          </div>
+          <button type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
+          color: white;
+          padding: 16px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+          opacity: 0.9;"  (click)="onSignup()">Sign Up</button>
+        {{errorSignUpMessage}}
+
+        </form>
+      </div>
+
+
+    </div>
+
+
+
+
+</div>
+
+</div>

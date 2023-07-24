@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-borrower',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./borrower.component.scss']
 })
 export class BorrowerComponent {
+
+  constructor(private userObj : UserService){}
 
 }

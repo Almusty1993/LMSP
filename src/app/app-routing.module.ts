@@ -1,26 +1,33 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { LogInComponent } from './log-in/log-in.component';
 import { BorrowerComponent } from './borrower/borrower.component';
-import { SelectionPageComponent } from './selection-page/selection-page.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { BooksComponent } from './books/books.component';
+import { ReturnsComponent } from './returns/returns.component';
 
 const routes: Routes = [
+  {path: '', component : LogInComponent},
+  {path: 'login', component:LogInComponent},
+  {path: 'signup', component: SignUpComponent},
+  {path: 'borrower', component:BorrowerComponent},
+  {path: 'dashboard', component:DashboardComponent},
+  {path: 'books', component: BooksComponent},
+  {path: 'returns', component: ReturnsComponent},
 
-{path: 'login', component : LogInComponent},
-{path: 'signUp', component : SignUpComponent},
-{path: 'dashboard', component : DashboardComponent},
-{path: 'borrower', component : BorrowerComponent},
-{path: 'selectionPage', component : SelectionPageComponent},
 
-
-{path: '**', redirectTo : 'selectionPage', component : SelectionPageComponent}
-
+    {path: '**', redirectTo:''} // default route
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+ }
+
+
+
+
