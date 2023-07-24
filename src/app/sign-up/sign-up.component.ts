@@ -16,8 +16,8 @@ export class SignUpComponent {
      private router : Router,
          ){ 
  }
-
-fulllname="";
+ 
+fullname="";
 address="";
 phone="";
 email="";
@@ -31,8 +31,9 @@ position="";
 onSignup(){
     console.log('sign up');
           const body={
-      fulllname:this.fulllname,
+         
     address:this.address,
+    fullname:this.fullname,
     phone:this.phone,
     email:this.email,
     password:this.password,
@@ -45,7 +46,7 @@ onSignup(){
         this.userSrvObj.SignUp(body).subscribe((result : any) => {
           console.log(result);
           if(result.signUp){
-            this.router.navigate(['/']);
+            this.router.navigate(['/dashboard']);
           }else{
             this.errorSignUpMessage = result.message;
           }
