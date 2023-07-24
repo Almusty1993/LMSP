@@ -95,63 +95,34 @@
       <div class="col-md-6" >
         <p></p>
         <span style="font-weight: 800;">Users List</span>
-        <button type="button" class="btn btn-primary btn-sm" style="color: #132354; float: right;">Add New User</button>
+        <button type="button" class="btn btn-primary btn-sm" style="color: #132354; float: right;" routerLink="borrower">Add New User</button>
         <p></p>
         <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col">User ID</th>
               <th scope="col">User Name</th>
-              <th scope="col">Book Issued</th>
-              <th scope="col">Department</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">10021</th>
-              <td>Alex Ray</td>
-              <td>Book Issued</td>
-              <td>Department</td>
+          <tbody >
+            <!-- <tr *ngFor="let user of users |slice:start:end"> -->
+
+             <tr *ngFor="let user of users">
+
+              <th scope="row">{{user.user_id}}</th>
+              <td>{{user.fullname}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.phone}}</td>
               <td>
                 <a href=""><i class="bi bi-trash3-fill"></i></a>
                 <a href=""><i class="bi bi-pencil-square"></i></a>
               </td>
             </tr>
     
-            <tr>
-              <th scope="row">10021</th>
-              <td>Alex Ray</td>
-              <td>Book Issued</td>
-              <td>Department</td>
-              <td>
-                <a href=""><i class="bi bi-trash3-fill"></i></a>
-                <a href=""><i class="bi bi-pencil-square"></i></a>
-              </td>
-            </tr>
-    
-            <tr>
-              <th scope="row">10021</th>
-              <td>Alex Ray</td>
-              <td>Book Issued</td>
-              <td>Department</td>
-              <td>
-                <a href=""><i class="bi bi-trash3-fill"></i></a>
-                <a href=""><i class="bi bi-pencil-square"></i></a>
-              </td>
-            </tr>
-    
-            <tr>
-              <th scope="row">10021</th>
-              <td>Alex Ray</td>
-              <td>Book Issued</td>
-              <td>Department</td>
-              <td>
-                <a href=""><i class="bi bi-trash3-fill"></i></a>
-                <a href=""><i class="bi bi-pencil-square"></i></a>
-              </td>
-            </tr>
-    
+           
           </tbody>
         </table>
       </div>
@@ -160,7 +131,7 @@
       <div class="col-md-6" >
         <p></p>
         <span style="font-weight: 800;">Books List</span>
-        <button type="button" class="btn btn-primary btn-sm" style="color: #132354; float: right;">Add New Book</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="onGetusers()" style="color: #132354; float: right;">Add New Book</button>
         <p></p>
         <table class="table table-striped">
           <thead>
@@ -168,55 +139,23 @@
               <th scope="col">Book ID</th>
               <th scope="col">Title</th>
               <th scope="col">Author</th>
-              <th scope="col">Available</th>
+              <th scope="col">category</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
+            <tr *ngFor="let book of books">
+              <th scope="row">{{book.book_id}}</th>
+              <td>{{book.title}}</td>
+              <td>{{book.author}}</td>
+              <td>{{book.category}}</td>
               <td>
                 <a href=""><i class="bi bi-trash3-fill"></i></a>
                 <a href=""><i class="bi bi-pencil-square"></i></a>
               </td>
             </tr>
     
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
-              <td>
-                <a href=""><i class="bi bi-trash3-fill"></i></a>
-                <a href=""><i class="bi bi-pencil-square"></i></a>
-              </td>
-            </tr>
-    
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
-              <td>
-                <a href=""><i class="bi bi-trash3-fill"></i></a>
-                <a href=""><i class="bi bi-pencil-square"></i></a>
-              </td>
-            </tr>
-    
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
-              <td>
-                <a href=""><i class="bi bi-trash3-fill"></i></a>
-                <a href=""><i class="bi bi-pencil-square"></i></a>
-              </td>
-            </tr>
-    
+            -->
           </tbody>
         </table>
       </div>
@@ -233,60 +172,28 @@
         <thead>
           <tr>
             <th scope="col">User ID</th>
-            <th scope="col">User Name</th>
-            <th scope="col">Book ID</th>
+            <th scope="col">User ID</th>
+            <!-- <th scope="col">Book ID</th> -->
             <th scope="col">Title</th>
-            <th scope="col">Author</th>
-            <th scope="col">Overdue</th>
-            <th scope="col">Status</th>
+            <!-- <th scope="col">Author</th> -->
+            <th scope="col">Due date</th>
+            <!-- <th scope="col">Status</th> -->
             <th scope="col">Fine</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">10021</th>
-            <td>Alex Ray</td>
-            <td>#100-21-30</td>
-            <td>Strollers</td>
-            <td>Mood Newton</td>
-            <td>1 day</td>
-            <td style="color: #22B122;">Returned (Late)</td>
-            <td style="color: #E63232;">$1.50</td>
+          <tr *ngFor="let overduebook of overduebooks">
+            <th scope="row">{{overduebook.fine_id}}</th>
+            <td>{{overduebook.user_id}}</td>
+            <!-- <td>{{#100-21-30}}</td> -->
+            <td>{{overduebook.title}}</td>
+            <!-- <td>Mood Newton</td> -->
+            <td>{{overduebook.duedate}}</td>
+            <!-- <td style="color: #22B122;">Returned (Late)</td> -->
+            <td style="color: #E63232;">${{overduebook.amount}}</td>
           </tr>
     
-          <tr>
-            <th scope="row">10021</th>
-            <td>Alex Ray</td>
-            <td>#100-21-30</td>
-            <td>Harry Potter</td>
-            <td>Lucy Ives</td>
-            <td>3 day</td>
-            <td style="color: #22B122;">Returned (Late)</td>
-            <td style="color: #E63232;">$1.50</td>
-          </tr>
-    
-          <tr>
-            <th scope="row">10021</th>
-            <td>Alex Ray</td>
-            <td>#100-21-30</td>
-            <td>Life Is Everywhere</td>
-            <td>Amanda Parrish</td>
-            <td> - </td>
-            <td style="color: #22B122;">Returned (Late)</td>
-            <td> - </td>
-          </tr>
-    
-          <tr>
-            <th scope="row">10021</th>
-            <td>Alex Ray</td>
-            <td>#100-21-30</td>
-            <td>Ancestor Trouble</td>
-            <td>John Clement</td>
-            <td>2 day</td>
-            <td style="color: #22B122;">Returned (Late)</td>
-            <td style="color: #E63232;">$1.50</td>
-          </tr>
-    
+         
         </tbody>
       </table>
     
@@ -310,46 +217,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let borrowbook of borrowbooks">
               <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
+              <td>{{borrowbook.user_id}}</td>
+              <td>{{borrowbook.title}}</td>
+              <td>borrowbook.borrowingdate</td>
+              <td>{{borrowbook.duedate}}</td>
               <td>
                 <a href="">View Details</a>
               </td>
             </tr>
     
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
-              <td>
-                <a href="">View Details</a>
-              </td>
-            </tr>
-    
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
-              <td>
-                <a href="">View Details</a>
-              </td>
-            </tr>
-    
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
-              <td>
-                <a href="">View Details</a>
-              </td>
-            </tr>
-    
+         
           </tbody>
         </table>
       </div>

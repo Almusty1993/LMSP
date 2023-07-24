@@ -79,7 +79,7 @@ retrieveUserData(sessionId : string){
  }
  
  );
- this.http.get<Iusers>('http://localhost:3000/validateSession',{headers:header}).subscribe( 
+ this.http.get('http://localhost:3000/validateSession',{headers:header}).subscribe( 
    (response:any)=>{ 
     console.log(response)
       //{isLoggedIn: true , user}
@@ -171,6 +171,7 @@ onGetborrowedbooks(){
               });
  }else{this.userObj.addOverdue(borrow).subscribe((response: any) => {
   console.log(borrow.title + " was added to overdue table");
+  this.overduebooks=response
 });
 
  }
