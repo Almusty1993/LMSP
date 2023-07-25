@@ -13,6 +13,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BooksComponent } from './books/books.component';
 import { ReturnsComponent } from './returns/returns.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { BookHistoryComponent } from './book-history/book-history.component';
+import { WishListComponent } from './wish-list/wish-list.component';
+import { BorrowedBookOverlayComponent } from './borrowed-book-overlay/borrowed-book-overlay.component';
 
 
 
@@ -25,6 +29,10 @@ import { ReturnsComponent } from './returns/returns.component';
     DashboardComponent,
     BooksComponent,
     ReturnsComponent,
+    UserDashboardComponent,
+    BookHistoryComponent,
+    WishListComponent,
+    BorrowedBookOverlayComponent,
    
     
   ],

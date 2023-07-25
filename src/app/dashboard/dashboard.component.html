@@ -14,31 +14,37 @@
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
                 <a [routerLink]="['/dashboard']" class="nav-link active" aria-current="page">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                  <i class="bi bi-clipboard2-data-fill"></i>
                   Dashboard
                 </a>
               </li>
               <li>
                 <a [routerLink]="['/borrower']" class="nav-link text-white">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="borrower"/></svg>
+                  <i class="bi bi-book-half"></i>
                   Borrower
                 </a>
               </li>
               <li>
                 <a [routerLink]="['/books']" class="nav-link text-white">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#books"/></svg>
+                  <i class="bi bi-book-fill"></i>
                   Books
                 </a>
               </li>
               <li>
                 <a [routerLink]="['/returns']" class="nav-link text-white">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#returns"/></svg>
+                  <i class="bi bi-book-half"></i>
                   Returns
                 </a>
               </li>
             </ul>
             <hr>
 
+            <li>
+              <a [routerLink]="['/login']" class="nav-link text-white">
+                <i class="bi bi-door-open-fill"></i>
+                Log Out
+              </a>
+            </li>
 
           </div>
         </div>
