@@ -6,6 +6,7 @@ import { Iusers } from './user.model';
 import { NavigationEnd, Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -62,14 +63,15 @@ console.log('Page Refresh/Browser restart');
    console.log('retrieve data hit');
    this.isLoggedIn = this.userObj.loggedIn;
    this.user = this.userObj.user;
-   console.log('retrieve data hit ' +this.isLoggedIn+ ' '+this.user );
+   console.log(this.user );
+   console.log(this.isLoggedIn)
  }
  
 
 
 retrieveUserData(sessionId : string){
 
-  console.log("ddd")
+  console.log("retieveuserdata")
  const header = new HttpHeaders(
  
   {
@@ -89,7 +91,7 @@ retrieveUserData(sessionId : string){
        this.user = response.user;
        this.userObj.loggedIn = true;
        this.userObj.user = response.user;
-       console.log("user is "+this.user)
+       console.log(this.user)
 
      }else{
        this.isLoggedIn=false;
@@ -130,64 +132,64 @@ onLogOut(){
 //     console.log("books response");
 //     this.books=response
 //   })
+// // }
+
+
+// onGetoverduebooks(){
+//   console.log("all overdue books");
+//   this.userObj.getoverduebooks().subscribe((response: any)=>{
+//     console.log("over due books response");
+//     this.overduebooks=response
+//   })
 // }
 
 
-onGetoverduebooks(){
-  console.log("all overdue books");
-  this.userObj.getoverduebooks().subscribe((response: any)=>{
-    console.log("over due books response");
-    this.overduebooks=response
-  })
-}
 
 
 
+// onGetborrowedbooks(){
+//   console.log("all borrowed books");
+//   this.userObj.getborrowedbooks().subscribe((response: any)=>{
+//     console.log(" borrow response");
+//     this.borrowbooks=response
+//   })
+// }
 
 
-onGetborrowedbooks(){
-  console.log("all borrowed books");
-  this.userObj.getborrowedbooks().subscribe((response: any)=>{
-    console.log(" borrow response");
-    this.borrowbooks=response
-  })
-}
-
-
- delayTime = 86400000;
+//  delayTime = 86400000;
 
 
 
- oncheckoverdue(){
-  for (let borrow of this.borrowbooks) {
-          if (new Date() > borrow.duedate) {
+//  oncheckoverdue(){
+//   for (let borrow of this.borrowbooks) {
+//           if (new Date() > borrow.duedate) {
 
-            for (let overduebook of this.overduebooks) {
-
-
-            if(overduebook.borrow_id= borrow.borrow_id){
-              this.userObj.updatefine(borrow.borrow_id,{duedate:borrow.duedate}).subscribe((response: any) => {
-                console.log(borrow.title + "was updated in overdue table");
-              });
- }else{this.userObj.addOverdue(borrow).subscribe((response: any) => {
-  console.log(borrow.title + " was added to overdue table");
-  this.overduebooks=response
-});
-
- }
-            }}}
+//             for (let overduebook of this.overduebooks) {
 
 
-            const runOnCheckOverdue = () => {
-              this.oncheckoverdue(); 
+//             if(overduebook.borrow_id= borrow.borrow_id){
+//               this.userObj.updatefine(borrow.borrow_id,{duedate:borrow.duedate}).subscribe((response: any) => {
+//                 console.log(borrow.title + "was updated in overdue table");
+//               });
+//  }else{this.userObj.addOverdue(borrow).subscribe((response: any) => {
+//   console.log(borrow.title + " was added to overdue table");
+//   this.overduebooks=response
+// });
+
+//  }
+//             }}}
+
+
+//             const runOnCheckOverdue = () => {
+//               this.oncheckoverdue(); 
             
-              setInterval(() => {
-                this.oncheckoverdue();
-              }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
-            }
+//               setInterval(() => {
+//                 this.oncheckoverdue();
+//               }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+//             }
             
-            // Start running the function on an interval
-            runOnCheckOverdue();
+//             // Start running the function on an interval
+//             runOnCheckOverdue();
 
 
 
@@ -214,5 +216,5 @@ onGetborrowedbooks(){
 
 
 
-          }
+          // }
 }

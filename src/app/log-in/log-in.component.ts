@@ -56,7 +56,7 @@ export class LogInComponent {
         this.cookieService.set('useremail',result.email);
 
         
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/borrower']);
       }else{
         this.userSrvObj.loggedIn = false;
         this.errorMessage = result.message;

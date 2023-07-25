@@ -139,11 +139,25 @@ export class UserService {
 
     
    
+    deletePerson(user_id:any){
+      return this.http.delete('http://localhost:3000/deletePersons/'+user_id);
+    }
 
 
 
 
 
+
+    updateuser(user_id :any, data : any){
+
+      const options : any = {
+        headers : {'Content-Type': 'application/json'}
+      };
+      return this.http.put('http://localhost:3000/updateuser/'+user_id, data, options );
+   
+
+    }
+  
 
 }
 
