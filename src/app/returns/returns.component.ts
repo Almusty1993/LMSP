@@ -20,7 +20,8 @@ export class ReturnsComponent implements OnInit {
     
     ){}
 
-    ngOnInit(): void {this.onGetinnerjoin(this.user_id);
+    ngOnInit(): void {
+      // this.onGetinnerjoin(this.user_id);
    
       
       
@@ -34,6 +35,20 @@ copy_id="";
 
 
 
+    // onGetinnerjoin(id:any){
+
+    //   this.user_id=id
+
+    //   console.log("innerjoin");
+    //   this.userObj.getinnerjoin().subscribe((response: any)=>{
+    //     console.log("user response");
+    //     this.users=response
+    //     console.log(response)
+    //     console.log(this.users)
+    //   })
+    // }
+
+    }
 
 
 
