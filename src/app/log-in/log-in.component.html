@@ -1,47 +1,4 @@
 
-<!-- <main>
-
-<div class="login-form" *ngIf="!passwordReset">
-    <div class="form-control">
-        <label for="email">E-Mail</label>
-        <input
-        [(ngModel)]="login_email"
-            type="email"
-            name="email"
-            id="email"
-            value="">
-
-            <label for="password">Password</label>
-            <input
-
-                type="password"
-                name="password"
-                id="password"
-                value=""
-                [(ngModel)]="login_password">
-
-                <button class="btn btn-primary" type="submit" (click)="onLogIn()">Login</button>
-                   {{message}}
-                   {{errorMessage}}
-    </div>
-
-</div>
-</main>
-<div class="centered">
-    <a style="cursor: pointer;" (click)="onResetPwd()">Reset Password</a>
-</div>
-
-<div class="login-form" *ngIf="passwordReset">
-    <div class="form-control">
-        <label for="email">E-Mail</label>
-        <input type="email" name="email" id="email" [(ngModel)]="new_email">
-    </div>
-
-
-    <button class="btn btn-warning" type="submit" (click)="onResetPassword(new_email)">Reset Password</button>
-    <button class="btn btn-primary" type="submit" (click)="displayLogIn()">Back to LogIN</button>
-</div> -->
-
 <div class="container-fluid">
   <div class="row">
 
@@ -63,30 +20,45 @@
           <div class="row mb-3">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
             <div>
-              <input type="email" class="form-control" id="inputEmail3">
-            </div>
+              <div class="login-form" *ngIf="!passwordReset">
+              <div class="form-control">
+                  <label for="email">E-Mail</label>
+                  <input
+                  [(ngModel)]="login_email"
+                      type="email"
+                      name="email"
+                      id="email"
+                      value="">
+          
+                      <label for="password">Password</label>
+                      <input
+          
+                          type="password"
+                          name="password"
+                          id="password"
+                          value=""
+                          [(ngModel)]="login_password">
+          
+                          <button class="btn btn-primary" type="submit" (click)="onLogIn()">Login</button>
+                             {{message}}
+                             {{errorMessage}}
+              </div>
+          
           </div>
-          <div class="row mb-3">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-              <input type="password" class="form-control" id="inputPassword3">
+       
+          <div class="centered">
+              <a style="cursor: pointer;" (click)="onResetPwd()">Reset Password</a>
           </div>
-          <button type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
-          color: white;
-          padding: 16px 20px;
-          margin: 8px 0;
-          border: none;
-          cursor: pointer;
-          width: 100%;
-          opacity: 0.9;" [routerLink]="['/dashboard']">Sign in</button>
-        </form>
-      </div>
+          
+          <div class="login-form" *ngIf="passwordReset">
+              <div class="form-control">
+                  <label for="email">E-Mail</label>
+                  <input type="email" name="email" id="email" [(ngModel)]="new_email">
+              </div>
+          
+          
+              <button class="btn btn-warning" type="submit" (click)="onResetPassword(new_email)">Reset Password</button>
+              <button class="btn btn-primary" type="submit" (click)="displayLogIn()">Back to LogIN</button>
+          </div> 
 
-
-    </div>
-
-
-
-
-</div>
-
-</div>
+ 

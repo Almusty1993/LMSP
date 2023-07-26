@@ -1,5 +1,5 @@
 export interface Ibooks{
-    id ?: any,
+   book_id ?: any,
     title ?:any,
     category ?: any,
     edition ?: any,

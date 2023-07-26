@@ -64,80 +64,90 @@
 
 <div class="row" style="background-color: #d9d9d9;">
   <p></p>
-  <span style="font-weight: 800;">Overdue Books List</span>
+  <span style="font-weight: 800;">Borrower List</span>
   <p></p>
+
+  <div class="grid" *ngIf="!isEditing" >
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">S/N</th>
-        <th scope="col">ID No.</th>
+      
+        <th scope="col">User ID .</th>
         <th scope="col">Name</th>
-        <th scope="col">Position</th>
-        <th scope="col">Book Title</th>
-        <th scope="col">Date Registered</th>
-        <th scope="col">Due Date</th>
+        <th scope="col">email</th>
+       <th scope="col">Phone</th>
+        <th scope="col">Address</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>001</td>
-        <td>Allen John</td>
-        <td>Student</td>
-        <td>Mathematics</td>
-        <td>10/10/2023</td>
-        <td>10/10/2023</td>
+      <tr *ngFor="let user of users">
+       
+        <td>{{user.user_id}}</td>
+        <td>{{user.fullname}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.address}}</td>
+      
         <td>
-          <a href=""><i class="bi bi-trash3-fill"></i></a>
-          <a href=""><i class="bi bi-pencil-square"></i></a>
+          <a href=""><i class="bi bi-trash3-fill" (click)="onDelete(user)"></i></a>
+          <a href=""><i class="bi bi-pencil-square" (click)="onEdit(user)"></i></a>
         </td>
       </tr>
 
-      <tr>
-        <th scope="row">1</th>
-        <td>001</td>
-        <td>Allen John</td>
-        <td>Student</td>
-        <td>Mathematics</td>
-        <td>10/10/2023</td>
-        <td>10/10/2023</td>
-        <td>
-          <a href=""><i class="bi bi-trash3-fill"></i></a>
-          <a href=""><i class="bi bi-pencil-square"></i></a>
-        </td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>001</td>
-        <td>Allen John</td>
-        <td>Student</td>
-        <td>Mathematics</td>
-        <td>10/10/2023</td>
-        <td>10/10/2023</td>
-        <td>
-          <a href=""><i class="bi bi-trash3-fill"></i></a>
-          <a href=""><i class="bi bi-pencil-square"></i></a>
-        </td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>001</td>
-        <td>Allen John</td>
-        <td>Student</td>
-        <td>Mathematics</td>
-        <td>10/10/2023</td>
-        <td>10/10/2023</td>
-        <td>
-          <a href=""><i class="bi bi-trash3-fill"></i></a>
-          <a href=""><i class="bi bi-pencil-square"></i></a>
-        </td>
-      </tr>
-
+     
     </tbody>
   </table>
+  </div>
+
+  <div *ngIf="isEditing" class="product-form">
+    <div class="form-control">
+        <label for="fullname">Full Name</label>
+        <input 
+        [(ngModel)]="fullname"
+            type="text" 
+            name="fullname" 
+            id="fullname" 
+            value="user.fullname">
+    </div>
+
+   
+    <div class="form-control">
+        <label for="email">Email</label>
+        <input 
+        [(ngModel)]="email"
+            type="email" 
+            name="email" 
+            id="email" 
+            step="0.01" 
+            value="user.email">
+    </div>
+    <div class="form-control">
+      <label for="phone">Phone</label>
+      <input 
+      [(ngModel)]="phone"
+          type="phone" 
+          name="phone" 
+          id="phone" 
+          step="0.01" 
+          value="user.phone">
+  </div>
+  <div class="form-control">
+    <label for="address">Address</label>
+    <input 
+    [(ngModel)]="address"
+        type="address" 
+        name="address" 
+        id="address" 
+        step="0.01" 
+        value="user.address">
+</div>
+<input type="hidden" value="<%= user.user_id %>" name="userid" [(ngModel)]="userid">
+<button class="btn btn-success" type="submit" (click)="onUpdateuser(userid)">Update Product</button>
+
+    
+  </div>
+
 
   <ul class="pagination" style="justify-content: end;">
     <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
@@ -160,3 +170,6 @@
 
 
 <router-outlet></router-outlet>
+
+
+

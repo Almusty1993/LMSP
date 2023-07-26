@@ -4,6 +4,7 @@ import { Iusers } from './user.model';
 import { Ibooks } from './books.model';
 import { Iborrow } from './borrow.model';
 import { Ioverdue } from './overduebooks.model';
+import { Icopy } from './copy.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -48,6 +49,12 @@ export class UserService {
   getbooks(){
 
     return this.http.get<Ibooks[]>('http://localhost:3000/fetchallbooks');}
+
+
+
+    fetchcopy(book_id:any){
+
+      return this.http.get<Icopy[]>('http://localhost:3000/fetchallcopy/'+book_id);}
 
 
     
@@ -101,6 +108,24 @@ export class UserService {
   }
 
 
+
+  updatecopynumber(book_id :any){
+
+    const options : any = {
+      headers : {'Content-Type': 'application/json'}
+    };
+
+    return this.http.put('http://localhost:3000/updatecopynumber/'+book_id, options );
+   
+
+  }
+
+
+
+
+
+
+
   addOverdue(body : any){
 
     const options : any = {
@@ -139,12 +164,86 @@ export class UserService {
 
     
    
+    deletePerson(user_id:any){
+      return this.http.delete('http://localhost:3000/deletePersons/'+user_id);
+    }
 
 
 
 
 
+
+    deleteBook(book_id:any){
+      return this.http.delete('http://localhost:3000/deleteBook/'+book_id);
+    }
+
+
+  
+
+    
+
+ 
+
+    deletewholecopyBook(book_id:any){
+    
+      
+      return this.http.delete('http://localhost:3000/deletewholecopioes/'+book_id);
+    }
+   
+
+
+
+
+
+
+    deleteBookcopy(copy_id:any){
+    
+      
+      return this.http.delete('http://localhost:3000/deleteBookcopy/'+copy_id);
+    }
+    
+
+   
+        
+        
+
+
+
+   
+  
+
+
+
+
+
+
+
+    updatebook(formData:FormData){
+   
+
+      // return this.http.put('http://127.0.0.1:3000/person/updateProducts', formData);
+   return this.http.put('http://localhost:3000/updatebook', formData);
+    }
+
+
+
+
+    updateuser(user_id :any, data : any){
+
+      const options : any = {
+        headers : {'Content-Type': 'application/json'}
+      };
+      return this.http.put('http://localhost:3000/updateuser/'+user_id, data, options );
+   
+
+    }
+  
 
 }
+
+
+
+
+
 
 

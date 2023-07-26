@@ -44,6 +44,7 @@ export class LogInComponent {
 
     this.userSrvObj.LogIn(body).subscribe((result : any) => {
       console.log(result);
+      console.log("was result in log in ")
       if(result.login == true){
         this.currentUser=result.user;
        this.userSrvObj.loggedIn = true;
@@ -54,11 +55,10 @@ export class LogInComponent {
         console.log('session id is '+ result.sessionId);
         this.cookieService.set('sessionId',result.sessionId);
         console.log(result.sessionId)
-        this.cookieService.set('userId',result.user_id);
-        this.cookieService.set('useremail',result.email);
+     
 
 
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/']);
       }else{
         this.userSrvObj.loggedIn = false;
         this.errorMessage = result.message;

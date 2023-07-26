@@ -8,7 +8,7 @@ import { BooksComponent } from './books/books.component';
 import { ReturnsComponent } from './returns/returns.component';
 
 const routes: Routes = [
-  {path: '', component : LogInComponent},
+  {path: '', component : DashboardComponent},
   {path: 'login', component:LogInComponent},
   {path: 'signup', component: SignUpComponent},
   {path: 'borrower', component:BorrowerComponent},
