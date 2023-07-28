@@ -6,6 +6,7 @@ import { Iborrow } from './borrow.model';
 import { Ioverdue } from './overduebooks.model';
 import { Icopy } from './copy.model';
 import { Innerjoin } from './innerjoin.model';
+import { Ihistory } from './history.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -59,6 +60,14 @@ export class UserService {
   getbooks(){
 
     return this.http.get<Ibooks[]>('http://localhost:3000/fetchallbooks');}
+
+
+    onGethistory(user_id:any){
+
+      return this.http.get<Ihistory[]>('http://localhost:3000/onGethistory/'+user_id);}
+
+
+
 
 
 

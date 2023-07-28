@@ -56,9 +56,12 @@ export class LogInComponent {
         this.cookieService.set('sessionId',result.sessionId);
         console.log(result.sessionId)
      
-
-
-          this.router.navigate(['/dashboard']);
+             if (result.position == 'admin') {
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.router.navigate(['/userDashboard']);
+          }
+        
       }else{
         this.userSrvObj.loggedIn = false;
         this.errorMessage = result.message;
@@ -72,8 +75,6 @@ export class LogInComponent {
     })
 
   }
-
-
 
 
 
