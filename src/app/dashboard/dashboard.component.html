@@ -61,29 +61,29 @@
 
 
           <h1>Hello Aramesh!</h1>
-          <span>July 12, 2023</span>&nbsp;|&nbsp;<span>Thursday 11:00 AM</span>
+          <span>{{currentDate| date: 'M/dd/yyyy'}}</span>&nbsp;|&nbsp;<span></span>
           <p></p>
 
     <div class="row">
 
       <div class="card" style="width:300px; height: 100px; padding-top: 18px;">
-          <h3 class="card-title" style="font-weight: 800; color: #0C183F;">1223</h3>
-          <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Total Visitors</p>
+          <h3 class="card-title" style="font-weight: 800; color: #0C183F;">{{numberusers}}</h3>
+          <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Total Members</p>
       </div>
 
       <div class="card" style="width:300px; height: 100px; padding-top: 18px; margin-left: 70px;">
-        <h3 class="card-title" style="font-weight: 800; color: #0C183F;">740</h3>
-        <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Borrowed Books</p>
+        <h3 class="card-title" style="font-weight: 800; color: #0C183F;">{{numberbooks}}</h3>
+        <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Total </p>
     </div>
 
     <div class="card" style="width:300px; height: 100px; padding-top: 18px; margin-left: 70px;">
-      <h3 class="card-title" style="font-weight: 800; color: #0C183F;">400</h3>
+      <h3 class="card-title" style="font-weight: 800; color: #0C183F;">{{numberoverdue}}</h3>
       <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Overdue Books</p>
     </div>
 
     <div class="card" style="width:300px; height: 100px; padding-top: 18px; margin-left: 70px;">
-      <h3 class="card-title" style="font-weight: 800; color: #0C183F;">1500</h3>
-      <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">New Members</p>
+      <h3 class="card-title" style="font-weight: 800; color: #0C183F;">{{numberborrowed}}</h3>
+      <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Borowed Books</p>
     </div>
 
     </div>

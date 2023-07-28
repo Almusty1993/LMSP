@@ -59,7 +59,7 @@
 </nav>
 
       <p></p>
-      <h1>Borrower Records</h1>
+      <h1>Borrowers Records</h1>
       <p></p>
 
 <div class="row" style="background-color: #d9d9d9;">
@@ -90,8 +90,8 @@
         <td>{{user.address}}</td>
       
         <td>
-          <a href=""><i class="bi bi-trash3-fill" (click)="onDelete(user)"></i></a>
-          <a href=""><i class="bi bi-pencil-square" (click)="onEdit(user)"></i></a>
+          <a (click)="onDelete(user)"><i class="bi bi-trash3-fill" ></i></a>
+          <a (click)="onEdit(user)"><i class="bi bi-pencil-square" ></i></a>
         </td>
       </tr>
 
@@ -143,7 +143,7 @@
         value="user.address">
 </div>
 <input type="hidden" value="<%= user.user_id %>" name="userid" [(ngModel)]="userid">
-<button class="btn btn-success" type="submit" (click)="onUpdateuser(userid)">Update Product</button>
+<button class="btn btn-success" type="submit" (click)="onUpdateuser(userid)">Update user</button>
 
     
   </div>

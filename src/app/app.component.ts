@@ -27,6 +27,7 @@ export class AppComponent {
 
   isLoggedIn = false;
   overduebooks: any;
+  userexist: boolean=false;
 
   constructor(private userObj : UserService,
     private router : Router, 
@@ -95,6 +96,7 @@ retrieveUserData(sessionId : string){
        this.user = response.user;
        this.userObj.loggedIn = true;
        this.userObj.user = response.user;
+       this.userexist=true;
        console.log("user is "+this.user)
 
      }else{
@@ -111,6 +113,8 @@ onLogOut(){
  this.userObj.loggedIn=false;
  this.userObj.user ='';
  this.isLoggedIn = false;
+ this.userexist=false
+ this.router.navigate(['/login']);
 
 
 }

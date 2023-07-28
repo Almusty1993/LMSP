@@ -58,7 +58,7 @@ export class LogInComponent {
      
 
 
-          this.router.navigate(['/']);
+          this.router.navigate(['/dashboard']);
       }else{
         this.userSrvObj.loggedIn = false;
         this.errorMessage = result.message;

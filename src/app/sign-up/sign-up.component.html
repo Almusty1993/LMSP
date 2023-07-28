@@ -1,4 +1,15 @@
-<!-- <main>
+<!-- 
+  
+<div class="container-fluid" style="margin-top: 4%;">
+  <div class="row">
+    <div class="col-md-8">
+      <img src="../assets/loginpage.jpg" alt="Forest" style="width:100%; height: 100vh; margin-bottom: 5px; border-radius: 7px;">
+    </div>
+    <div class="col-md-4" >
+      <div style="text-align: center;">
+        <h3 >Sign in  PAGE</h3>
+      
+      </div>
 
     <div class="login-form">
         <div class="form-control">
@@ -81,12 +92,13 @@
 
 
         </div>
-        {{errorSignUpMessage}}
+      
 
         <button class="btn btn-primary" type="submit" (click)="onSignup()">Signup</button>
         {{errorSignUpMessage}}
     </div>
-</main> -->
+    </div> -->
+
 
 
 <div class="container-fluid" style="margin-top: 4%;">
@@ -96,56 +108,57 @@
     </div>
     <div class="col-md-4" >
       <div style="text-align: center;">
-        <h3 >SIGN UP PAGE</h3>
-    
+        <h3 >Sign in  PAGE</h3>
+      
       </div>
 
       <div style="text-align: center;">
-        <form>
+       
           <div class="row mb-3">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Full Name</label>
+            <label for="fullname" class="col-sm-2 col-form-label">Full Name</label>
             <div>
-              <input type="email" class="form-control" id="inputEmail3">
+              <input type="fullname" class="form-control" id="fullname"  [(ngModel)]="fullname">
             </div>
           </div>
           <div class="row mb-3">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Address</label>
-              <input type="password" class="form-control" id="inputPassword3">
+            <label for="address" class="col-sm-2 col-form-label">Address</label>
+              <input type="address" class="form-control" id="address"  [(ngModel)]="address">
           </div>
           <div class="row mb-3">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Phone</label>
+            <label for="phone" class="col-sm-2 col-form-label">Phone</label>
             <div>
-              <input type="email" class="form-control" id="inputEmail3">
+              <input type="number" class="form-control" id="phone" [(ngModel)]="phone">
             </div>
           </div>
           <div class="row mb-3">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
-              <input type="password" class="form-control" id="inputPassword3">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="email">
           </div>
           <div class="row mb-3">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Password</label>
+            <label for="password" class="col-sm-2 col-form-label">Password</label>
             <div>
-              <input type="email" class="form-control" id="inputEmail3">
+              <input type="password" class="form-control" id="password" [(ngModel)]="password">
             </div>
           </div>
           <div class="row mb-3">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Confirm Password</label>
-              <input type="password" class="form-control" id="inputPassword3">
+            <label for="confirmpassword" class="col-sm-2 col-form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="confirmpassword" [(ngModel)]="confirmpassword">
           </div>
           <div class="row mb-3">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">D.O.B</label>
+            <label for="dateofbirth" class="col-sm-2 col-form-label">D.O.B</label>
             <div>
-              <input type="email" class="form-control" id="inputEmail3">
+              <input type="date" class="form-control" id="dateofbirth" [(ngModel)]="dateofbirth">
             </div>
           </div>
           <div class="row mb-3">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Membership</label>
-              <input type="password" class="form-control" id="inputPassword3">
+            <label for="membership" class="col-sm-2 col-form-label">Membership</label>
+              <input type="text" class="form-control" id="membership" [(ngModel)]="membership">
           </div>
           <div class="row mb-3">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Position</label>
-              <input type="password" class="form-control" id="inputPassword3">
+            <label for="position" class="col-sm-2 col-form-label">Position</label>
+              <input type="text" class="form-control" id="position" [(ngModel)]="position">
           </div>
+          {{errorSignUpMessage}}
           <button type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
           color: white;
           padding: 16px 20px;
@@ -154,9 +167,9 @@
           cursor: pointer;
           width: 100%;
           opacity: 0.9;"  (click)="onSignup()">Sign Up</button>
-        {{errorSignUpMessage}}
+       
 
-        </form>
+       
       </div>
 
 
@@ -167,4 +180,4 @@
 
 </div>
 
-</div>
+</div> -->

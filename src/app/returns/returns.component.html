@@ -61,6 +61,21 @@
       <p></p>
       <h1>Books Page</h1>
       <p></p>
+      <div class="row mb-3">
+        <label for="copy_id" class="col-sm-2 col-form-label">copy_id</label>
+        <div>
+          <input type="number" class="form-control" id="copy_id" [(ngModel)]="copy_id"  >
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
+     
+          color: white;
+          padding: 16px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+          opacity: 0.9;"  (click)="onGetinnerjoin()">Search</button>
 
 
 <div class="row" style="background-color: #d9d9d9;">
@@ -70,108 +85,32 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">S/N</th>
-        <th scope="col">Book ID</th>
-        <th scope="col">User ID</th>
+        <!-- <th scope="col">S/N</th> -->
         <th scope="col">Full Name</th>
-        <th scope="col">Date Registered</th>
+        <th scope="col"> Book Title</th>
+         <th scope="col">Due Date</th>
+        <th scope="col">Borrowing Date</th>
+        <th scope="col">Borrow Id</th>
+        <th scope="col"> Fine</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>001</td>
-        <td>A001232GB</td>
-        <td>Allen John</td>
-        <td>11/09/1908</td>
+      <tr *ngFor="let user of users">
+        <!-- <th scope="row">1</th> -->
+        <td>{{user.fullname}}</td>
+        <td>{{user.title}}</td>
+        <td>{{user.duedate}}</td>
+        <td>{{user.borrowingdate}}</td>
+          <td>{{user.borrow_id}}</td> 
+         <td>{{user.amount}}</td>
         <td>
-          <button type="button" class="btn btn-primary btn-sm" style="background-color: #3CA7F5;">
-            <i class="bi bi-clipboard2-check-fill"></i>Approve</button>
+          <button type="button" class="btn btn-primary btn-sm" style="background-color: #3CA7F5;"(click)="onApprove()">
+            <i class="bi bi-clipboard2-check-fill" ></i>Approve</button>
         </td>
       </tr>
 
-      <tr>
-        <th scope="row">1</th>
-        <td>001</td>
-        <td>A001232GB</td>
-        <td>Allen John</td>
-        <td>11/09/1908</td>
-        <td>
-          <button type="button" class="btn btn-primary btn-sm" style="background-color: #3CA7F5;">
-            <i class="bi bi-clipboard2-check-fill"></i>Approve</button>
-        </td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>001</td>
-        <td>A001232GB</td>
-        <td>Allen John</td>
-        <td>11/09/1908</td>
-        <td>
-          <button type="button" class="btn btn-primary btn-sm" style="background-color: #3CA7F5;">
-            <i class="bi bi-clipboard2-check-fill"></i>Approve</button>
-        </td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>001</td>
-        <td>A001232GB</td>
-        <td>Allen John</td>
-        <td>11/09/1908</td>
-        <td>
-          <button type="button" class="btn btn-primary btn-sm" style="background-color: #3CA7F5;">
-            <i class="bi bi-clipboard2-check-fill"></i>Approve</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>001</td>
-        <td>A001232GB</td>
-        <td>Allen John</td>
-        <td>11/09/1908</td>
-        <td>
-          <button type="button" class="btn btn-primary btn-sm" style="background-color: #3CA7F5;">
-            <i class="bi bi-clipboard2-check-fill"></i>Approve</button>
-        </td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>001</td>
-        <td>A001232GB</td>
-        <td>Allen John</td>
-        <td>11/09/1908</td>
-        <td>
-          <button type="button" class="btn btn-primary btn-sm" style="background-color: #3CA7F5;">
-            <i class="bi bi-clipboard2-check-fill"></i>Approve</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>001</td>
-        <td>A001232GB</td>
-        <td>Allen John</td>
-        <td>11/09/1908</td>
-        <td>
-          <button type="button" class="btn btn-primary btn-sm" style="background-color: #3CA7F5;">
-            <i class="bi bi-clipboard2-check-fill"></i>Approve</button>
-        </td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>001</td>
-        <td>A001232GB</td>
-        <td>Allen John</td>
-        <td>11/09/1908</td>
-        <td>
-          <button type="button" class="btn btn-primary btn-sm" style="background-color: #3CA7F5;">
-            <i class="bi bi-clipboard2-check-fill"></i>Approve</button>
-        </td>
-      </tr>
+     
 
     </tbody>
   </table>

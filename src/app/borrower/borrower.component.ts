@@ -83,6 +83,7 @@ export class BorrowerComponent implements OnInit{
             this.userObj.deletePerson(user.user_id).subscribe((result) => {
         
               console.log('deleted !! ');
+              this.router.navigate(['/borrower']);
              ; 
         
             }) 
@@ -96,6 +97,7 @@ export class BorrowerComponent implements OnInit{
           onUpdateuser(userid: any) {
                      
             this.isEditing = false;
+            console.log(userid)
             // this.fullname=user.fullname;
             //      this.email=user.email;
             //      this.phone=user.phone;
@@ -109,8 +111,10 @@ export class BorrowerComponent implements OnInit{
                 this.userObj.updateuser(userid, { fullname: this.fullname, phone:this.phone,email:this.email,address:this.address  }).subscribe((resut) => {
                 console.log('updated !!!');
                 this.onGetusers();
+           
             })
- 
+            this.onGetusers();  
+               this.router.navigate(['/borrower']);
           }
         
 

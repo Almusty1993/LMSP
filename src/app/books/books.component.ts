@@ -22,6 +22,18 @@ export class BooksComponent {
   bookid: any;
   deletecopy=false;
   copies:any;
+  book_id:any;
+  copytitle: any;
+  copybookid: any;
+  copyedition: any;
+  copyauthor: any;
+  copyimage: any;
+  copycategory: any;
+  copyavailablecopies: any;
+  copycopynumber: any;
+  isupdate=false;
+  main=true;
+  edit=false;
 
   constructor(private userObj : UserService,
         private router : Router, 
@@ -55,15 +67,28 @@ export class BooksComponent {
 
 
           onDelete(book: any) {
-          
-            this.deletecopy=true;
+          this. deletecopy=true;
+          this.main=false;
+
+
+           this.copytitle=book.title;
+           this.copycategory=book.category;
+          this. copybookid=book.book_id;
+          this. copyedition=book.edition;
+          this. copyauthor=book.author;
+          this. copycopynumber=book.copynumber;
+          this. copyavailablecopies=book.availablecopies;
+          this. copyimage=book.image
+
             this.userObj.fetchcopy(book.book_id).subscribe((result: any) => {
         
               console.log('copy fetched !! ');
               this.copies=result
                      
             })
-
+          
+            
+          
 
           }
 
@@ -78,13 +103,16 @@ export class BooksComponent {
                   })
 
 
-           this.userObj.updatecopynumber(copy.book_id).subscribe((result) => {
+          //  this.userObj.updatecopynumber(copy.book_id).subscribe((result) => {
       
-            console.log(' copynumber updated !! ');
-            this.onGetBooks(); 
-             this.deletecopy=false
-           })
-
+            // console.log(' copynumber updated !! ');
+            
+            //  this.deletecopy=false
+          //  })
+           this.deletecopy=false;
+           this.main=true;
+           this.onGetBooks(); 
+           this.router.navigate(['/books']);
 
             }
         
@@ -101,10 +129,14 @@ export class BooksComponent {
             this.userObj.deletewholecopyBook(book.book_id).subscribe((result) => {
         
               console.log('deleted !! ');
-              this.onGetBooks(); 
+            
               this.deletecopy=false
 
             })
+               this.onGetBooks();   
+                this.router.navigate(['/books']);
+               
+               
           }
         
         
@@ -118,20 +150,21 @@ export class BooksComponent {
             
 
 
-  onUpdateBooks(id:any){
+  onUpdateBooks(book_id:any){
 
-            console.log(id)
+            this.deletecopy=false
+            console.log(book_id)
             
              
             const formData = new FormData();
             
-            id=this.bookid;
+            book_id=this.book_id;
             
                    
             
-              formData.append('book_id',this.bookid);
+              formData.append('book_id',this.book_id);
               formData.append('title',this.title);
-              formData.append('price',this.category);
+              formData.append('category',this.category);
               formData.append('edition',this.edition);
               formData.append('author',this.author);
               formData.append('copynumber',this.copynumber);
@@ -141,15 +174,20 @@ export class BooksComponent {
                this.userObj.updatebook(formData)
                    .subscribe((res:any)=>{
                     console.log('updated !!!');
-                    this.onGetBooks();})
+                    this.onGetBooks();
+                    this.router.navigate(['/books']);
+                  }
+                    )
                     this.isEditing=false;
             
-                   
+                    this.router.navigate(['/books']);
             }
          
 
           onEdit(book:any){
-            this.isEditing = true;
+            this.main = false;
+            this.edit=true;
+            this.book_id=book.book_id
                  this.title=book.title;
                  this.author=book.author;
                  this.category=book.category;

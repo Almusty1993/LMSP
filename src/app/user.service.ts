@@ -5,6 +5,7 @@ import { Ibooks } from './books.model';
 import { Iborrow } from './borrow.model';
 import { Ioverdue } from './overduebooks.model';
 import { Icopy } from './copy.model';
+import { Innerjoin } from './innerjoin.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -37,6 +38,15 @@ export class UserService {
 
 
 
+
+
+
+  getinnerjoin(copy_id:any){
+
+    return this.http.get<Innerjoin[]>('http://localhost:3000/getinnerjoin/'+copy_id);}
+
+
+   
 
 
   getUsers(){
@@ -137,7 +147,16 @@ export class UserService {
   }
 
 
- 
+  addhistory(body : any){
+
+    const options : any = {
+      headers: { 'Content-Type': 'application/json' }
+    };
+
+    console.log(body);
+    return this.http.post('http://localhost:3000/addhistory', body, options);
+  }
+
   
 
 
@@ -169,6 +188,15 @@ export class UserService {
     }
 
 
+    deleteoverdue(borrow_id:any){
+      return this.http.delete('http://localhost:3000/deleteoverdue/'+borrow_id);
+    }
+
+
+
+    deleteborrow(copy_id:any){
+      return this.http.delete('http://localhost:3000/deleteborrow/'+copy_id);
+    }
 
 
 
@@ -239,6 +267,15 @@ export class UserService {
     }
   
 
+    updatecopyavailabe(copy_id :any, data : any){
+
+      const options : any = {
+        headers : {'Content-Type': 'application/json'}
+      };
+      return this.http.put('http://localhost:3000/copyavailabe/'+copy_id, data, options );
+   
+
+    }
 }
 
 

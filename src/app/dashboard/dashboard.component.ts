@@ -48,7 +48,13 @@ end=8
   numberbooks: any;
   numberoverdue: any;
   numberborrowed: any;
+  
+ 
 
+
+
+
+  currentDate = new Date();
   constructor(private userObj : UserService,
     private router : Router, 
     private cookieservice: CookieService,
