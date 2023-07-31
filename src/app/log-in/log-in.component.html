@@ -59,18 +59,18 @@
 
 
       <div style="text-align: center;">
-        <form>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogIn()">
           <div class="row mb-3">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
             <div>
-              <input type="email" class="form-control" id="inputEmail3">
+              <input formControlName="email" type="email" class="form-control" id="inputEmail3" required>
             </div>
           </div>
           <div class="row mb-3">
             <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-              <input type="password" class="form-control" id="inputPassword3">
+              <input formControlName="password" type="password" class="form-control" id="inputPassword3" required>
           </div>
-          <button type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
+          <button  type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
           color: white;
           padding: 16px 20px;
           margin: 8px 0;
@@ -78,6 +78,7 @@
           cursor: pointer;
           width: 100%;
           opacity: 0.9;" [routerLink]="['/dashboard']">Sign in</button>
+          <!-- opacity: 0.9;" [routerLink]="['/dashboard']">Sign in</button> -->
           <a [routerLink]="['/userDashboard']"> Login To User Dashboard</a>
         </form>
       </div>
@@ -85,9 +86,9 @@
 
     </div>
 
-
-
-
 </div>
 
 </div>
+
+
+<router-outlet></router-outlet>

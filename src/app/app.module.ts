@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { CookieService } from 'ngx-cookie-service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BooksComponent } from './books/books.component';
@@ -17,6 +17,10 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { BookHistoryComponent } from './book-history/book-history.component';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { BorrowedBookOverlayComponent } from './borrowed-book-overlay/borrowed-book-overlay.component';
+import { MaterialModule } from './app-material-module';
+import { AddBorrowerComponent } from './borrower/modal/add-borrower/add-borrower.component';
+import { EditBorrowerComponent } from './borrower/modal/edit-borrower/edit-borrower.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -33,8 +37,10 @@ import { BorrowedBookOverlayComponent } from './borrowed-book-overlay/borrowed-b
     BookHistoryComponent,
     WishListComponent,
     BorrowedBookOverlayComponent,
-   
-    
+    AddBorrowerComponent,
+    EditBorrowerComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,10 @@ import { BorrowedBookOverlayComponent } from './borrowed-book-overlay/borrowed-b
     NgbModule,
     RouterModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
 
 
   ],

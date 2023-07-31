@@ -1,0 +1,43 @@
+<p style="text-align: center;">Please fill in the form field to borrow new book no</p>
+<div style="display: flex; justify-content: center; align-items: center;">
+
+  <form [formGroup]="editForm" (ngSubmit)="submitBorrower()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label" style="width: 500px;">Borrower's Name</label>
+      <input formControlName="name" type="text" class="form-control" placeholder="John Doe" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Borrower's Position</label>
+      <!-- <input type="text" class="form-control" id="exampleInputPassword1"> -->
+      <select formControlName="position" class="form-select" aria-label="Default select example">
+        <option value="0">Staff</option>
+        <option value="1">Student</option>
+        <option value="2">Premium Members</option>
+        <option value="3">Others</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Book Borrowed</label>
+      <input formControlName="booktitle" type="text" class="form-control" placeholder="Mac Millian Mathematics" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="emailTextInput" class="form-label">Date Borrowered</label>
+      <input formControlName="dateregistered" type="text" class="form-control" placeholder="10/10/2023" id="emailTextInput" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="emailTextInput" class="form-label">Due Date</label>
+      <input formControlName="duedate" type="text" class="form-control" placeholder="10/10/2023" id="disabledTextInput" aria-describedby="emailHelp">
+    </div>
+    <!-- <button type="submit" class="btn btn-primary">Borrow Now!</button> -->
+
+    <button class="btn btn-outline-primary" type="submit" style=" background-color: #476EE2;
+          color: white;
+          padding: 16px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+          opacity: 0.9;"><i class="bi bi-book-fill"></i> &nbsp;Borrow Now!</button>
+  </form>
+
+</div>
