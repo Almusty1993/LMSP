@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BooksComponent } from './books/books.component';
+
 import { ReturnsComponent } from './returns/returns.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { BookHistoryComponent } from './book-history/book-history.component';
@@ -21,8 +22,7 @@ import { MaterialModule } from './app-material-module';
 import { AddBorrowerComponent } from './borrower/modal/add-borrower/add-borrower.component';
 import { EditBorrowerComponent } from './borrower/modal/edit-borrower/edit-borrower.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { BorrowdBookOverlayComponent } from './borrowd-book-overlay/borrowd-book-overlay.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BorrowedBookOverlayComponent,
     AddBorrowerComponent,
     EditBorrowerComponent,
+    UserDashboardComponent,
+    BookHistoryComponent,
+    WishListComponent,
+    BorrowdBookOverlayComponent
 
 
   ],

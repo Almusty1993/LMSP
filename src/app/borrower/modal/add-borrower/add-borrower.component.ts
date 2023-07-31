@@ -31,6 +31,10 @@ addForm!:FormGroup;
 
   submitaddBorrower(){
     console.log(this.addForm.value);
+
+    // Just put the connection to the API here....
+
+
   }
 
 

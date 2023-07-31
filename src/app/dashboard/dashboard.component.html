@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
 
-        <!-- First Column -->
+       
         <div class="col-sm-2">
           <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="height: 100vh; width: 280px;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -49,7 +49,7 @@
           </div>
         </div>
 
-        <!-- Second Column -->
+      
         <div class="col-sm-10">
 
 
@@ -67,29 +67,29 @@
 
 
           <h1>Hello Aramesh!</h1>
-          <span>July 12, 2023</span>&nbsp;|&nbsp;<span>Thursday 11:00 AM</span>
+          <span>{{currentDate| date: 'M/dd/yyyy'}}</span>&nbsp;|&nbsp;<span></span>
           <p></p>
 
     <div class="row">
 
       <div class="card" style="width:300px; height: 100px; padding-top: 18px;">
-          <h3 class="card-title" style="font-weight: 800; color: #0C183F;">1223</h3>
-          <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Total Visitors</p>
+          <h3 class="card-title" style="font-weight: 800; color: #0C183F;">{{numberusers}}</h3>
+          <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Total Members</p>
       </div>
 
       <div class="card" style="width:300px; height: 100px; padding-top: 18px; margin-left: 70px;">
-        <h3 class="card-title" style="font-weight: 800; color: #0C183F;">740</h3>
-        <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Borrowed Books</p>
+        <h3 class="card-title" style="font-weight: 800; color: #0C183F;">{{numberbooks}}</h3>
+        <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Total </p>
     </div>
 
     <div class="card" style="width:300px; height: 100px; padding-top: 18px; margin-left: 70px;">
-      <h3 class="card-title" style="font-weight: 800; color: #0C183F;">400</h3>
+      <h3 class="card-title" style="font-weight: 800; color: #0C183F;">{{numberoverdue}}</h3>
       <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Overdue Books</p>
     </div>
 
     <div class="card" style="width:300px; height: 100px; padding-top: 18px; margin-left: 70px;">
-      <h3 class="card-title" style="font-weight: 800; color: #0C183F;">1500</h3>
-      <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">New Members</p>
+      <h3 class="card-title" style="font-weight: 800; color: #0C183F;">{{numberborrowed}}</h3>
+      <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Borowed Books</p>
     </div>
 
     </div>
@@ -107,45 +107,25 @@
           <thead>
             <tr>
               <th scope="col">User ID</th>
-              <th scope="col">Full Name</th>
-              <th scope="col">Phone No.</th>
-              <th scope="col">D.O.B</th>
-              <th scope="col">Membership</th>
+              <th scope="col">User Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">10021</th>
-              <td>Alex Ray</td>
-              <td>+1 7348-838-8848</td>
-              <td>11/09/1980</td>
-              <td>Regular</td>
-
+            <tr *ngFor="let user of users">
+              <th scope="row">{{user.user_id}}</th>
+              <td>{{user.fullname}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.phone}}</td>
+              <td>
+                <a href=""><i class="bi bi-trash3-fill"></i></a>
+                <a href=""><i class="bi bi-pencil-square"></i></a>
+              </td>
             </tr>
 
-            <tr>
-              <th scope="row">10021</th>
-              <td>Alex Ray</td>
-              <td>+1 7348-838-8848</td>
-              <td>11/09/1980</td>
-              <td>Regular</td>
-            </tr>
-
-            <tr>
-              <th scope="row">10021</th>
-              <td>Alex Ray</td>
-              <td>+1 7348-838-8848</td>
-              <td>11/09/1980</td>
-              <td>Premium</td>
-            </tr>
-
-            <tr>
-              <th scope="row">10021</th>
-              <td>Alex Ray</td>
-              <td>+1 7348-838-8848</td>
-              <td>11/09/1980</td>
-              <td>Regular</td>
-            </tr>
+            
 
           </tbody>
         </table>
@@ -163,42 +143,23 @@
               <th scope="col">Book ID</th>
               <th scope="col">Title</th>
               <th scope="col">Author</th>
-              <th scope="col">Available</th>
-              <th scope="col">Copy</th>
+              <th scope="col">category</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
-              <td>10</td>
+            <tr *ngFor="let book of books">
+              <th scope="row">{{book.book_id}}</th>
+              <td>{{book.title}}</td>
+              <td>{{book.author}}</td>
+              <td>{{book.category}}</td>
+              <td>
+                <a href=""><i class="bi bi-trash3-fill"></i></a>
+                <a href=""><i class="bi bi-pencil-square"></i></a>
+              </td>
             </tr>
 
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
-              <td>10</td>
-            </tr>
-
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
-              <td>10</td>
-            </tr>
-
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
-              <td>10</td>
-            </tr>
+           
 
           </tbody>
         </table>
@@ -216,60 +177,27 @@
         <thead>
           <tr>
             <th scope="col">User ID</th>
-            <th scope="col">User Name</th>
-            <th scope="col">Book ID</th>
+                      
             <th scope="col">Title</th>
-            <th scope="col">Author</th>
-            <th scope="col">Overdue</th>
-            <th scope="col">Status</th>
+          
+            <th scope="col">Due date</th>
+            
             <th scope="col">Fine</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">10021</th>
-            <td>Alex Ray</td>
-            <td>#100-21-30</td>
-            <td>Strollers</td>
-            <td>Mood Newton</td>
-            <td>1 day</td>
-            <td style="color: #22B122;">Returned (Late)</td>
-            <td style="color: #E63232;">$1.50</td>
+          <tr *ngFor="let overduebook of overduebooks">
+            
+            <td>{{overduebook.user_id}}</td>
+            
+            <td>{{overduebook.title}}</td>
+           
+            <td>{{overduebook.duedate}}</td>
+            
+            <td style="color: #E63232;">${{overduebook.amount}}</td>
           </tr>
 
-          <tr>
-            <th scope="row">10021</th>
-            <td>Alex Ray</td>
-            <td>#100-21-30</td>
-            <td>Harry Potter</td>
-            <td>Lucy Ives</td>
-            <td>3 day</td>
-            <td style="color: #22B122;">Returned (Late)</td>
-            <td style="color: #E63232;">$1.50</td>
-          </tr>
-
-          <tr>
-            <th scope="row">10021</th>
-            <td>Alex Ray</td>
-            <td>#100-21-30</td>
-            <td>Life Is Everywhere</td>
-            <td>Amanda Parrish</td>
-            <td> - </td>
-            <td style="color: #22B122;">Returned (Late)</td>
-            <td> - </td>
-          </tr>
-
-          <tr>
-            <th scope="row">10021</th>
-            <td>Alex Ray</td>
-            <td>#100-21-30</td>
-            <td>Ancestor Trouble</td>
-            <td>John Clement</td>
-            <td>2 day</td>
-            <td style="color: #22B122;">Returned (Late)</td>
-            <td style="color: #E63232;">$1.50</td>
-          </tr>
-
+          
         </tbody>
       </table>
 
@@ -293,46 +221,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
+            <tr *ngFor="let borrowbook of borrowbooks">
+             
+              <td>{{borrowbook.user_id}}</td>
+              <td>{{borrowbook.title}}</td>
+              <td>borrowbook.borrowingdate</td>
+              <td>{{borrowbook.duedate}}</td>
               <td>
                 <a href="">View Details</a>
               </td>
             </tr>
 
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
-              <td>
-                <a href="">View Details</a>
-              </td>
-            </tr>
-
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
-              <td>
-                <a href="">View Details</a>
-              </td>
-            </tr>
-
-            <tr>
-              <th scope="row">#100-21-30</th>
-              <td>Strollers</td>
-              <td>Alex Ray</td>
-              <td>30</td>
-              <td>
-                <a href="">View Details</a>
-              </td>
-            </tr>
-
+           
           </tbody>
         </table>
       </div>
@@ -381,3 +281,5 @@
 
 
     <router-outlet></router-outlet>
+
+

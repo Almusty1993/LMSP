@@ -13,7 +13,7 @@
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-              <a [routerLink]="['/userDashboard']" class="nav-link" aria-current="page">
+              <a [routerLink]="['/userDashboard']" class="nav-link text-white" aria-current="page">
                 <i class="bi bi-house-fill"></i>
                 Dashboard
               </a>
@@ -25,7 +25,7 @@
               </a>
             </li>
             <li>
-              <a [routerLink]="['/borrowedBooks']" class="nav-link text-white">
+              <a [routerLink]="['/borrowedBookOverlay']" class="nav-link text-white">
                 <i class="bi bi-book-fill"></i>
                 Borrowed Books
               </a>
@@ -65,8 +65,8 @@
 
         <div class="row">
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search for your books here..." aria-label="Search">
-            <button class="btn btn-outline-primary" type="submit"style=" background-color: #132355;
+            <!-- <input class="form-control me-2" type="search" placeholder="Search for your books here..." aria-label="Search"> -->
+            <!-- <button class="btn btn-outline-primary" type="submit"style=" background-color: #132355;
             color: white;
             padding: 16px 20px;
             margin: 8px 0;
@@ -75,7 +75,7 @@
             width: 30%;
             opacity: 0.9;"><i class="bi bi-send-fill"></i> &nbsp;Search</button>
           </form>
-        </div>
+        </div> -->
 
 
         <div class="row">
@@ -87,15 +87,66 @@
 
   <div class="row" style="background-color: #eeeeee;">
     <h4>Yesterday 31st June</h4>
-  <div class="col-md-12">
+  <div class="col-md-12" >
   <p></p>
-  <div style="display: flex;">
+
+
+    <table class="table table-striped ">
+      <thead>
+        <tr>
+
+
+          <th scope="col">Book Title</th>
+           <th scope="col">Book Category</th>
+           <th scope="col">Book Author</th>
+           <th scope="col">Year Publish</th>
+           <th scope="col">Borrowing Date</th>
+          <th>Image</th>
+
+      </thead>
+      <tbody>
+
+   <tr *ngFor="let book of books">
+
+
+
+          <td>{{book.title}}</td>
+          <td>{{book.category}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.yearpublish}}</td>
+          <td>{{book.borrowingdate}}</td>
+
+          <td><img src="{{'data:image/jpg;base64,' + book.image}}" height="40" alt=""></td>
+
+
+        </tr>
+
+
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div *ngFor="let book of books" style="display: flex;">
     <div style="margin-right: 40px;">
       <img src="../assets/01.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-      <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">Stroller &nbsp;&nbsp;&nbsp;<span>$40.50</span></p>
+      <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">{{book.title}} &nbsp;&nbsp;&nbsp;<span>{{book.author}}</span></p>
       <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-    </div>
-    <div style="margin-right: 40px;">
+    </div> -->
+    <!-- <div style="margin-right: 40px;">
       <img src="../assets/02.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
       <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">Stroller &nbsp;&nbsp;&nbsp;<span>$40.50</span></p>
       <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
@@ -115,8 +166,8 @@
       <img src="../assets/11.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
       <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">Stroller &nbsp;&nbsp;&nbsp;<span>$40.50</span></p>
       <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-    </div>
-  </div>
+    </div> -->
+  <!-- </div>
 
     </div>
     </div>
@@ -163,7 +214,7 @@
 
   </div>
 <!-- Third Column -->
-  <div class="col-sm-2">
+  <!-- <div class="col-sm-2">
 <div class="row" style=" height: 400px;">
   <img src="../assets/ad1.jpeg" alt="Forest">
 </div>
@@ -171,13 +222,13 @@
 <div class="row" style=" height: 400px;">
   <img src="../assets/ad1.jpeg" alt="Forest">
 </div>
-  </div>
+  </div> -->
 
-      </div>
-    </div>
+      <!-- </div>
+    </div>  -->
 
 
-  </header>
+  <!-- </header> -->
 
 
 

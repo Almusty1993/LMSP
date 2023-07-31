@@ -3,7 +3,11 @@ import { UserService } from './user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Iusers } from './user.model';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd} from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 
 @Component({
@@ -23,6 +27,7 @@ export class AppComponent {
 
   isLoggedIn = false;
   overduebooks: any;
+  userexist: boolean=false;
 
   constructor(private userObj : UserService,
     private router : Router, 
@@ -41,7 +46,7 @@ export class AppComponent {
  }
 
 
- user : any = ''
+ user : any = ""
 
  ngOnInit(): void {
 
@@ -59,17 +64,19 @@ console.log('Page Refresh/Browser restart');
    }
  }
  retrieveData(){
+ 
    console.log('retrieve data hit');
    this.isLoggedIn = this.userObj.loggedIn;
    this.user = this.userObj.user;
    console.log('retrieve data hit ' +this.isLoggedIn+ ' '+this.user );
+   console.log(this.user)
  }
  
 
 
 retrieveUserData(sessionId : string){
 
-  console.log("ddd")
+  console.log("sessionId")
  const header = new HttpHeaders(
  
   {
@@ -89,6 +96,7 @@ retrieveUserData(sessionId : string){
        this.user = response.user;
        this.userObj.loggedIn = true;
        this.userObj.user = response.user;
+       this.userexist=true;
        console.log("user is "+this.user)
 
      }else{
@@ -105,6 +113,8 @@ onLogOut(){
  this.userObj.loggedIn=false;
  this.userObj.user ='';
  this.isLoggedIn = false;
+ this.userexist=false
+ this.router.navigate(['/login']);
 
 
 }
@@ -133,60 +143,60 @@ onLogOut(){
 // }
 
 
-onGetoverduebooks(){
-  console.log("all overdue books");
-  this.userObj.getoverduebooks().subscribe((response: any)=>{
-    console.log("over due books response");
-    this.overduebooks=response
-  })
-}
+// onGetoverduebooks(){
+//   console.log("all overdue books");
+//   this.userObj.getoverduebooks().subscribe((response: any)=>{
+//     console.log("over due books response");
+//     this.overduebooks=response
+//   })
+// }
 
 
 
 
 
-onGetborrowedbooks(){
-  console.log("all borrowed books");
-  this.userObj.getborrowedbooks().subscribe((response: any)=>{
-    console.log(" borrow response");
-    this.borrowbooks=response
-  })
-}
+// onGetborrowedbooks(){
+//   console.log("all borrowed books");
+//   this.userObj.getborrowedbooks().subscribe((response: any)=>{
+//     console.log(" borrow response");
+//     this.borrowbooks=response
+//   })
+// }
 
 
- delayTime = 86400000;
+//  delayTime = 86400000;
 
 
 
- oncheckoverdue(){
-  for (let borrow of this.borrowbooks) {
-          if (new Date() > borrow.duedate) {
+//  oncheckoverdue(){
+//   for (let borrow of this.borrowbooks) {
+//           if (new Date() > borrow.duedate) {
 
-            for (let overduebook of this.overduebooks) {
-
-
-            if(overduebook.borrow_id= borrow.borrow_id){
-              this.userObj.updatefine(borrow.borrow_id,{duedate:borrow.duedate}).subscribe((response: any) => {
-                console.log(borrow.title + "was updated in overdue table");
-              });
- }else{this.userObj.addOverdue(borrow).subscribe((response: any) => {
-  console.log(borrow.title + " was added to overdue table");
-});
-
- }
-            }}}
+//             for (let overduebook of this.overduebooks) {
 
 
-            const runOnCheckOverdue = () => {
-              this.oncheckoverdue(); 
+//             if(overduebook.borrow_id= borrow.borrow_id){
+//               this.userObj.updatefine(borrow.borrow_id,{duedate:borrow.duedate}).subscribe((response: any) => {
+//                 console.log(borrow.title + "was updated in overdue table");
+//               });
+//  }else{this.userObj.addOverdue(borrow).subscribe((response: any) => {
+//   console.log(borrow.title + " was added to overdue table");
+// });
+
+//  }
+//             }}}
+
+
+//             const runOnCheckOverdue = () => {
+//               this.oncheckoverdue(); 
             
-              setInterval(() => {
-                this.oncheckoverdue();
-              }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
-            }
+//               setInterval(() => {
+//                 this.oncheckoverdue();
+//               }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+//             }
             
             // Start running the function on an interval
-            runOnCheckOverdue();
+            // runOnCheckOverdue();
 
 
 
@@ -214,4 +224,3 @@ onGetborrowedbooks(){
 
 
           }
-}

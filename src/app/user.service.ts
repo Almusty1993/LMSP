@@ -4,6 +4,9 @@ import { Iusers } from './user.model';
 import { Ibooks } from './books.model';
 import { Iborrow } from './borrow.model';
 import { Ioverdue } from './overduebooks.model';
+import { Icopy } from './copy.model';
+import { Innerjoin } from './innerjoin.model';
+import { Ihistory } from './history.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -38,6 +41,15 @@ export class UserService {
 
 
 
+
+  getinnerjoin(copy_id:any){
+
+    return this.http.get<Innerjoin[]>('http://localhost:3000/getinnerjoin/'+copy_id);}
+
+
+   
+
+
   getUsers(){
 
     return this.http.get<Iusers[]>('http://localhost:3000/fetchPersons');}
@@ -48,6 +60,20 @@ export class UserService {
   getbooks(){
 
     return this.http.get<Ibooks[]>('http://localhost:3000/fetchallbooks');}
+
+
+    onGethistory(user_id:any){
+
+      return this.http.get<Ihistory[]>('http://localhost:3000/onGethistory/'+user_id);}
+
+
+
+
+
+
+    fetchcopy(book_id:any){
+
+      return this.http.get<Icopy[]>('http://localhost:3000/fetchallcopy/'+book_id);}
 
 
     
@@ -101,6 +127,24 @@ export class UserService {
   }
 
 
+
+  updatecopynumber(book_id :any){
+
+    const options : any = {
+      headers : {'Content-Type': 'application/json'}
+    };
+
+    return this.http.put('http://localhost:3000/updatecopynumber/'+book_id, options );
+   
+
+  }
+
+
+
+
+
+
+
   addOverdue(body : any){
 
     const options : any = {
@@ -112,7 +156,16 @@ export class UserService {
   }
 
 
- 
+  addhistory(body : any){
+
+    const options : any = {
+      headers: { 'Content-Type': 'application/json' }
+    };
+
+    console.log(body);
+    return this.http.post('http://localhost:3000/addhistory', body, options);
+  }
+
   
 
 
@@ -139,12 +192,104 @@ export class UserService {
 
     
    
+    deletePerson(user_id:any){
+      return this.http.delete('http://localhost:3000/deletePersons/'+user_id);
+    }
+
+
+    deleteoverdue(borrow_id:any){
+      return this.http.delete('http://localhost:3000/deleteoverdue/'+borrow_id);
+    }
+
+
+
+    deleteborrow(copy_id:any){
+      return this.http.delete('http://localhost:3000/deleteborrow/'+copy_id);
+    }
+
+
+
+
+    deleteBook(book_id:any){
+      return this.http.delete('http://localhost:3000/deleteBook/'+book_id);
+    }
+
+
+  
+
+    
+
+ 
+
+    deletewholecopyBook(book_id:any){
+    
+      
+      return this.http.delete('http://localhost:3000/deletewholecopioes/'+book_id);
+    }
+   
 
 
 
 
 
 
+    deleteBookcopy(copy_id:any){
+    
+      
+      return this.http.delete('http://localhost:3000/deleteBookcopy/'+copy_id);
+    }
+    
+
+   
+        
+        
+
+
+
+   
+  
+
+
+
+
+
+
+
+    updatebook(formData:FormData){
+   
+
+      // return this.http.put('http://127.0.0.1:3000/person/updateProducts', formData);
+   return this.http.put('http://localhost:3000/updatebook', formData);
+    }
+
+
+
+
+    updateuser(user_id :any, data : any){
+
+      const options : any = {
+        headers : {'Content-Type': 'application/json'}
+      };
+      return this.http.put('http://localhost:3000/updateuser/'+user_id, data, options );
+   
+
+    }
+  
+
+    updatecopyavailabe(copy_id :any, data : any){
+
+      const options : any = {
+        headers : {'Content-Type': 'application/json'}
+      };
+      return this.http.put('http://localhost:3000/copyavailabe/'+copy_id, data, options );
+   
+
+    }
 }
+
+
+
+
+
 
 

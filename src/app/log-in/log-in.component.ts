@@ -66,6 +66,7 @@ console.log(this.loginForm.value)
 
     this.userSrvObj.LogIn(this.loginForm.value).subscribe((result : any) => {
       console.log(result);
+      console.log("was result in log in ")
       if(result.login == true){
         this.currentUser=result.user;
        this.userSrvObj.loggedIn = true;
@@ -76,11 +77,13 @@ console.log(this.loginForm.value)
         console.log('session id is '+ result.sessionId);
         this.cookieService.set('sessionId',result.sessionId);
         console.log(result.sessionId)
-        this.cookieService.set('userId',result.user_id);
-        this.cookieService.set('useremail',result.email);
-
-
-          this.router.navigate(['/dashboard']);
+     
+             if (result.position == 'admin') {
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.router.navigate(['/userDashboard']);
+          }
+        
       }else{
         this.userSrvObj.loggedIn = false;
         this.errorMessage = result.message;
@@ -94,8 +97,6 @@ console.log(this.loginForm.value)
     })
 
   }
-
-
 
 
 
