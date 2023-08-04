@@ -29,6 +29,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NavigationEnd, Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AddBorrowerComponent } from '../borrower/modal/add-borrower/add-borrower.component';
+import { NewbookComponent } from '../newbook/newbook.component';
+import { NewuserComponent } from '../newuser/newuser.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -59,21 +63,24 @@ end=8
     private router : Router, 
     private cookieservice: CookieService,
     private http : HttpClient,
-    private route : ActivatedRoute
+    private route : ActivatedRoute,
+    public dialog: MatDialog
     
     ){}
 
 
-
-  ngOnInit(): void {this.onGetusers();
-    this.onGetbooks()
-    this.onGetborrowedbooks()
-    this.onGetoverduebooks()
-    this.oncheckoverdue()
-    
-    
-    
-  }
+    ngOnInit(): void {
+      this.onGetusers();
+      this.onGetbooks();
+      this.onGetborrowedbooks();
+      this.onGetoverduebooks();
+      this.oncheckoverdue();
+  
+      // Call the function every 24 hours
+      setInterval(() => {
+        this.oncheckoverdue();
+      }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+    }
 
 
 
@@ -123,7 +130,7 @@ onGetborrowedbooks(){
 }
 
 
- delayTime = 86400000;
+ 
 
 
 
@@ -135,9 +142,12 @@ onGetborrowedbooks(){
 
 
             if(overduebook.borrow_id= borrow.borrow_id){
-              this.userObj.updatefine(borrow.borrow_id,{duedate:borrow.duedate}).subscribe((response: any) => {
-                console.log(borrow.title + "was updated in overdue table");
-              });
+
+console.log(" book already exist in overdue ")
+
+              // this.userObj.updatefine(borrow.borrow_id,{duedate:borrow.duedate}).subscribe((response: any) => {
+              //   console.log(borrow.title + "was updated in overdue table");
+              // });
  }else{this.userObj.addOverdue(borrow).subscribe((response: any) => {
   console.log(borrow.title + " was added to overdue table");
   this.overduebooks=response
@@ -157,8 +167,29 @@ onGetborrowedbooks(){
         
         
         
+          openDialog(){
+            const dialogRef = this.dialog.open(NewbookComponent, {
+              height: '50rem',
+              width: '40rem'
+            });
+    
+            dialogRef.afterClosed().subscribe((result: any) => {
+              console.log(`Dialog result: ${result}`);
+            });
+          }
         
-        
+
+          openDialog2(){
+            console.log("hit")
+            const dialogRef2 = this.dialog.open(NewuserComponent, {
+              height: '50rem',
+              width: '40rem'
+            });
+    
+            dialogRef2.afterClosed().subscribe((result: any) => {
+              console.log(`Dialog result: ${result}`);
+            });
+          }
         
         
         

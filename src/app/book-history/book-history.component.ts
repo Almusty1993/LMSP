@@ -14,16 +14,16 @@ export class BookHistoryComponent {
 
 
   constructor(private userObj : UserService,
-    private router : Router,
+    private router : Router, 
     private http : HttpClient,
     private route : ActivatedRoute
-
+    
     ){}
 
-
+  
   ngOnInit(): void {this.onGethistory();
-
-
+  
+    
   }
 
 users:any=[]
@@ -44,8 +44,8 @@ users:any=[]
         console.log(this.books)
       })
     }
-
-
+  
+    
   }
 
 

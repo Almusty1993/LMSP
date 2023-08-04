@@ -1,22 +1,17 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-
+// import { Iusers } from '../users.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../user.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.scss'],
-
+  styleUrls: ['./log-in.component.scss']
 })
-
 export class LogInComponent {
-
-  loginForm! : FormGroup;
 
 
   user:any="";
@@ -30,10 +25,8 @@ export class LogInComponent {
     private userSrvObj: UserService,
      private route : ActivatedRoute,
       private router : Router,
-       private cookieService:CookieService,
-       private formBuilder: FormBuilder
+       private cookieService:CookieService
        ){
-
 
   }
   new_email : any = '';
@@ -42,29 +35,14 @@ export class LogInComponent {
   errorMessage : string = '';
   errorSignUpMessage : string = '';
 
-  ngOnInit(): void {
-
-   this.loginForm = this.formBuilder.group({
-
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-
-    });
-
-  }
-
-
-
   onLogIn(){
-
-console.log(this.loginForm.value)
 
     const body = {
       email : this.login_email,
       password : this.login_password
     }
 
-    this.userSrvObj.LogIn(this.loginForm.value).subscribe((result : any) => {
+    this.userSrvObj.LogIn(body).subscribe((result : any) => {
       console.log(result);
       console.log("was result in log in ")
       if(result.login == true){

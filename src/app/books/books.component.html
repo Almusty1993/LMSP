@@ -38,12 +38,7 @@
           </li>
         </ul>
         <hr>
-        <li>
-          <a [routerLink]="['/login']" class="nav-link text-white">
-            <i class="bi bi-door-open-fill"></i>
-            Log Out
-          </a>
-        </li>
+
 
       </div>
     </div>
@@ -83,6 +78,7 @@
          <th scope="col">Book Category</th>
         <th scope="col">Book Edition</th>
         <th scope="col">Book Author</th>
+        <th scope="col">Publish Year</th>
         <th scope="col">Total Books</th>
         <th scope="col">Total Book Available</th>
         <th>Image</th>
@@ -99,13 +95,18 @@
         <td>{{book.category}}</td>
         <td>{{book.edition}}</td>
         <td>{{book.author}}</td>
+        <td>{{book.yearpublish}}</td>
          <td>{{book.copynumber}}</td>
         <td>{{book.availablecopies}}</td>
         <td><img src="{{'data:image/jpg;base64,' + book.image}}" height="40" alt=""></td>
       
         <td>
-          <a (click)="onDelete(book)"><i class="bi bi-trash3-fill" ></i></a>
-          <a (click)="onEdit(book)"><i class="bi bi-pencil-square" ></i></a>
+          <!-- <a (click)="onDelete(book)"><i class="bi bi-trash3-fill" ></i></a> -->
+
+  <a (click)="openDialog2(book)"><i class="bi bi-trash3-fill" ></i></a>
+          
+          <!-- <a (click)="onEdit(book)"><i class="bi bi-pencil-square" ></i></a> -->
+             <a (click)="openDialog(book)"><i class="bi bi-pencil-square" ></i></a>
         </td>
       </tr>
 
@@ -117,7 +118,7 @@
 
 
 
-  <div *ngIf="deletecopy">
+  <!-- <div *ngIf="deletecopy">
 
     <table class="table table-striped ">
       <thead>
@@ -148,7 +149,7 @@
 </tbody>
 </table>
 
-</div>
+</div> -->
 
 
 
@@ -168,7 +169,7 @@
 
 
 
-
+<!-- 
   <div *ngIf="edit" class="product-form">
 
 
@@ -246,9 +247,10 @@
         
         <input type="hidden" value="<%= book.book_id %>" name="bookid" [(ngModel)]="bookid">
         <button class="btn btn-success" type="submit" (click)="onUpdateBooks(book_id)">Update book</button>
-      
+       -->
       
 
+       <button type="button"  (click)="openDialog3()" class="btn btn-primary btn-sm" style="color: #132354; float: right;">Add New Book</button>
 
   
 </div>

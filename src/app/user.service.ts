@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Iusers } from './user.model';
 import { Ibooks } from './books.model';
 import { Iborrow } from './borrow.model';
@@ -7,10 +7,12 @@ import { Ioverdue } from './overduebooks.model';
 import { Icopy } from './copy.model';
 import { Innerjoin } from './innerjoin.model';
 import { Ihistory } from './history.model';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
 
   constructor(private http : HttpClient) { }
 
@@ -38,6 +40,49 @@ export class UserService {
 
 
 
+
+  // resultsearch(title?:any,author? : any,category ? :any){
+
+  //   return this.http.get<Ibooks[]>('http://localhost:3000/resultsearch/'+title+"/"+author+"/"+category);}
+
+
+
+
+
+
+  resultsearch(title?: string, author?: string, category?: string): Observable<Ibooks[]> {
+   
+    let queryParams: any = {};
+
+    
+    if (title) {
+      queryParams.title = title;
+    }
+
+    if (author) {
+      queryParams.author = author;
+    }
+
+    if (category) {
+      queryParams.category = category;
+    }
+
+    
+    let httpParams = new HttpParams({ fromObject: queryParams });
+
+    return this.http.get<Ibooks[]>('http://localhost:3000/resultsearch', { params: httpParams });
+  }
+
+
+    // resultsearch(body : any){
+
+    //   const options : any = {
+    //     headers: { 'Content-Type': 'application/json' }
+    //   };
+  
+    //   console.log(body);
+    //   return this.http.get<Ibooks[]>('http://localhost:3000/resultsearch', body);
+    // }
 
 
 
@@ -68,12 +113,38 @@ export class UserService {
 
 
 
+      onGetborrow(user_id:any){
+
+        return this.http.get<Ihistory[]>('http://localhost:3000/onGetborrow/'+user_id);}
 
 
 
-    fetchcopy(book_id:any){
 
-      return this.http.get<Icopy[]>('http://localhost:3000/fetchallcopy/'+book_id);}
+      gethighcategory(user_id:any){
+
+        return this.http.get<Ihistory[]>('http://localhost:3000/gethighcategory/'+user_id);}
+
+
+
+
+        getrecommand(category:any){
+
+          return this.http.get<Ihistory[]>('http://localhost:3000/getrecommand/'+category);}
+
+
+
+
+
+          fetchcopy(book_id:any){
+
+            return this.http.get<Icopy[]>('http://localhost:3000/fetchallcopy/'+book_id);}
+
+
+
+
+            getwishlist(user_id:any){
+
+      return this.http.get<Ibooks[]>('http://localhost:3000/getwishlist/'+user_id);}
 
 
     
@@ -128,6 +199,21 @@ export class UserService {
 
 
 
+
+
+  onstatus(book_id :any){
+console.log(book_id)
+    const options : any = {
+      headers : {'Content-Type': 'application/json'}
+    };
+
+    return this.http.put('http://localhost:3000/onstatus/'+book_id, options );
+   
+
+  }
+
+
+
   updatecopynumber(book_id :any){
 
     const options : any = {
@@ -142,6 +228,16 @@ export class UserService {
 
 
 
+
+  onborrow(body : any){
+
+    const options : any = {
+      headers: { 'Content-Type': 'application/json' }
+    };
+
+    console.log(body);
+    return this.http.post('http://localhost:3000/onborrow', body, options);
+  }
 
 
 
@@ -166,6 +262,18 @@ export class UserService {
     return this.http.post('http://localhost:3000/addhistory', body, options);
   }
 
+
+
+  addwishlist(body : any){
+
+    const options : any = {
+      headers: { 'Content-Type': 'application/json' }
+    };
+
+    console.log(body);
+    return this.http.post('http://localhost:3000/addwishlist', body, options);
+
+  }
   
 
 
@@ -190,7 +298,9 @@ export class UserService {
   
     }
 
-    
+    deletewishlist(book_id:any){
+      return this.http.delete('http://localhost:3000/deletewishlist/'+book_id);
+    }
    
     deletePerson(user_id:any){
       return this.http.delete('http://localhost:3000/deletePersons/'+user_id);
@@ -248,7 +358,12 @@ export class UserService {
 
    
   
+    onAdd(formData:FormData){
+   
 
+     
+   return this.http.post('http://localhost:3000/onAdd', formData);
+    }
 
 
 

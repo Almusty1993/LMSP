@@ -1,0 +1,124 @@
+<header>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- First Column -->
+      <div class="col-sm-2">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="height: 100vh; width: 280px;">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+            <span class="fs-4">LOGO</span>
+          </a>
+          <hr>
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a [routerLink]="['/userDashboard']" class="nav-link" aria-current="page">
+                <i class="bi bi-house-fill"></i>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/bookHistory']" class="nav-link  text-white">
+                <i class="bi bi-book-fill"></i>
+                Book History
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/borrowedBooks']" class="nav-link text-white">
+                <i class="bi bi-book-fill"></i>
+                Borrowed Books
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/wishList']" class="nav-link active text-white">
+                <i class="bi bi-ui-checks"></i>
+                Wishlist
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/support']" class="nav-link text-white">
+                <i class="bi bi-tools"></i>
+                Support
+              </a>
+            </li>
+          </ul>
+          <hr>
+          <li>
+            <a [routerLink]="['/login']" class="nav-link text-white">
+              <i class="bi bi-door-open-fill"></i>
+              Log Out
+            </a>
+          </li>
+
+        </div>
+      </div>
+
+      <!-- Second Column -->
+<div class="col-sm-8">
+
+  <p style="text-align: center;">Please fill in the form field to borrow new book no</p>
+  <div style="display: flex; justify-content: center; align-items: center;">
+
+    <form>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label" style="width: 500px;">Borrower's Name</label>
+        <input type="text" class="form-control" placeholder="John Doe" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Borrower's Position</label>
+        <!-- <input type="text" class="form-control" id="exampleInputPassword1"> -->
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Staff</option>
+          <option value="1">Student</option>
+          <option value="2">Premium Members</option>
+          <option value="3">Others</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Book Borrowed</label>
+        <input type="text" class="form-control" placeholder="Mac Millian Mathematics" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="emailTextInput" class="form-label">Date Borrowered</label>
+        <input type="text" class="form-control" placeholder="10/10/2023" id="emailTextInput" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="emailTextInput" class="form-label">Due Date</label>
+        <input type="text" class="form-control" disabled placeholder="10/10/2023" id="disabledTextInput" aria-describedby="emailHelp">
+      </div>
+      <!-- <button type="submit" class="btn btn-primary">Borrow Now!</button> -->
+
+      <button class="btn btn-outline-primary" type="submit"style=" background-color: #476EE2;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;"><i class="bi bi-book-fill"></i> &nbsp;Borrow Now!</button>
+    </form>
+
+  </div>
+
+
+</div>
+<!-- Third Column -->
+  <div class="col-sm-2">
+<div class="row" style=" height: 400px;">
+</div>
+<br>
+<div class="row" style=" height: 400px;">
+</div>
+  </div>
+
+      </div>
+    </div>
+
+
+  </header>
+
+
+
+
+  <router-outlet></router-outlet>

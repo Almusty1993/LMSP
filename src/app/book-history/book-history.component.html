@@ -79,52 +79,52 @@
 
 
         <div class="row">
-          <h1>Your Favourite Selection</h1>
+          <h1>Your Wish List </h1>
         </div>
 
   <p></p>
 
 
   <div class="row" style="background-color: #eeeeee;">
-    <h4>Yesterday 31st June</h4>
+    <!-- <h4>Yesterday 31st June</h4> -->
   <div class="col-md-12" >
   <p></p>
 
-
+  
     <table class="table table-striped ">
       <thead>
         <tr>
-
-
+          
+          
           <th scope="col">Book Title</th>
            <th scope="col">Book Category</th>
            <th scope="col">Book Author</th>
            <th scope="col">Year Publish</th>
            <th scope="col">Borrowing Date</th>
           <th>Image</th>
-
+         
       </thead>
       <tbody>
-
+  
    <tr *ngFor="let book of books">
-
-
-
+         
+         
+  
           <td>{{book.title}}</td>
           <td>{{book.category}}</td>
           <td>{{book.author}}</td>
           <td>{{book.yearpublish}}</td>
           <td>{{book.borrowingdate}}</td>
-
+          
           <td><img src="{{'data:image/jpg;base64,' + book.image}}" height="40" alt=""></td>
-
-
+        
+       
         </tr>
-
-
+  
+       
       </tbody>
     </table>
-
+    
 
 
 

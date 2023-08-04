@@ -14,37 +14,31 @@
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
                 <a [routerLink]="['/dashboard']" class="nav-link active" aria-current="page">
-                  <i class="bi bi-clipboard2-data-fill"></i>
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
                   Dashboard
                 </a>
               </li>
               <li>
                 <a [routerLink]="['/borrower']" class="nav-link text-white">
-                  <i class="bi bi-book-half"></i>
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="borrower"/></svg>
                   Borrower
                 </a>
               </li>
               <li>
                 <a [routerLink]="['/books']" class="nav-link text-white">
-                  <i class="bi bi-book-fill"></i>
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#books"/></svg>
                   Books
                 </a>
               </li>
               <li>
                 <a [routerLink]="['/returns']" class="nav-link text-white">
-                  <i class="bi bi-book-half"></i>
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#returns"/></svg>
                   Returns
                 </a>
               </li>
             </ul>
             <hr>
 
-            <li>
-              <a [routerLink]="['/login']" class="nav-link text-white">
-                <i class="bi bi-door-open-fill"></i>
-                Log Out
-              </a>
-            </li>
 
           </div>
         </div>
@@ -101,7 +95,7 @@
       <div class="col-md-6" >
         <p></p>
         <span style="font-weight: 800;">Users List</span>
-        <button type="button" class="btn btn-primary btn-sm" style="color: #132354; float: right;">Add New User</button>
+        <button (click)="openDialog2()" type="button" class="btn btn-primary btn-sm" style="color: #132354; float: right;">Add New User</button>
         <p></p>
         <table class="table table-striped">
           <thead>
@@ -135,7 +129,7 @@
       <div class="col-md-6" >
         <p></p>
         <span style="font-weight: 800;">Books List</span>
-        <button type="button" class="btn btn-primary btn-sm" style="color: #132354; float: right;">Add New Book</button>
+        <button type="button"  (click)="openDialog()" class="btn btn-primary btn-sm" style="color: #132354; float: right;">Add New Book</button>
         <p></p>
         <table class="table table-striped">
           <thead>
@@ -208,7 +202,7 @@
       <div class="col-md-6" >
         <p></p>
         <span style="font-weight: 800;">Books Issued</span>
-        <button type="button" class="btn btn-primary btn-sm" style="color: #132354; float: right;">Issue Book</button>
+        <!-- <button type="button" class="btn btn-primary btn-sm" style="color: #132354; float: right;"  >Issue Book</button> -->
         <p></p>
         <table class="table table-striped">
           <thead>
@@ -228,7 +222,7 @@
               <td>borrowbook.borrowingdate</td>
               <td>{{borrowbook.duedate}}</td>
               <td>
-                <a href="">View Details</a>
+                <!-- <a href="/books">View Details</a> -->
               </td>
             </tr>
 

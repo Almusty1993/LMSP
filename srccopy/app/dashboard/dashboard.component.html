@@ -1,0 +1,285 @@
+<header>
+
+    <div class="container-fluid">
+      <div class="row">
+
+       
+        <div class="col-sm-2">
+          <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="height: 100vh; width: 280px;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+              <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+              <span class="fs-4">LOGO</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+              <li class="nav-item">
+                <a [routerLink]="['/dashboard']" class="nav-link active" aria-current="page">
+                  <i class="bi bi-clipboard2-data-fill"></i>
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['/borrower']" class="nav-link text-white">
+                  <i class="bi bi-book-half"></i>
+                  Borrower
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['/books']" class="nav-link text-white">
+                  <i class="bi bi-book-fill"></i>
+                  Books
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['/returns']" class="nav-link text-white">
+                  <i class="bi bi-book-half"></i>
+                  Returns
+                </a>
+              </li>
+            </ul>
+            <hr>
+
+            <li>
+              <a [routerLink]="['/login']" class="nav-link text-white">
+                <i class="bi bi-door-open-fill"></i>
+                Log Out
+              </a>
+            </li>
+
+          </div>
+        </div>
+
+      
+        <div class="col-sm-10">
+
+
+        <nav class="navbar navbar-expand-sm navbar-light" style="float: right;">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+        </nav>
+
+
+
+          <h1>Hello Aramesh!</h1>
+          <span>{{currentDate| date: 'M/dd/yyyy'}}</span>&nbsp;|&nbsp;<span></span>
+          <p></p>
+
+    <div class="row">
+
+      <div class="card" style="width:300px; height: 100px; padding-top: 18px;">
+          <h3 class="card-title" style="font-weight: 800; color: #0C183F;">{{numberusers}}</h3>
+          <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Total Members</p>
+      </div>
+
+      <div class="card" style="width:300px; height: 100px; padding-top: 18px; margin-left: 70px;">
+        <h3 class="card-title" style="font-weight: 800; color: #0C183F;">{{numberbooks}}</h3>
+        <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Total </p>
+    </div>
+
+    <div class="card" style="width:300px; height: 100px; padding-top: 18px; margin-left: 70px;">
+      <h3 class="card-title" style="font-weight: 800; color: #0C183F;">{{numberoverdue}}</h3>
+      <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Overdue Books</p>
+    </div>
+
+    <div class="card" style="width:300px; height: 100px; padding-top: 18px; margin-left: 70px;">
+      <h3 class="card-title" style="font-weight: 800; color: #0C183F;">{{numberborrowed}}</h3>
+      <p class="card-text" style="font-weight: 300; color: #132354; font-size: 15px;">Borowed Books</p>
+    </div>
+
+    </div>
+
+    <p></p>
+
+    <div class="row" style="background-color: #d9d9d9;">
+
+      <div class="col-md-6" >
+        <p></p>
+        <span style="font-weight: 800;">Users List</span>
+        <button type="button" class="btn btn-primary btn-sm" style="color: #132354; float: right;">Add New User</button>
+        <p></p>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">User ID</th>
+              <th scope="col">User Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <th scope="row">{{user.user_id}}</th>
+              <td>{{user.fullname}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.phone}}</td>
+              <td>
+                <a href=""><i class="bi bi-trash3-fill"></i></a>
+                <a href=""><i class="bi bi-pencil-square"></i></a>
+              </td>
+            </tr>
+
+            
+
+          </tbody>
+        </table>
+      </div>
+
+
+      <div class="col-md-6" >
+        <p></p>
+        <span style="font-weight: 800;">Books List</span>
+        <button type="button" class="btn btn-primary btn-sm" style="color: #132354; float: right;">Add New Book</button>
+        <p></p>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Book ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">category</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let book of books">
+              <th scope="row">{{book.book_id}}</th>
+              <td>{{book.title}}</td>
+              <td>{{book.author}}</td>
+              <td>{{book.category}}</td>
+              <td>
+                <a href=""><i class="bi bi-trash3-fill"></i></a>
+                <a href=""><i class="bi bi-pencil-square"></i></a>
+              </td>
+            </tr>
+
+           
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <p></p>
+
+    <div class="row" style="background-color: #d9d9d9;">
+      <p></p>
+      <span style="font-weight: 800;">Overdue Books List</span>
+      <p></p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">User ID</th>
+                      
+            <th scope="col">Title</th>
+          
+            <th scope="col">Due date</th>
+            
+            <th scope="col">Fine</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let overduebook of overduebooks">
+            
+            <td>{{overduebook.user_id}}</td>
+            
+            <td>{{overduebook.title}}</td>
+           
+            <td>{{overduebook.duedate}}</td>
+            
+            <td style="color: #E63232;">${{overduebook.amount}}</td>
+          </tr>
+
+          
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="row" style="background-color: #d9d9d9;">
+
+      <div class="col-md-6" >
+        <p></p>
+        <span style="font-weight: 800;">Books Issued</span>
+        <button type="button" class="btn btn-primary btn-sm" style="color: #132354; float: right;">Issue Book</button>
+        <p></p>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">User ID</th>
+              <th scope="col">Book</th>
+              <th scope="col">Issued Date</th>
+              <th scope="col">Return Date</th>
+              <th scope="col">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let borrowbook of borrowbooks">
+             
+              <td>{{borrowbook.user_id}}</td>
+              <td>{{borrowbook.title}}</td>
+              <td>borrowbook.borrowingdate</td>
+              <td>{{borrowbook.duedate}}</td>
+              <td>
+                <a href="">View Details</a>
+              </td>
+            </tr>
+
+           
+          </tbody>
+        </table>
+      </div>
+
+
+      <div class="col-md-6">
+        <p></p>
+    <h3 style="font-weight: 300; font-size: 24px;">Top Choice</h3>
+    <p></p>
+    <div style="display: flex;">
+      <div style="margin-right: 40px;">
+        <img src="../assets/11.png" alt="Forest" style="width:120px; margin-bottom: 5px; border-radius: 7px;">
+        <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">Stroller</p>
+        <span style="font-weight: 100; font-size: 15px; margin-top: 0px;">Amanda Morgan</span>
+      </div>
+      <div style="margin-right: 40px;">
+        <img src="../assets/11.png" alt="Forest" style="width:120px; margin-bottom: 5px; border-radius: 7px;">
+        <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">Stroller</p>
+        <span style="font-weight: 100; font-size: 15px; margin-top: 0px;">Amanda Morgan</span>
+      </div>
+      <div style="margin-right: 40px;">
+        <img src="../assets/11.png" alt="Forest" style="width:120px; margin-bottom: 5px; border-radius: 7px;">
+        <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">Stroller</p>
+        <span style="font-weight: 100; font-size: 15px; margin-top: 0px;">Amanda Morgan</span>
+      </div>
+
+      <div style="margin-right: 40px;">
+        <img src="../assets/11.png" alt="Forest" style="width:120px; margin-bottom: 5px; border-radius: 7px;">
+        <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">Stroller</p>
+        <span style="font-weight: 100; font-size: 15px; margin-top: 0px;">Amanda Morgan</span>
+      </div>
+    </div>
+
+      </div>
+
+    </div>
+
+        </div>
+      </div>
+
+
+    </div>
+    </header>
+
+
+
+
+    <router-outlet></router-outlet>
+
+

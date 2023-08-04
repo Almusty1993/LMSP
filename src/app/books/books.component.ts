@@ -4,6 +4,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NavigationEnd, Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { EditbookComponent } from '../editbook/editbook.component';
+import { DeletebookComponent } from '../deletebook/deletebook.component';
+import { NewbookComponent } from '../newbook/newbook.component';
 
 @Component({
   selector: 'app-books',
@@ -34,12 +38,14 @@ export class BooksComponent {
   isupdate=false;
   main=true;
   edit=false;
+  copyyearpublish: any;
 
   constructor(private userObj : UserService,
         private router : Router, 
         private cookieservice: CookieService,
         private http : HttpClient,
-        private route : ActivatedRoute
+        private route : ActivatedRoute,
+        public dialog: MatDialog
         
         ){}
 
@@ -79,6 +85,7 @@ export class BooksComponent {
           this. copycopynumber=book.copynumber;
           this. copyavailablecopies=book.availablecopies;
           this. copyimage=book.image
+          this.copyyearpublish=book.yearpublish
 
             this.userObj.fetchcopy(book.book_id).subscribe((result: any) => {
         
@@ -91,7 +98,7 @@ export class BooksComponent {
           
 
           }
-
+                                                              
 
 
 
@@ -150,59 +157,110 @@ export class BooksComponent {
             
 
 
-  onUpdateBooks(book_id:any){
+  // onUpdateBooks(book_id:any){
 
-            this.deletecopy=false
-            console.log(book_id)
+  //           this.deletecopy=false
+  //           console.log(book_id)
             
              
-            const formData = new FormData();
+  //           const formData = new FormData();
             
-            book_id=this.book_id;
+  //           book_id=this.book_id;
             
                    
             
-              formData.append('book_id',this.book_id);
-              formData.append('title',this.title);
-              formData.append('category',this.category);
-              formData.append('edition',this.edition);
-              formData.append('author',this.author);
-              formData.append('copynumber',this.copynumber);
-              formData.append('availablecopies',this.availablecopies);
-              formData.append('image',this.selectedFile);
-              console.log(formData)
-               this.userObj.updatebook(formData)
-                   .subscribe((res:any)=>{
-                    console.log('updated !!!');
-                    this.onGetBooks();
-                    this.router.navigate(['/books']);
-                  }
-                    )
-                    this.isEditing=false;
+  //             formData.append('book_id',this.book_id);
+  //             formData.append('title',this.title);
+  //             formData.append('category',this.category);
+  //             formData.append('edition',this.edition);
+  //             formData.append('author',this.author);
+  //             formData.append('copynumber',this.copynumber);
+  //             formData.append('availablecopies',this.availablecopies);
+  //             formData.append('image',this.selectedFile);
+  //             console.log(formData)
+  //              this.userObj.updatebook(formData)
+  //                  .subscribe((res:any)=>{
+  //                   console.log('updated !!!');
+  //                   this.onGetBooks();
+  //                   this.router.navigate(['/books']);
+  //                 }
+  //                   )
+  //                   this.isEditing=false;
             
-                    this.router.navigate(['/books']);
-            }
+  //                   this.router.navigate(['/books']);
+  //           }
          
 
-          onEdit(book:any){
-            this.main = false;
-            this.edit=true;
-            this.book_id=book.book_id
-                 this.title=book.title;
-                 this.author=book.author;
-                 this.category=book.category;
-                 this.edition=book.edition
-                 this.copynumber=book.copynumber;
-                 this.availablecopies=book.availablecopies;
+          // onEdit(book:any){
+          //   this.main = false;
+          //   this.edit=true;
+          //   this.book_id=book.book_id
+          //        this.title=book.title;
+          //        this.author=book.author;
+          //        this.category=book.category;
+          //        this.edition=book.edition
+          //        this.copynumber=book.copynumber;
+          //        this.availablecopies=book.availablecopies;
                
               
-              }
+          //     }
 
 
 
             
+          openDialog(book:any){
+
+        const dialogRef = this.dialog.open(EditbookComponent, {
+          height: '50rem',
+          width: '40rem',
+          data: {
+            title:book.title,
+          category:book.category,
+         author:book.author,
+         copynumber:book.copynumber,
+         availablecopies:book.availablecopies,
+         yearpublish:book.yearpublish,
+         edition:book.edition,
+          book_id:book.book_id}
+        });
+
+        dialogRef.afterClosed().subscribe((result: any) => {
+          console.log(`Dialog result: ${result}`);
+        });
+}
 
 
 
+openDialog2(book:any){
 
+  const dialogRef = this.dialog.open(DeletebookComponent, {
+    height: '50rem',
+    width: '40rem',
+    data: {
+  //     title:book.title,
+  //   category:book.category,
+  //  author:book.author,
+  //  copynumber:book.copynumber,
+  //  availablecopies:book.availablecopies,
+  //  yearpublish:book.yearpublish,
+  //  edition:book.edition,
+    book_id:book.book_id}
+  });
+
+  dialogRef.afterClosed().subscribe((result: any) => {
+    console.log(`Dialog result: ${result}`);
+  });
+}
+
+
+openDialog3(){
+  const dialogRef = this.dialog.open(NewbookComponent, {
+    height: '50rem',
+    width: '40rem'
+  });
+
+  dialogRef.afterClosed().subscribe((result: any) => {
+    console.log(`Dialog result: ${result}`);
+  });
+}
 }

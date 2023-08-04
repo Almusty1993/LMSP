@@ -23,6 +23,11 @@ import { AddBorrowerComponent } from './borrower/modal/add-borrower/add-borrower
 import { EditBorrowerComponent } from './borrower/modal/edit-borrower/edit-borrower.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BorrowdBookOverlayComponent } from './borrowd-book-overlay/borrowd-book-overlay.component';
+import { NewbookComponent } from './newbook/newbook.component';
+import { NewuserComponent } from './newuser/newuser.component';
+import { EditbookComponent } from './editbook/editbook.component';
+import { DeletebookComponent } from './deletebook/deletebook.component';
+import { BorrowbookComponent } from './borrowbook/borrowbook.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +47,12 @@ import { BorrowdBookOverlayComponent } from './borrowd-book-overlay/borrowd-book
     UserDashboardComponent,
     BookHistoryComponent,
     WishListComponent,
-    BorrowdBookOverlayComponent
+    BorrowdBookOverlayComponent,
+    NewbookComponent,
+    NewuserComponent,
+    EditbookComponent,
+    DeletebookComponent,
+    BorrowbookComponent
 
 
   ],

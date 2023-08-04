@@ -5,6 +5,7 @@ export interface Ihistory{
      borrowingdate ?:any,
     author ?: any,
       image ?: any,
+      fine?:any,
 
   
  

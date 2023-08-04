@@ -10,6 +10,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { BookHistoryComponent } from './book-history/book-history.component';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { BorrowedBookOverlayComponent } from './borrowed-book-overlay/borrowed-book-overlay.component';
+import { BorrowdBookOverlayComponent } from './borrowd-book-overlay/borrowd-book-overlay.component';
 
 const routes: Routes = [
   {path: '', component : LogInComponent},
@@ -22,7 +23,7 @@ const routes: Routes = [
   {path: 'userDashboard', component: UserDashboardComponent},
   {path: 'bookHistory', component : BookHistoryComponent},
   {path: 'wishList', component : WishListComponent},
-  {path: 'borrowedBookOverlay', component : BorrowedBookOverlayComponent},
+  {path: 'borrowedBookOverlay', component : BorrowdBookOverlayComponent},
 
 
     {path: '**', redirectTo:''} // default route
