@@ -13,12 +13,13 @@ import { BorrowbookComponent } from '../borrowbook/borrowbook.component';
 export class UserDashboardComponent {
   users: any;
   books: any;
-  recommands: any;
+  recommands: any[]=[];
+  latests :any[]=[];
   category:any;
 title:any;
 author:any;
   searchshow: boolean=false;
-  searchresults: any;
+  searchresults: any[]=[];
   message: string=''
   otherlibraries=false;
   borrow_copy_id: any;
@@ -34,6 +35,7 @@ author:any;
     ){}
 
     ngOnInit(): void {this.gethighcategory();
+      this.ongetlatest()
    
     
     }
@@ -172,14 +174,21 @@ openDialog(book:any){
   });
 
   dialogRef.afterClosed().subscribe((result: any) => {
-    console.log(`Dialog result: ${result}`);
+  
   });
 }
 
 
 
 
+ongetlatest(){
 
+  this.userObj.onlatest().subscribe((response: any)=>{
+    console.log(response)
+    console.log("latest ");
+this.latests=response
+
+})}
 
 
 

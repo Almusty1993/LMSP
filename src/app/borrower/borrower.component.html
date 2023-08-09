@@ -97,7 +97,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of users">
+            
+                <tr *ngFor="let user of users |slice:0:10">
                
                 <td>{{user.user_id}}</td>
                 <td>{{user.fullname}}</td>

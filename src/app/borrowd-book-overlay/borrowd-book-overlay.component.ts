@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BorrowdBookOverlayComponent {
   users: any;
-  books: any;
+  books: any[]=[];
 
   constructor(private userObj : UserService,
     private router : Router, 

@@ -56,7 +56,7 @@ export class LogInComponent {
         this.cookieService.set('sessionId',result.sessionId);
         console.log(result.sessionId)
      
-             if (result.position == 'admin') {
+             if (result.user[0].position == 'admin') {
             this.router.navigate(['/dashboard']);
           } else {
             this.router.navigate(['/userDashboard']);

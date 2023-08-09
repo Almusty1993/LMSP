@@ -100,8 +100,8 @@
         <!-- <th scope="row">1</th> -->
         <td>{{user.fullname}}</td>
         <td>{{user.title}}</td>
-        <td>{{user.duedate}}</td>
-        <td>{{user.borrowingdate}}</td>
+        <td>{{user.duedate|date:"MM/dd/yy"}}</td>
+        <td>{{user.borrowingdate|date:"MM/dd/yy"}}</td>
           <td>{{user.borrow_id}}</td> 
          <td>{{user.amount}}</td>
         <td>

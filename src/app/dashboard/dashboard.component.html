@@ -108,15 +108,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of users">
+            <tr *ngFor="let user of users | slice:0:6">
               <th scope="row">{{user.user_id}}</th>
               <td>{{user.fullname}}</td>
               <td>{{user.email}}</td>
               <td>{{user.phone}}</td>
-              <!-- <td>
-                <a href=""><i class="bi bi-trash3-fill"></i></a>
-                <a href=""><i class="bi bi-pencil-square"></i></a>
-              </td> -->
+         
             </tr>
 
             
@@ -142,7 +139,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let book of books">
+            <tr *ngFor="let book of books | slice:0:6">
               <th scope="row">{{book.book_id}}</th>
               <td>{{book.title}}</td>
               <td>{{book.author}}</td>
@@ -164,6 +161,7 @@
     <p></p>
 
     <div class="row" style="background-color: #d9d9d9;">
+      <div class="col-md-6" >
       <p></p>
       <span style="font-weight: 800;">Overdue Books List</span>
       <p></p>
@@ -180,7 +178,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let overduebook of overduebooks">
+          
+          <tr *ngFor="let overduebook of overduebooks | slice:0:6">
             
             <td>{{overduebook.user_id}}</td>
             
@@ -195,9 +194,10 @@
         </tbody>
       </table>
 
+    
     </div>
 
-    <div class="row" style="background-color: #d9d9d9;">
+    <!-- <div class="row" style="background-color: #d9d9d9;"> -->
 
       <div class="col-md-6" >
         <p></p>
@@ -215,7 +215,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let borrowbook of borrowbooks">
+            <tr *ngFor="let borrowbook of borrowbooks | slice:0:6">
              
               <td>{{borrowbook.user_id}}</td>
               <td>{{borrowbook.title}}</td>
@@ -232,37 +232,8 @@
       </div>
 
 
-      <!-- <div class="col-md-6">
-        <p></p>
-    <h3 style="font-weight: 300; font-size: 24px;">Top Choice</h3>
-    <p></p>
-    <div style="display: flex;">
-      <div style="margin-right: 40px;">
-        <img src="../assets/11.png" alt="Forest" style="width:120px; margin-bottom: 5px; border-radius: 7px;">
-        <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">Stroller</p>
-        <span style="font-weight: 100; font-size: 15px; margin-top: 0px;">Amanda Morgan</span>
-      </div>
-      <div style="margin-right: 40px;">
-        <img src="../assets/11.png" alt="Forest" style="width:120px; margin-bottom: 5px; border-radius: 7px;">
-        <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">Stroller</p>
-        <span style="font-weight: 100; font-size: 15px; margin-top: 0px;">Amanda Morgan</span>
-      </div>
-      <div style="margin-right: 40px;">
-        <img src="../assets/11.png" alt="Forest" style="width:120px; margin-bottom: 5px; border-radius: 7px;">
-        <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">Stroller</p>
-        <span style="font-weight: 100; font-size: 15px; margin-top: 0px;">Amanda Morgan</span>
-      </div>
-
-      <div style="margin-right: 40px;">
-        <img src="../assets/11.png" alt="Forest" style="width:120px; margin-bottom: 5px; border-radius: 7px;">
-        <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">Stroller</p>
-        <span style="font-weight: 100; font-size: 15px; margin-top: 0px;">Amanda Morgan</span>
-      </div>
-    </div>
-
-      </div> -->
-
-    </div>
+  
+     </div>
 
         </div>
       </div>

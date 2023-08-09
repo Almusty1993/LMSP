@@ -52,7 +52,9 @@ console.log(this.copy_id)
         this.users=response
         console.log(response)
         console.log(this.users)
+
       })
+   
     }
 
 
@@ -86,9 +88,13 @@ console.log(this.users[0].borrow_id)
       this.userObj.addhistory(this.users[0]).subscribe((response: any)=>{
         console.log(this.users[0])
         console.log("added to historyy ");
+        this.users=[];
+        this.router.navigate(['/returns']);
+       
       })
-      // // add return
-
+      this.users=""
+    
+      this.router.navigate(['/returns']);
     }
 
 
@@ -97,7 +103,7 @@ console.log(this.users[0].borrow_id)
 
 
 
-
+ 
 
 
     }

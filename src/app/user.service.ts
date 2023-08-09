@@ -82,7 +82,7 @@ export class UserService {
   
     //   console.log(body);
     //   return this.http.get<Ibooks[]>('http://localhost:3000/resultsearch', body);
-    // }
+    // }stro
 
 
 
@@ -226,6 +226,20 @@ console.log(book_id)
   }
 
 
+  onrate(body : any){
+
+    const options : any = {
+      headers: { 'Content-Type': 'application/json' }
+    };
+
+ 
+    return this.http.post('http://localhost:3000/onrate', body, options);
+  }
+
+
+
+
+
 
 
 
@@ -282,8 +296,22 @@ console.log(book_id)
     return this.http.get<Ioverdue[]>('http://localhost:3000/fetchoverduebooks');}
 
 
+    onfetchborrownumber(user_id:any){
+
+      return this.http.get<Ibooks[]>('http://localhost:3000/onfetchborrownumber/'+user_id);}
 
 
+
+
+      onfetchmembership(user_id:any){
+
+        return this.http.get<Iusers[]>('http://localhost:3000/onfetchmembership/'+user_id);}
+
+
+
+    onlatest(){
+
+      return this.http.get<Ibooks[]>('http://localhost:3000/onlatest');}
 
     
 

@@ -56,7 +56,8 @@ bookid:any;
   sendborrow: any
   user_id: any;
   message: any
-
+  borrows:any;
+  position:any;
 
    
   ngOnInit(): void {this.onIf();
@@ -73,68 +74,145 @@ bookid:any;
   }}
 
 
-//    onborrow(book:any){
 
 
-// // if(this.data.availablecopies==0){
-// //   this.message= "This book is currently unavailable. please check later"
+// onborrow(book: any) {
 
-// //   this.available=false;
 
-// // }else{
-// console.log(this.data.book_id)
-//     this.userObj.onstatus(this.data.book_id).subscribe((response: any)=>{
-//       console.log(response)
-  
-//       this.borrow_copy_id=response
-//       console.log(this.borrow_copy_id.copy_id)
-  
-  
-  
-//   })
-  
-  
-//   this.sendborrow={
-//     title:book.title,
-//     copy_id:this.borrow_copy_id.copy_id,
-//     user_id:this.user_id
-  
-//   }
-  
-  
-//     this.userObj.onborrow(this.sendborrow).subscribe((response: any)=>{
-//       console.log(response)
-//       console.log('updated !!!');
-          
+//   this.userObj.onfetchborrownumber(this.data.user_id).subscribe((response: any) => {
+// this.borrows = response[0].count
+// console.log(this.borrows)
+
+
+//   });
+
+
+//   this.userObj.onfetchmembership(this.data.user_id).subscribe((response: any) => {
+//     this.position = response[0].membership
+
+//  console.log(this.position)
+    
+//       });
+
+
+
+
+//       if(this.position =='free'){
+
+//       if(this.borrows){
+//         this.message= "Your membership does not allow to borrow more than 3 books " 
+
+//       }
+//     else{
+
+//       this.userObj.onstatus(this.data.book_id).subscribe((response: any) => {
+       
+//         this.borrow_copy_id = response;
+      
+    
+       
+//         this.sendborrow = {
+//           title: this.data.title,
+//           copy_id: this.borrow_copy_id.copy_id,
+//           user_id: this.data.user_id
+//         };
+    
+//         this.userObj.onborrow(this.sendborrow).subscribe((response: any) => {
+        
+//           this.dialogRef.close(); 
+//           this.router.navigate(['/userDashboard']); 
+//         });
+//       });
+
 //     }
-//       )
+  
+//   }else{
+
+
+
+
+
+//   this.userObj.onstatus(this.data.book_id).subscribe((response: any) => {
+   
+//     this.borrow_copy_id = response;
+  
+
+   
+//     this.sendborrow = {
+//       title: this.data.title,
+//       copy_id: this.borrow_copy_id.copy_id,
+//       user_id: this.data.user_id
+//     };
+
+//     this.userObj.onborrow(this.sendborrow).subscribe((response: any) => {
+    
 //       this.dialogRef.close(); 
-//       this.router.navigate(['/books']);
+//       this.router.navigate(['/userDashboard']); 
+//     });
+//   });
+
+//     }
+
+
+
+
 // }
 
 
 
+
+
+
+
 onborrow(book: any) {
+  let borrows: number;
+  let position: string;
 
+  this.userObj.onfetchborrownumber(this.data.user_id).subscribe((response: any) => {
+    borrows = response[0]?.count || 0; 
+  
+  });
 
-  this.userObj.onstatus(this.data.book_id).subscribe((response: any) => {
-    console.log(response);
-    this.borrow_copy_id = response;
-    console.log(this.borrow_copy_id.copy_id);
+  this.userObj.onfetchmembership(this.data.user_id).subscribe((response: any) => {
+    position = response[0].membership;
+  
+    
+    if (position === 'free') {
 
-   
-    this.sendborrow = {
-      title: this.data.title,
-      copy_id: this.borrow_copy_id.copy_id,
-      user_id: this.data.user_id
-    };
+      console.log("hit")
+      
+      if (borrows > 3) {
+        this.message = "Your membership does not allow borrowing more than 3 books";
+      } else {
+        this.userObj.onstatus(this.data.book_id).subscribe((statusResponse: any) => {
+          const borrow_copy_id = statusResponse;
+          const sendborrow = {
+            title: this.data.title,
+            copy_id: borrow_copy_id.copy_id,
+            user_id: this.data.user_id
+          };
 
-    this.userObj.onborrow(this.sendborrow).subscribe((response: any) => {
-      console.log(response);
-      console.log('updated !!!');
-      this.dialogRef.close(); 
-      this.router.navigate(['/userDashboard']); 
-    });
+          this.userObj.onborrow(sendborrow).subscribe(() => {
+            this.dialogRef.close(); 
+            this.router.navigate(['/userDashboard']); 
+          });
+        });
+      }
+    } else {
+      this.userObj.onstatus(this.data.book_id).subscribe((statusResponse: any) => {
+        const borrow_copy_id = statusResponse;
+        const sendborrow = {
+          title: this.data.title,
+          copy_id: borrow_copy_id.copy_id,
+          user_id: this.data.user_id
+        };
+
+        this.userObj.onborrow(sendborrow).subscribe(() => {
+          this.dialogRef.close(); 
+          this.router.navigate(['/userDashboard']); 
+        });
+      });
+    }
   });
 }
 }

@@ -8,5 +8,7 @@ export interface Ibooks{
    copynumber ?: any,
    availabecopies ? : any,
    image ?: any,
+   adddate?:any,
+   star?:any
 
 }

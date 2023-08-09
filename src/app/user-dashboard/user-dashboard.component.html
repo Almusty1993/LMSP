@@ -116,13 +116,14 @@
   <div class="col-md-12">
   <p></p>
   <div style="display: flex;" >
-    <div style="margin-right: 40px;" *ngFor="let recommand of recommands">
+    <div style="margin-right: 40px;" *ngFor="let recommand of recommands | slice:0:5">
       <img src="{{'data:image/jpg;base64,' + recommand.image}}" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
       
       <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">{{recommand.title}}</p>
          
       <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">{{recommand.category}}</p>
       <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">{{recommand.author}}</span>
+      <p><ngb-rating [(rate)]="recommand.star"></ngb-rating></p>
        <button (click)="onAddwishlist(recommand)" type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
        
      color: white;
@@ -152,6 +153,48 @@
 
     <br>
 
+    <h3>Latest Books</h3>
+  <div class="row" style="background-color: #eeeeee;">
+  <div class="col-md-12">
+  <p></p>
+  <div style="display: flex;" >
+    <div style="margin-right: 40px;" *ngFor="let latest of latests | slice:0:5">
+      <img src="{{'data:image/jpg;base64,' + latest.image}}" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
+      
+      <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">{{latest.title}}</p>
+         
+      <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">{{latest.category}}</p>
+      <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">{{latest.author}}</span>
+      <p><ngb-rating [(rate)]="latest.star"></ngb-rating></p>
+       <button (click)="onAddwishlist(latest)" type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
+       
+     color: white;
+     padding: 16px 20px;
+     margin: 8px 0;
+     border: none;
+     cursor: pointer;
+     width: 100%;
+     opacity: 0.9;"  > add to wish list </button>
+     
+      <button (click)="openDialog(latest)" type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
+       
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;"  >BORROW </button>
+       </div>
+  </div>
+
+
+
+    </div>
+    </div>
+
+    <br>
+
 
     <div class="row" style="background-color: #eeeeee;" *ngIf="searchshow">
       <div class="col-md-12">
@@ -159,11 +202,11 @@
       <h3 style="font-weight: 300; font-size: 24px;">Search Result</h3>
       <p></p>
       <div style="display: flex;">
-        <div *ngFor="let result of searchresults " style="margin-right: 40px;">
+        <div *ngFor="let result of searchresults | slice:0:5 " style="margin-right: 40px;">
           <img src="{{'data:image/jpg;base64,' + result.image}}" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
       
           <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">{{result.title}}</p>
-             
+          <p><ngb-rating [(rate)]="result.star"></ngb-rating></p>  
           <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">{{result.category}}</p>
           <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">{{result.author}}</span>
            <button (click)="onAddwishlist(result)" type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
@@ -204,49 +247,14 @@ opacity: 0.9;"  >BORROW </button>
 
 
        </div>   
-        <!-- <div style="margin-right: 40px;">
-          <img src="../assets/11.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-          <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">Stroller</p>
-          <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-        </div>
-        <div style="margin-right: 40px;">
-          <img src="../assets/11.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-          <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">Stroller</p>
-          <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-        </div>
-
-        <div style="margin-right: 40px;">
-          <img src="../assets/11.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-          <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">Stroller</p>
-          <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-        </div>
-        <div style="margin-right: 40px;">
-          <img src="../assets/11.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-          <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">Stroller</p>
-          <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-        </div> -->
+      
       </div>
 
         </div>
         </div>
 
   </div>
-<!-- Third Column -->
-  <!-- <div class="col-sm-2">
-<div class="row" style=" height: 400px;">
-  <img src="../assets/ad1.jpeg" alt="Forest">
-</div>
-<br>
-<div class="row" style=" height: 400px;">
-  <img src="../assets/ad1.jpeg" alt="Forest">
-</div>
-  </div>
 
-      </div>
-    </div> -->
-
-
-  <!-- </header> -->
 
 
 

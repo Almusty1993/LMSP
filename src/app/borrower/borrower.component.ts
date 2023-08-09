@@ -45,7 +45,7 @@ export class BorrowerComponent {
 
 
 
-  users: any;
+  users: any[] = [];
   isEditing= false
   fullname: any;
   email: any;

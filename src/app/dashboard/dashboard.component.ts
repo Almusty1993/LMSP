@@ -1,27 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-dashboard',
-//   templateUrl: './dashboard.component.html',
-//   styleUrls: ['./dashboard.component.scss']
-// })
-// export class DashboardComponent {
-
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -41,13 +17,13 @@ import { NewuserComponent } from '../newuser/newuser.component';
 })
 export class DashboardComponent implements OnInit {
   
-users: any;
-books:any;
+  users: any[] = []
+books:any[] = []
 
 star=1
 end=8
-  borrowbooks: any;
-  overduebooks: any;
+  borrowbooks: any[] = []
+  overduebooks: any[] = []
   numberusers: any;
   numberbooks: any;
   numberoverdue: any;
@@ -74,12 +50,12 @@ end=8
       this.onGetbooks();
       this.onGetborrowedbooks();
       this.onGetoverduebooks();
-      this.oncheckoverdue();
+      // this.oncheckoverdue();
   
-      // Call the function every 24 hours
-      setInterval(() => {
-        this.oncheckoverdue();
-      }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+     
+      // setInterval(() => {
+      //   this.oncheckoverdue();
+      // }, 24 * 60 * 60 * 1000); 
     }
 
 
@@ -134,30 +110,30 @@ onGetborrowedbooks(){
 
 
 
- oncheckoverdue(){
-  for (let borrow of this.borrowbooks) {
-          if (new Date() > borrow.duedate) {
+//  oncheckoverdue(){
+//   for (let borrow of this.borrowbooks) {
+//           if (new Date() > borrow.duedate) {
 
-            for (let overduebook of this.overduebooks) {
-
-
-            if(overduebook.borrow_id= borrow.borrow_id){
-
-console.log(" book already exist in overdue ")
-
-              // this.userObj.updatefine(borrow.borrow_id,{duedate:borrow.duedate}).subscribe((response: any) => {
-              //   console.log(borrow.title + "was updated in overdue table");
-              // });
- }else{this.userObj.addOverdue(borrow).subscribe((response: any) => {
-  console.log(borrow.title + " was added to overdue table");
-  this.overduebooks=response
-});
-
- }
-            }}}
+//             for (let overduebook of this.overduebooks) {
 
 
-          }
+//             if(overduebook.borrow_id= borrow.borrow_id){
+
+// console.log(" book already exist in overdue ")
+
+//               // this.userObj.updatefine(borrow.borrow_id,{duedate:borrow.duedate}).subscribe((response: any) => {
+//               //   console.log(borrow.title + "was updated in overdue table");
+//               // });
+//  }else{this.userObj.addOverdue(borrow).subscribe((response: any) => {
+//   console.log(borrow.title + " was added to overdue table");
+//   this.overduebooks=response
+// });
+
+//  }
+//             }}}
+
+
+//           }
         
         
       
