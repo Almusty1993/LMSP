@@ -34,8 +34,32 @@ author:any;
     
     ){}
 
-    ngOnInit(): void {this.gethighcategory();
-      this.ongetlatest()
+    ngOnInit(): void {
+      
+      
+      
+      this.gethighcategory();
+      this.ongetlatest();
+
+
+
+
+
+      (function(d, m){
+        var kommunicateSettings = 
+            {"appId":"732bd766a8aab28f105c066870aa0a75","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        (window as any).kommunicate = m; m._globals = kommunicateSettings;
+    })(document, (window as any).kommunicate || {});
+
+
+
+
+
+
+
    
     
     }
@@ -57,6 +81,8 @@ author:any;
 
   console.log(this.books[0].category)
    console.log("recommand");
+
+  if(this.books[0].category){
    this.userObj.getrecommand(this.books[0].category).subscribe((response: any)=>{
  
 
@@ -64,6 +90,7 @@ author:any;
     this.recommands=response
  console.log(this.recommands)
  })
+}
 })
 
 
