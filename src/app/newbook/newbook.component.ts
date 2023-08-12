@@ -113,6 +113,8 @@ onAdd() {
   );
   this.dialogRef.close();
   this.router.navigate(['/dashboard']);
+  
+ 
 }
 
 

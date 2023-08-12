@@ -66,13 +66,13 @@ export class UserService {
 
   // resultsearch(body : any){
 
-  //   const options : any = {
-  //     headers: { 'Content-Type': 'application/json' }
-  //   };
+    //   const options : any = {
+    //     headers: { 'Content-Type': 'application/json' }
+    //   };
 
-  //   console.log(body);
-  //   return this.http.get<Ibooks[]>('http://localhost:3000/resultsearch', body);
-  // }
+    //   console.log(body);
+    //   return this.http.get<Ibooks[]>('http://localhost:3000/resultsearch', body);
+    // }stro
 
   getinnerjoin(copy_id: any) {
     return this.http.get<Innerjoin[]>(
@@ -177,9 +177,28 @@ export class UserService {
     );
   }
 
-  onborrow(body: any) {
-    const options: any = {
-      headers: { 'Content-Type': 'application/json' },
+
+  onrate(body : any){
+
+    const options : any = {
+      headers: { 'Content-Type': 'application/json' }
+    };
+
+
+    return this.http.post('http://localhost:3000/onrate', body, options);
+  }
+
+
+
+
+
+
+
+
+  onborrow(body : any){
+
+    const options : any = {
+      headers: { 'Content-Type': 'application/json' }
     };
 
     console.log(body);
@@ -213,21 +232,42 @@ export class UserService {
     return this.http.post('http://localhost:3000/addwishlist', body, options);
   }
 
-  getoverduebooks() {
-    return this.http.get<Ioverdue[]>('http://localhost:3000/fetchoverduebooks');
-  }
 
-  updatefine(borrow_id: any, data: any) {
-    const options: any = {
-      headers: { 'Content-Type': 'application/json' },
-    };
 
-    return this.http.put(
-      'http://localhost:3000/updateoverdue/' + borrow_id,
-      data,
-      options
-    );
-  }
+  getoverduebooks(){
+
+    return this.http.get<Ioverdue[]>('http://localhost:3000/fetchoverduebooks');}
+
+
+    onfetchborrownumber(user_id:any){
+
+      return this.http.get<Ibooks[]>('http://localhost:3000/onfetchborrownumber/'+user_id);}
+
+
+
+
+      onfetchmembership(user_id:any){
+
+        return this.http.get<Iusers[]>('http://localhost:3000/onfetchmembership/'+user_id);}
+
+
+
+    onlatest(){
+
+      return this.http.get<Ibooks[]>('http://localhost:3000/onlatest');}
+
+
+
+    updatefine(borrow_id :any ,data : any){
+
+      const options : any = {
+        headers : {'Content-Type': 'application/json'}
+      };
+
+      return this.http.put('http://localhost:3000/updateoverdue/'+borrow_id,data, options );
+
+
+    }
 
   deletewishlist(book_id: any) {
     return this.http.delete('http://localhost:3000/deletewishlist/' + book_id);

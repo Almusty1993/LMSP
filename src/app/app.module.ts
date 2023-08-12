@@ -28,6 +28,7 @@ import { NewuserComponent } from './newuser/newuser.component';
 import { EditbookComponent } from './editbook/editbook.component';
 import { DeletebookComponent } from './deletebook/deletebook.component';
 import { BorrowbookComponent } from './borrowbook/borrowbook.component';
+import { SupportComponent } from './support/support.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { BorrowbookComponent } from './borrowbook/borrowbook.component';
     NewuserComponent,
     EditbookComponent,
     DeletebookComponent,
-    BorrowbookComponent
+    BorrowbookComponent,
+    SupportComponent
 
 
   ],

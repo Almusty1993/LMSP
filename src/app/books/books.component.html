@@ -87,7 +87,7 @@
     </thead>
     <tbody>
 
- <tr *ngFor="let book of books">
+ <tr *ngFor="let book of books | slice:0:10">
        
         <td>{{book.book_id}}</td>
 

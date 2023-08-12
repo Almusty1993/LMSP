@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./wish-list.component.scss']
 })
 export class WishListComponent implements OnInit {
-  books: any;
+  books: any[]=[];
   message: string=""
 
 

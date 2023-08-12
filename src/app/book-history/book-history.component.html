@@ -101,12 +101,13 @@
            <th scope="col">Book Author</th>
            <th scope="col">Year Publish</th>
            <th scope="col">Borrowing Date</th>
-          <th>Image</th>
+           <th scope="col">Rating</th>
+           <th>Image</th>
          
       </thead>
       <tbody>
   
-   <tr *ngFor="let book of books">
+   <tr *ngFor="let book of books | slice:0:10">
          
          
   
@@ -115,6 +116,8 @@
           <td>{{book.author}}</td>
           <td>{{book.yearpublish}}</td>
           <td>{{book.borrowingdate}}</td>
+          <ngb-rating [(ngModel)]="rate" (click)="onRate(book)"></ngb-rating>
+          {{rate}}
           
           <td><img src="{{'data:image/jpg;base64,' + book.image}}" height="40" alt=""></td>
         
@@ -141,98 +144,7 @@
 
 
 
-
-  <!-- <div *ngFor="let book of books" style="display: flex;">
-    <div style="margin-right: 40px;">
-      <img src="../assets/01.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-      <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">{{book.title}} &nbsp;&nbsp;&nbsp;<span>{{book.author}}</span></p>
-      <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-    </div> -->
-    <!-- <div style="margin-right: 40px;">
-      <img src="../assets/02.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-      <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">Stroller &nbsp;&nbsp;&nbsp;<span>$40.50</span></p>
-      <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-    </div>
-    <div style="margin-right: 40px;">
-      <img src="../assets/03.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-      <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">Stroller &nbsp;&nbsp;&nbsp;<span>$40.50</span></p>
-      <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-    </div>
-
-    <div style="margin-right: 40px;">
-      <img src="../assets/05.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-      <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">Stroller &nbsp;&nbsp;&nbsp;<span>$40.50</span></p>
-      <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-    </div>
-    <div style="margin-right: 40px;">
-      <img src="../assets/11.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-      <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">Stroller &nbsp;&nbsp;&nbsp;<span>$40.50</span></p>
-      <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-    </div> -->
-  <!-- </div>
-
-    </div>
-    </div>
-
-    <br>
-
-
-    <div class="row" style="background-color: #eeeeee;">
-      <div class="col-md-12">
-          <p></p>
-      <h3 style="font-weight: 300; font-size: 24px;">LAST WEEK JUNE</h3>
-      <p></p>
-      <div style="display: flex;">
-        <div style="margin-right: 40px;">
-          <img src="../assets/06.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-          <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">Stroller &nbsp;&nbsp;&nbsp;<span>$40.50</span></p>
-          <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-        </div>
-        <div style="margin-right: 40px;">
-          <img src="../assets/07.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-          <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">Stroller &nbsp;&nbsp;&nbsp;<span>$40.50</span></p>
-          <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-        </div>
-        <div style="margin-right: 40px;">
-          <img src="../assets/08.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-          <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">Stroller &nbsp;&nbsp;&nbsp;<span>$40.50</span></p>
-          <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-        </div>
-
-        <div style="margin-right: 40px;">
-          <img src="../assets/12.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-          <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">Stroller &nbsp;&nbsp;&nbsp;<span>$40.50</span></p>
-          <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-        </div>
-        <div style="margin-right: 40px;">
-          <img src="../assets/09.png" alt="Forest" style="width:170px; margin-bottom: 5px; border-radius: 7px;">
-          <p style="font-weight: 500; font-size: 14px; margin-bottom: 0px;">Stroller &nbsp;&nbsp;&nbsp;<span>$40.50</span></p>
-          <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">Amanda Morgan</span>
-        </div>
-      </div>
-
-        </div>
-        </div>
-
-  </div>
-<!-- Third Column -->
-  <!-- <div class="col-sm-2">
-<div class="row" style=" height: 400px;">
-  <img src="../assets/ad1.jpeg" alt="Forest">
-</div>
-<br>
-<div class="row" style=" height: 400px;">
-  <img src="../assets/ad1.jpeg" alt="Forest">
-</div>
-  </div> -->
-
-      <!-- </div>
-    </div>  -->
-
-
-  <!-- </header> -->
-
-
+  
 
 
   <router-outlet></router-outlet>

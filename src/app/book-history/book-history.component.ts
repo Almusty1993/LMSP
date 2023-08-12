@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./book-history.component.scss']
 })
 export class BookHistoryComponent {
-  books: any;
-
+  books: any[]=[];
+  currentRating:any
 
 
   constructor(private userObj : UserService,
@@ -27,6 +27,7 @@ export class BookHistoryComponent {
   }
 
 users:any=[]
+rate:any
 
 
 
@@ -38,13 +39,43 @@ users:any=[]
         console.log(this.users[0].user_id)
         console.log("wish list response");
         console.log(response)
-        console.log(response[0].yearpublish)
+  
         this.books=response
-        console.log(response)
-        console.log(this.books)
+    
       })
     }
   
+    
+
+
+
+
+
+    onRate(book:any){
+
+      this.userObj.onrate({user_id:this.users[0].user_id,book_id:book.book_id,rate:this.rate}).subscribe((response: any)=>{
+      this.rate=""
+     
+   
+     
+      })
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     
   }
 

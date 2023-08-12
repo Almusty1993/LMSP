@@ -6,6 +6,7 @@ export interface Ihistory{
     author ?: any,
       image ?: any,
       fine?:any,
+      start?:any
 
   
  

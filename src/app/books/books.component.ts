@@ -15,7 +15,7 @@ import { NewbookComponent } from '../newbook/newbook.component';
   styleUrls: ['./books.component.scss']
 })
 export class BooksComponent {
-  books: any;
+  books: any[]=[];
   selectedFile: any;
   title: any;
   author: any;
