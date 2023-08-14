@@ -7,72 +7,72 @@
     <div class="col-md-4" >
       <div style="text-align: center;">
         <h3 >Sign in  PAGE</h3>
-      
+
       </div>
 
-      <div style="text-align: center;">
-       
+      <div>
+
           <div class="row mb-3">
-            <label for="fullname" class="col-sm-2 col-form-label">Full Name</label>
+            <label for="fullname" class="col-sm-2 col-form-label" style="text-align: left;">Full Name</label>
             <div>
               <input type="fullname" class="form-control" id="fullname"  [(ngModel)]="fullname">
             </div>
           </div>
           <div class="row mb-3">
-            <label for="address" class="col-sm-2 col-form-label">Address</label>
+            <label for="address" class="col-sm-2 col-form-label" style="text-align: left;">Address</label>
               <input type="address" class="form-control" id="address"  [(ngModel)]="address">
           </div>
           <div class="row mb-3">
-            <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+            <label for="phone" class="col-sm-2 col-form-label" style="text-align: left;">Phone</label>
             <div>
               <input type="number" class="form-control" id="phone" [(ngModel)]="phone">
             </div>
           </div>
           <div class="row mb-3">
-            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <label for="email" class="col-sm-2 col-form-label" style="text-align: left;">Email</label>
               <input type="email" class="form-control" id="email" [(ngModel)]="email">
           </div>
           <div class="row mb-3">
-            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <label for="password" class="col-sm-2 col-form-label" style="text-align: left;">Password</label>
             <div>
               <input type="password" class="form-control" id="password" [(ngModel)]="password">
             </div>
           </div>
           <div class="row mb-3">
-            <label for="confirmpassword" class="col-sm-2 col-form-label">Confirm Password</label>
+            <label for="confirmpassword" class="col-sm-2 col-form-label" style="text-align: left;">Confirm Password</label>
               <input type="password" class="form-control" id="confirmpassword" [(ngModel)]="confirmpassword">
           </div>
           <div class="row mb-3">
-            <label for="dateofbirth" class="col-sm-2 col-form-label">D.O.B</label>
+            <label for="dateofbirth" class="col-sm-2 col-form-label" style="text-align: left;">D.O.B</label>
             <div>
               <input type="date" class="form-control" id="dateofbirth" [(ngModel)]="dateofbirth">
             </div>
           </div>
-        
+
           <div class="mb-3">
-            <label for="membership" class="form-label">membership</label>
+            <label for="membership" class="form-label" style="text-align: left;">membership</label>
             <select [(ngModel)]="membership" name="membership" class="form-control" >
-            
+
               <option value="1">free</option>
               <option value="2">expert</option>
               <option value="3">enterprise</option>
-            
+
             </select>
           </div>
 
           <div class="mb-3">
-            <label for="position" class="form-label">position</label>
+            <label for="position" class="form-label" style="text-align: left;">position</label>
             <select [(ngModel)]="position" name="position" class="form-control" >
-          
+
               <option value="1">user</option>
               <option value="2">admin</option>
-            
+
             </select>
           </div>
 
 
 
-<!-- 
+<!--
           <div class="row mb-3">
             <label for="position" class="col-sm-2 col-form-label">Position</label>
               <input type="text" class="form-control" id="position" [(ngModel)]="position">
@@ -86,9 +86,9 @@
           cursor: pointer;
           width: 100%;
           opacity: 0.9;"  (click)="onSignup()">Sign Up</button>
-       
 
-       
+
+
       </div>
 
 
@@ -99,4 +99,4 @@
 
 </div>
 
-</div> -->
+</div>

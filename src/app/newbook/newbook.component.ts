@@ -13,20 +13,14 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 export class NewbookComponent {
 
 
-
   constructor(private userObj : UserService,
-    private router : Router, 
+    private router : Router,
     private cookieservice: CookieService,
     private http : HttpClient,
     private route : ActivatedRoute,
     private dialogRef: MatDialogRef<NewbookComponent>
-    
+
     ){}
-
-
-
-
-
 
   selectedFile: any;
   title: any;
@@ -41,49 +35,6 @@ export class NewbookComponent {
     this.selectedFile=event.target.files[0];
     console.log(this.selectedFile)
   }
-     
-
-
-
-
-//   onAdd(){
-
-//     const formData = new FormData();
-            
-//        this.copynumber=1;
-//        this.availablecopies=1;
-
-//       formData.append('title',this.title);
-//       formData.append('category',this.category);
-//       formData.append('edition',this.edition);
-//       formData.append('author',this.author);
-//       formData.append('copynumber',this.copynumber);
-//       formData.append('availablecopies',this.availablecopies);
-//       formData.append('image',this.selectedFile);
-//       formData.append('yearpublish',this.yearpublish);
-
-
-
-
-//       console.log(formData)
-//        this.userObj.onAdd(formData)
-//            .subscribe((res:any)=>{
-//             console.log('Added !!!');
-//             this.dialogRef.close(); 
-         
-//       this.router.navigate(['/dashboard']);
-//            },
-//     (error) => {
-//       console.error('Error adding book:', error);
-//     }
-    
-//   );
-
-  
-
-
-// }
-
 
 onAdd() {
   const formData = new FormData();
@@ -113,13 +64,8 @@ onAdd() {
   );
   this.dialogRef.close();
   this.router.navigate(['/dashboard']);
-  
- 
+
+
 }
-
-
-
-
-
 
 }

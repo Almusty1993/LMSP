@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Email Subscription</h1>
+<div mat-dialog-content>Please Enter Your Email To Get The Latest From Us!</div>
+<div mat-dialog-actions>
+  <div class="mb-3">
+    <label for="title" class="form-label" style="width: 400px;">Email</label>
+    <input [(ngModel)]="email" name="name" type="email" class="form-control" placeholder="Title" id="title">
+  </div>
+  <!-- <button mat-button mat-dialog-close>Close</button> -->
+  <button (click)="onSubscribe()" class="btn btn-outline-primary" type="submit">Subscribe!</button>
+</div>
+
+
+<!-- <p style="text-align: center;">Please Enter Your Email To Get The Latest From Us!</p>
+<div class="form-container">
+<div class="row">
+  <div class="mb-3">
+    <label for="title" class="form-label" style="width: 400px;">Title</label>
+    <input [(ngModel)]="email" name="name" type="email" class="form-control" placeholder="Title" id="title">
+  </div>
+  <button (click)="onSubscribe()" class="btn btn-outline-primary" type="submit">Subscribe!</button>
+</div>
+</div> -->

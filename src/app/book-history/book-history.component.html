@@ -90,12 +90,12 @@
   <div class="col-md-12" >
   <p></p>
 
-  
+
     <table class="table table-striped ">
       <thead>
         <tr>
-          
-          
+
+
           <th scope="col">Book Title</th>
            <th scope="col">Book Category</th>
            <th scope="col">Book Author</th>
@@ -103,14 +103,14 @@
            <th scope="col">Borrowing Date</th>
            <th scope="col">Rating</th>
            <th>Image</th>
-         
+
       </thead>
       <tbody>
-  
+
    <tr *ngFor="let book of books | slice:0:10">
-         
-         
-  
+
+
+
           <td>{{book.title}}</td>
           <td>{{book.category}}</td>
           <td>{{book.author}}</td>
@@ -118,19 +118,34 @@
           <td>{{book.borrowingdate}}</td>
           <ngb-rating [(ngModel)]="rate" (click)="onRate(book)"></ngb-rating>
           {{rate}}
-          
+
           <td><img src="{{'data:image/jpg;base64,' + book.image}}" height="40" alt=""></td>
-        
-       
+
+
         </tr>
-  
-       
+
+
       </tbody>
     </table>
-    
+
 </div>
 </div>
 </div>
+      </div>
+
+
+<!-- Third Column -->
+<div class="col-sm-2">
+  <div class="row" style=" height: 400px; margin-bottom: 30px;">
+    <img src="../assets/ad1.jpeg" alt="Forest">
+  </div>
+  <br>
+  <div class="row" style=" height: 400px;">
+    <img src="../assets/ad1.jpeg" alt="Forest">
+  </div>
+    </div>
+    </div>
+  </div>
 
 
 
@@ -142,9 +157,6 @@
 
 
 
-
-
-  
 
 
   <router-outlet></router-outlet>
