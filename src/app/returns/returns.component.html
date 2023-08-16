@@ -1,135 +1,145 @@
-
-
 <div class="container-fluid">
   <div class="row">
-
-    <!-- First Column -->
     <div class="col-sm-2">
-      <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="height: 100vh; width: 280px;">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-          <span class="fs-4">LOGO</span>
-        </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
-            <a [routerLink]="['/dashboard']" class="nav-link " >
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-              Dashboard
-            </a>
-          </li>
-          <li>
-            <a [routerLink]="['/borrower']" class="nav-link text-white">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="borrower"/></svg>
-              Borrower
-            </a>
-          </li>
-          <li>
-            <a [routerLink]="['/books']" class="nav-link text-white">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#books"/></svg>
-              Books
-            </a>
-          </li>
-          <li>
-            <a [routerLink]="['/returns']" class="nav-link active text-white" aria-current="page">
-              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#returns"/></svg>
-              Returns
-            </a>
-          </li>
-        </ul>
-        <hr>
+      <!-- First Column -->
+      <div class="col-sm-2">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="height: 100vh; width: 280px;">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg class="bi pe-none me-2" width="40" height="32">
+              <use xlink:href="#bootstrap" />
+            </svg>
+            <span class="fs-4">LOGO</span>
+          </a>
+          <hr>
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a [routerLink]="['/dashboard']" class="nav-link ">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#home" />
+                </svg>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/borrower']" class="nav-link text-white">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="borrower" />
+                </svg>
+                Borrower
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/books']" class="nav-link text-white">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#books" />
+                </svg>
+                Books
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/returns']" class="nav-link active text-white" aria-current="page">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                  <use xlink:href="#returns" />
+                </svg>
+                Returns
+              </a>
+            </li>
+          </ul>
+          <hr>
 
 
-      </div>
-    </div>
-
-    <!-- Second Column -->
-    <div class="col-sm-10">
-
-
-    <nav class="navbar navbar-expand-sm navbar-light" style="float: right;">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-
-      <p></p>
-      <h1>Books Page</h1>
-      <p></p>
-      <div class="row mb-3">
-        <label for="copy_id" class="col-sm-2 col-form-label">copy_id</label>
-        <div>
-          <input type="number" class="form-control" id="copy_id" [(ngModel)]="copy_id"  >
         </div>
       </div>
-      <button type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
+    </div>
+    <!-- Second Column -->
+    <div class="col-sm-10">
+      <div class="col-sm-10">
+
+
+        <nav class="navbar navbar-expand-sm navbar-light" style="float: right;">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <p></p>
+        <h1>Returning page</h1>
+        <p></p>
+        <div class="row mb-3">
+          <label for="copy_id" class="col-sm-2 col-form-label">copy_id</label>
+          <div>
+            <input type="number" class="form-control" id="copy_id" [(ngModel)]="copy_id">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
      
           color: white;
           padding: 16px 20px;
           margin: 8px 0;
           border: none;
           cursor: pointer;
-          width: 100%;
-          opacity: 0.9;"  (click)="onGetinnerjoin()">Search</button>
+          width: 20%;
+          opacity: 0.9;" (click)="onGetinnerjoin()">Search</button>
 
 
-<div class="row" style="background-color: #d9d9d9;">
-  <p></p>
-  <span style="font-weight: 800;">Books List</span>
-  <p></p>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <!-- <th scope="col">S/N</th> -->
-        <th scope="col">Full Name</th>
-        <th scope="col"> Book Title</th>
-         <th scope="col">Due Date</th>
-        <th scope="col">Borrowing Date</th>
-        <th scope="col">Borrow Id</th>
-        <th scope="col"> Fine</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users">
-        <!-- <th scope="row">1</th> -->
-        <td>{{user.fullname}}</td>
-        <td>{{user.title}}</td>
-        <td>{{user.duedate|date:"MM/dd/yy"}}</td>
-        <td>{{user.borrowingdate|date:"MM/dd/yy"}}</td>
-          <td>{{user.borrow_id}}</td> 
-         <td>{{user.amount}}</td>
-        <td>
-          <button type="button" class="btn btn-primary btn-sm" style="background-color: #3CA7F5;"(click)="onApprove()">
-            <i class="bi bi-clipboard2-check-fill" ></i>Approve</button>
-        </td>
-      </tr>
+        <div class="row" style="background-color: #d9d9d9;">
+          <p></p>
+          <span style="font-weight: 800;">Books List</span>
+          <p></p>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <!-- <th scope="col">S/N</th> -->
+                <th scope="col">Full Name</th>
+                <th scope="col"> Book Title</th>
+                <th scope="col">Due Date</th>
+                <th scope="col">Borrowing Date</th>
+                <th scope="col">Borrow Id</th>
+                <th scope="col"> Fine</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <!-- <th scope="row">1</th> -->
+                <td>{{user.fullname}}</td>
+                <td>{{user.title}}</td>
+                <td>{{user.duedate|date:"MM/dd/yy"}}</td>
+                <td>{{user.borrowingdate|date:"MM/dd/yy"}}</td>
+                <td>{{user.borrow_id}}</td>
+                <td>{{user.amount}}</td>
+                <td>
+                  <button type="button" class="btn btn-primary btn-sm" style="background-color: #3CA7F5;"
+                    (click)="onApprove()">
+                    <i class="bi bi-clipboard2-check-fill"></i>Approve</button>
+                </td>
+              </tr>
 
-     
 
-    </tbody>
-  </table>
 
-  <ul class="pagination" style="justify-content: end;">
-    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
+            </tbody>
+          </table>
 
-</div>
+          <ul class="pagination" style="justify-content: end;">
+            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
 
+        </div>
+
+      </div>
     </div>
+
+
   </div>
-
-
 </div>
-
 
 <router-outlet></router-outlet>

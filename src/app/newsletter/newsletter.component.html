@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Email Subscription</h1>
+<div mat-dialog-content>Please Enter Your Email To Get The Latest news From Us!</div>
+<div mat-dialog-actions>
+  <div class="mb-3">
+    <label for="title" class="form-label" style="width: 400px;">Email</label>
+    <input [(ngModel)]="email" name="name" type="email" class="form-control" placeholder="email" id="title">
+  </div>
+
+  <button (click)="onSubscribe()" class="btn btn-outline-primary" type="submit">Subscribe!</button>
+</div>
+
+
+
+

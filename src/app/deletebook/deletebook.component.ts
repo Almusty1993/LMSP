@@ -14,14 +14,15 @@ export class DeletebookComponent {
 
 
 
-  ngOnInit(): void {this.onDelete();
-   
-      
-      
+  ngOnInit(): void {
+    this.onDelete();
+
+
+
   }
 
 
-    copytitle: any;
+  copytitle: any;
   copybookid: any;
   copyedition: any;
   copyauthor: any;
@@ -45,41 +46,26 @@ export class DeletebookComponent {
     private route: ActivatedRoute,
     private dialogRef: MatDialogRef<DeletebookComponent>
   ) {
-  //   this.title=data.title,
-  // this.category=data.category,
-  // this.author=data.author,
-  // this.copynumber=data.copynumber,
-  // this.availablecopies=data.availablecopies,
-  // this.yearpublish=data.yearpublish,
-  // this.edition=data.edition,
-  this.copybookid=data.book_id
-   }
+
+    this.copybookid = data.book_id
+  }
 
 
   onDelete() {
-   
 
 
 
-    //  this.copytitle=book.title;
-    //  this.copycategory=book.category;
-    // this. copybookid=book.book_id;
-    // this. copyedition=book.edition;
-    // this. copyauthor=book.author;
-    // this. copycopynumber=book.copynumber;
-    // this. copyavailablecopies=book.availablecopies;
-    // this. copyimage=book.image
-    // this.copyyearpublish=book.yearpublish
-
-      this.userObj.fetchcopy(this.copybookid).subscribe((result: any) => {
-  
-        console.log('copy fetched !! ');
-        this.copies=result
-               
-      })
 
 
-    }
+    this.userObj.fetchcopy(this.copybookid).subscribe((result: any) => {
+
+      
+      this.copies = result
+
+    })
+
+
+  }
 
 
 
@@ -90,19 +76,19 @@ export class DeletebookComponent {
 
 
 
-    onDeletecopy(copy: any){
-            
-      this.userObj.deleteBookcopy(copy.copy_id).subscribe((result) => {
+  onDeletecopy(copy: any) {
 
-     console.log(' copy deleted !! ');
-           })
+    this.userObj.deleteBookcopy(copy.copy_id).subscribe((result) => {
 
-  
-           this.dialogRef.close(); 
+      
+    })
+
+
+    this.dialogRef.close();
     this.router.navigate(['/books']);
 
-     }
- 
+  }
+
 
 
 

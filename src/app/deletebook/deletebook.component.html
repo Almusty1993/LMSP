@@ -1,32 +1,32 @@
 <div>
 
-    <table class="table table-striped ">
-      <thead>
-        <tr>
-          
-          <th scope="col">Book Id </th>
-          <th scope="col">Copy Id </th>
-          <th scope="col">Book Title</th>
-           <th scope="col">Book Category</th>
-          <th scope="col">Book Edition</th>
-          <th scope="col">Book Author</th>
-          <th>Image</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>   
-    <tr *ngFor="let copy of copies">
-      <td>{{copybookid}}</td> 
-     <td>{{copy.copy_id}}</td>
-      <td>{{copytitle}}</td>
-    <td>{{copycategory}}</td>
-    <td>{{copyedition}}</td>
-    <td>{{copyauthor}}</td>
-    <td><img src="{{'data:image/jpg;base64,' + copyimage}}" height="40" alt=""></td>
-  
-    <td><a (click)="onDeletecopy(copy)"><i class="bi bi-trash3-fill" ></i></a></td>
-</tr>
-</tbody>
-</table>
+  <table class="table table-striped ">
+    <thead>
+      <tr>
+
+        <th scope="col">Book Id </th>
+        <th scope="col">Copy Id </th>
+        <th scope="col">Book Title</th>
+        <th scope="col">Book Category</th>
+        <th scope="col">Book Edition</th>
+        <th scope="col">Book Author</th>
+        <th>Image</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let copy of copies">
+        <td>{{copybookid}}</td>
+        <td>{{copy.copy_id}}</td>
+        <td>{{copytitle}}</td>
+        <td>{{copycategory}}</td>
+        <td>{{copyedition}}</td>
+        <td>{{copyauthor}}</td>
+        <td><img src="{{'data:image/jpg;base64,' + copyimage}}" height="40" alt=""></td>
+
+        <td><a (click)="onDeletecopy(copy)"><i class="bi bi-trash3-fill"></i></a></td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>

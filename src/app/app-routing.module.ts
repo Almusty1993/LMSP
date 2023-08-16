@@ -9,8 +9,8 @@ import { ReturnsComponent } from './returns/returns.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { BookHistoryComponent } from './book-history/book-history.component';
 import { WishListComponent } from './wish-list/wish-list.component';
-import { BorrowedBookOverlayComponent } from './borrowed-book-overlay/borrowed-book-overlay.component';
 import { BorrowdBookOverlayComponent } from './borrowd-book-overlay/borrowd-book-overlay.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {path: '', component : LogInComponent},
@@ -24,6 +24,7 @@ const routes: Routes = [
   {path: 'bookHistory', component : BookHistoryComponent},
   {path: 'wishList', component : WishListComponent},
   {path: 'borrowedBookOverlay', component : BorrowdBookOverlayComponent},
+  {path: 'search', component : SearchComponent},
 
 
     {path: '**', redirectTo:''} // default route

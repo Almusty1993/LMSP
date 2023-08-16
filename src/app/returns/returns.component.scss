@@ -1,0 +1,25 @@
+/* Custom CSS for 14-inch laptop screen */
+@media (min-width: 1366px) { /* Adjust the breakpoint as needed */
+    /* Adjust the width of the first column */
+    .col-sm-2 {
+        
+      width: 280px; /* Same as original width */
+    }
+  
+    /* Adjust the width of the second column to fill the remaining space */
+    .col-sm-10 {
+      width: calc(100% - 280px);
+      padding: 25px;
+    }
+  
+    /* Adjust the width of the search form */
+    .navbar-form {
+      max-width: 320px; /* Adjust as needed */
+    }
+  
+    /* Adjust the width of the table */
+    .table {
+      max-width: 100%;
+    }
+  }
+  

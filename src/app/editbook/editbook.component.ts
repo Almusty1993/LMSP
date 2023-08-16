@@ -13,23 +13,24 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class EditbookComponent {
 
 
-constructor(
-  @Inject(MAT_DIALOG_DATA) public data: any,
-  private userObj: UserService,
-  private router: Router,
-  private cookieservice: CookieService,
-  private http: HttpClient,
-  private route: ActivatedRoute,
-  private dialogRef: MatDialogRef<EditbookComponent>
-) {this.title=data.title,
-this.category=data.category,
-this.author=data.author,
-this.copynumber=data.copynumber,
-this.availablecopies=data.availablecopies,
-this.yearpublish=data.yearpublish,
-this.edition=data.edition,
-this.book_id=data.book_id
- }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private userObj: UserService,
+    private router: Router,
+    private cookieservice: CookieService,
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private dialogRef: MatDialogRef<EditbookComponent>
+  ) {
+    this.title = data.title,
+    this.category = data.category,
+    this.author = data.author,
+    this.copynumber = data.copynumber,
+    this.availablecopies = data.availablecopies,
+    this.yearpublish = data.yearpublish,
+    this.edition = data.edition,
+    this.book_id = data.book_id
+  }
 
 
 
@@ -40,49 +41,49 @@ this.book_id=data.book_id
   edition: any;
   copynumber: any;
   availablecopies: any;
-  yearpublish:any;
+  yearpublish: any;
   book_id: any;
   selectedFile: any;
-book:any;
-bookid:any;
+  book: any;
+  bookid: any;
 
 
-  onFileSeleceted(event :any){
-    this.selectedFile=event.target.files[0];
+  onFileSeleceted(event: any) {
+    this.selectedFile = event.target.files[0];
     console.log(this.selectedFile)
   }
 
 
 
-  onUpdateBooks(book_id:any){
+  onUpdateBooks(book_id: any) {
 
- 
-    
-     
+
+
+
     const formData = new FormData();
+
+    book_id = this.book_id;
+
+
+
+    formData.append('book_id', this.book_id);
+    formData.append('title', this.title);
+    formData.append('category', this.category);
+    formData.append('edition', this.edition);
+    formData.append('author', this.author);
+    formData.append('copynumber', this.copynumber);
+    formData.append('availablecopies', this.availablecopies);
+    formData.append('yearpublish', this.yearpublish);
+    formData.append('image', this.selectedFile);
     
-    book_id=this.book_id;
-    
-           
-    
-      formData.append('book_id',this.book_id);
-      formData.append('title',this.title);
-      formData.append('category',this.category);
-      formData.append('edition',this.edition);
-      formData.append('author',this.author);
-      formData.append('copynumber',this.copynumber);
-      formData.append('availablecopies',this.availablecopies);
-      formData.append('yearpublish',this.yearpublish);
-      formData.append('image',this.selectedFile);
-      console.log(formData)
-       this.userObj.updatebook(formData)
-           .subscribe((res:any)=>{
-            console.log('updated !!!');
-          
-          }
-            )
-            this.dialogRef.close(); 
-            this.router.navigate(['/books']);
-    }
+    this.userObj.updatebook(formData)
+      .subscribe((res: any) => {
+      
+
+      }
+      )
+    this.dialogRef.close();
+    this.router.navigate(['/books']);
+  }
 
 }

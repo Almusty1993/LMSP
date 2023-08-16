@@ -1,0 +1,32 @@
+// Adjust the width of the first column
+.col-sm-2 {
+    width: 25%; // Adjust as needed
+  }
+  
+  // Adjust margin-right for elements in the second column
+  .col-sm-8 .row > div {
+    margin-right: 20px; // Adjust as needed
+  }
+  
+  // Responsive button styles
+  .btn {
+    max-width: 100%;
+    margin: 0 auto; // Center the buttons
+  }
+  
+  // Media query for screens smaller than 768px (typical tablet size)
+  @media (max-width: 768px) {
+    // Adjust font sizes
+    h1 {
+      font-size: 24px;
+    }
+    
+    // Adjust margins or padding
+    .col-sm-2 {
+      width: 30%;
+    }
+    
+    .col-sm-8 .row > div {
+      margin-right: 10px;
+    }
+  }

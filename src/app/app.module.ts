@@ -29,6 +29,8 @@ import { EditbookComponent } from './editbook/editbook.component';
 import { DeletebookComponent } from './deletebook/deletebook.component';
 import { BorrowbookComponent } from './borrowbook/borrowbook.component';
 import { SupportComponent } from './support/support.component';
+import { SearchComponent } from './search/search.component';
+import { NewsletterComponent } from './newsletter/newsletter.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { SupportComponent } from './support/support.component';
     EditbookComponent,
     DeletebookComponent,
     BorrowbookComponent,
-    SupportComponent
+    SupportComponent,
+    SearchComponent,
+    NewsletterComponent
 
 
   ],

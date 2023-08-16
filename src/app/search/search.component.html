@@ -1,0 +1,176 @@
+<div class="container-fluid">
+  <div class="row">
+
+
+    <div class="col-sm-2">
+      <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="height: 100vh; width: 280px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <svg class="bi pe-none me-2" width="40" height="32">
+            <use xlink:href="#bootstrap" />
+          </svg>
+          <span class="fs-4">LOGO</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a [routerLink]="['/userDashboard']" class="nav-link  text-white" aria-current="page">
+              <i class="bi bi-house-fill"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/bookHistory']" class="nav-link  text-white">
+              <i class="bi bi-book-fill"></i>
+              Book History
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/borrowedBookOverlay']" class="nav-link text-white">
+              <i class="bi bi-book-fill"></i>
+              Borrowed Books
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/wishList']" class="nav-link  text-white">
+              <i class="bi bi-ui-checks"></i>
+              Wishlist
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/search']" class="nav-link text-white active">
+              <i class="bi bi-tools"></i>
+              Search
+            </a>
+          </li>
+        </ul>
+        <hr>
+        <li>
+          <a [routerLink]="['/login']" class="nav-link text-white">
+            <i class="bi bi-door-open-fill"></i>
+            Log Out
+          </a>
+        </li>
+
+      </div>
+    </div>
+
+
+    <div class="col-sm-8">
+
+
+
+
+
+      <h1>Welcome To The Library</h1>
+      <span>Welcome To The Most Popular Library Today</span>
+      <p></p>
+
+      <div class="row">
+
+
+
+
+        <input type="search" placeholder="title" aria-label="Search" [(ngModel)]="title">
+        <input type="search" placeholder="author" aria-label="Search" [(ngModel)]="author">
+        <input type="search" placeholder="category" aria-label="Search" [(ngModel)]="category">
+
+
+
+
+
+
+        <button (click)=onsearch() class="btn btn-outline-primary" type="submit" style=" background-color: #132355;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 30%;
+            opacity: 0.9;"><i class="bi bi-send-fill"></i> &nbsp;Search</button>
+
+      </div>
+      <p></p>
+
+      <h3>Recommanded Books</h3>
+      <div class="row" style="background-color: #eeeeee;">
+        <div class="col-md-12">
+          <p></p>
+          <div style="display: flex;">
+            <div style="margin-right: 40px;" *ngFor="let recommand of recommands | slice:0:5">
+              <img src="{{'data:image/jpg;base64,' + recommand.image}}" alt="Forest"
+                style="width:170px; margin-bottom: 5px; border-radius: 7px;">
+
+              <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">{{recommand.title}}</p>
+
+              <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">{{recommand.category}}</p>
+              <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">{{recommand.author}}</span>
+              <p><ngb-rating [(rate)]="recommand.star"></ngb-rating></p>
+              <button (click)="onAddwishlist(recommand)" type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
+               
+             color: white;
+             padding: 16px 20px;
+             margin: 8px 0;
+             border: none;
+             cursor: pointer;
+             width: 100%;
+             opacity: 0.9;"> add to wish list </button>
+
+              <button (click)="openDialog(recommand)" type="submit" class="btn btn-primary btn-md" style=" background-color: #04AA6D;
+               
+              color: white;
+              padding: 16px 20px;
+              margin: 8px 0;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+              opacity: 0.9;">BORROW </button>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+      <div class="row" style="background-color: #eeeeee;" *ngIf="searchshow">
+        <div class="col-md-12">
+          <p></p>
+          <h3 style="font-weight: 300; font-size: 24px;">Search Result</h3>
+          <p></p>
+          <div style="display: flex;">
+            <ng-container *ngFor="let result of searchresults | slice:0:5; let i = index;">
+              <div *ngIf="i < 5" style="margin-right: 40px;">
+                <img src="{{'data:image/jpg;base64,' + result.image}}" alt="Forest"
+                  style="width:170px; margin-bottom: 5px; border-radius: 7px;">
+                <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">{{result.title}}</p>
+                <p><ngb-rating [(rate)]="result.star"></ngb-rating></p>
+                <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;">{{result.category}}</p>
+                <span style="font-weight: 100; font-size: 12px; margin-top: 0px;">{{result.author}}</span>
+                <button (click)="onAddwishlist(result)" type="submit" class="btn btn-primary btn-md"
+                  style=" background-color: #04AA6D; color: white; padding: 16px 20px; margin: 8px 0; border: none; cursor: pointer; width: 100%; opacity: 0.9;">Add
+                  to Wishlist</button>
+                <button (click)="openDialog(result)" type="submit" class="btn btn-primary btn-md"
+                  style=" background-color: #04AA6D; color: white; padding: 16px 20px; margin: 8px 0; border: none; cursor: pointer; width: 100%; opacity: 0.9;">BORROW</button>
+              </div>
+            </ng-container>
+
+            <div>{{message}}</div> <br>
+
+
+            <div *ngIf="otherlibraries">
+              <p style="font-weight: 400; font-size: 18px; margin-bottom: 0px;"><a
+                  href="https://montreal.ca/lieux?mtl_content.lieux.installation.code=BIBL&orderBy=dc_title">Find a
+                  library
+                </a></p>
+
+
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>

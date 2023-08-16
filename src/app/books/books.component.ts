@@ -15,7 +15,7 @@ import { NewbookComponent } from '../newbook/newbook.component';
   styleUrls: ['./books.component.scss']
 })
 export class BooksComponent {
-  books: any[]=[];
+  books: any[] = [];
   selectedFile: any;
   title: any;
   author: any;
@@ -24,9 +24,9 @@ export class BooksComponent {
   copynumber: any;
   availablecopies: any;
   bookid: any;
-  deletecopy=false;
-  copies:any;
-  book_id:any;
+  deletecopy = false;
+  copies: any;
+  book_id: any;
   copytitle: any;
   copybookid: any;
   copyedition: any;
@@ -35,232 +35,173 @@ export class BooksComponent {
   copycategory: any;
   copyavailablecopies: any;
   copycopynumber: any;
-  isupdate=false;
-  main=true;
-  edit=false;
+  isupdate = false;
+  main = true;
+  edit = false;
   copyyearpublish: any;
 
-  constructor(private userObj : UserService,
-        private router : Router, 
-        private cookieservice: CookieService,
-        private http : HttpClient,
-        private route : ActivatedRoute,
-        public dialog: MatDialog
-        
-        ){}
+  constructor(private userObj: UserService,
+    private router: Router,
+    private cookieservice: CookieService,
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    public dialog: MatDialog
+
+  ) { }
 
 
-    onGetBooks(){
-      console.log("all users");
-      this.userObj.getbooks().subscribe((response: any)=>{
-        console.log("user response");
-        this.books=response
-        console.log(response)
-        console.log(this.books)
-      })
-    }
-
-    ngOnInit(): void {this.onGetBooks();
+  onGetBooks() {
    
-      
-      
-    }
-
-    isEditing=false;
-
-
-
-
-
-          onDelete(book: any) {
-          this. deletecopy=true;
-          this.main=false;
-
-
-           this.copytitle=book.title;
-           this.copycategory=book.category;
-          this. copybookid=book.book_id;
-          this. copyedition=book.edition;
-          this. copyauthor=book.author;
-          this. copycopynumber=book.copynumber;
-          this. copyavailablecopies=book.availablecopies;
-          this. copyimage=book.image
-          this.copyyearpublish=book.yearpublish
-
-            this.userObj.fetchcopy(book.book_id).subscribe((result: any) => {
-        
-              console.log('copy fetched !! ');
-              this.copies=result
-                     
-            })
-          
-            
-          
-
-          }
-                                                              
-
-
-
-          onDeletecopy(copy: any){
-            
-             this.userObj.deleteBookcopy(copy.copy_id).subscribe((result) => {
-      
-            console.log(' copy deleted !! ');
-                  })
-
-
-          //  this.userObj.updatecopynumber(copy.book_id).subscribe((result) => {
-      
-            // console.log(' copynumber updated !! ');
-            
-            //  this.deletecopy=false
-          //  })
-           this.deletecopy=false;
-           this.main=true;
-           this.onGetBooks(); 
-           this.router.navigate(['/books']);
-
-            }
-        
-          onDeletewhole(book: any) {
-            console.log('delete icon click');
-            this.deletecopy=true;
-            this.userObj.deleteBook(book.book_id).subscribe((result) => {
-        
-              console.log('deleted !! ');
-            
-
-            })
-
-            this.userObj.deletewholecopyBook(book.book_id).subscribe((result) => {
-        
-              console.log('deleted !! ');
-            
-              this.deletecopy=false
-
-            })
-               this.onGetBooks();   
-                this.router.navigate(['/books']);
-               
-               
-          }
-        
-        
-
-  onFileSeleceted(event :any){
-    this.selectedFile=event.target.files[0];
-    console.log(this.selectedFile)
+    this.userObj.getbooks().subscribe((response: any) => {
+    
+      this.books = response
+    
+    })
   }
-        
-        
-            
 
-
-  // onUpdateBooks(book_id:any){
-
-  //           this.deletecopy=false
-  //           console.log(book_id)
-            
-             
-  //           const formData = new FormData();
-            
-  //           book_id=this.book_id;
-            
-                   
-            
-  //             formData.append('book_id',this.book_id);
-  //             formData.append('title',this.title);
-  //             formData.append('category',this.category);
-  //             formData.append('edition',this.edition);
-  //             formData.append('author',this.author);
-  //             formData.append('copynumber',this.copynumber);
-  //             formData.append('availablecopies',this.availablecopies);
-  //             formData.append('image',this.selectedFile);
-  //             console.log(formData)
-  //              this.userObj.updatebook(formData)
-  //                  .subscribe((res:any)=>{
-  //                   console.log('updated !!!');
-  //                   this.onGetBooks();
-  //                   this.router.navigate(['/books']);
-  //                 }
-  //                   )
-  //                   this.isEditing=false;
-            
-  //                   this.router.navigate(['/books']);
-  //           }
-         
-
-          // onEdit(book:any){
-          //   this.main = false;
-          //   this.edit=true;
-          //   this.book_id=book.book_id
-          //        this.title=book.title;
-          //        this.author=book.author;
-          //        this.category=book.category;
-          //        this.edition=book.edition
-          //        this.copynumber=book.copynumber;
-          //        this.availablecopies=book.availablecopies;
-               
-              
-          //     }
+  ngOnInit(): void {
+    this.onGetBooks();
 
 
 
-            
-          openDialog(book:any){
+  }
 
-        const dialogRef = this.dialog.open(EditbookComponent, {
-          height: '50rem',
-          width: '40rem',
-          data: {
-            title:book.title,
-          category:book.category,
-         author:book.author,
-         copynumber:book.copynumber,
-         availablecopies:book.availablecopies,
-         yearpublish:book.yearpublish,
-         edition:book.edition,
-          book_id:book.book_id}
-        });
-
-        dialogRef.afterClosed().subscribe((result: any) => {
-          console.log(`Dialog result: ${result}`);
-        });
-}
+  isEditing = false;
 
 
 
-openDialog2(book:any){
-
-  const dialogRef = this.dialog.open(DeletebookComponent, {
-    height: '50rem',
-    width: '40rem',
-    data: {
-  //     title:book.title,
-  //   category:book.category,
-  //  author:book.author,
-  //  copynumber:book.copynumber,
-  //  availablecopies:book.availablecopies,
-  //  yearpublish:book.yearpublish,
-  //  edition:book.edition,
-    book_id:book.book_id}
-  });
-
-  dialogRef.afterClosed().subscribe((result: any) => {
-    console.log(`Dialog result: ${result}`);
-  });
-}
 
 
-openDialog3(){
-  const dialogRef = this.dialog.open(NewbookComponent, {
-    height: '50rem',
-    width: '40rem'
-  });
+  onDelete(book: any) {
+    this.deletecopy = true;
+    this.main = false;
 
-  dialogRef.afterClosed().subscribe((result: any) => {
-    console.log(`Dialog result: ${result}`);
-  });
-}
+
+    this.copytitle = book.title;
+    this.copycategory = book.category;
+    this.copybookid = book.book_id;
+    this.copyedition = book.edition;
+    this.copyauthor = book.author;
+    this.copycopynumber = book.copynumber;
+    this.copyavailablecopies = book.availablecopies;
+    this.copyimage = book.image
+    this.copyyearpublish = book.yearpublish
+
+    this.userObj.fetchcopy(book.book_id).subscribe((result: any) => {
+
+   
+      this.copies = result
+
+    })
+
+
+
+
+  }
+
+
+
+
+  onDeletecopy(copy: any) {
+
+    this.userObj.deleteBookcopy(copy.copy_id).subscribe((result) => {
+
+     
+    })
+
+
+    this.deletecopy = false;
+    this.main = true;
+    this.onGetBooks();
+    this.router.navigate(['/books']);
+
+  }
+
+  onDeletewhole(book: any) {
+
+    this.deletecopy = true;
+    this.userObj.deleteBook(book.book_id).subscribe((result) => {
+
+   
+
+
+    })
+
+    this.userObj.deletewholecopyBook(book.book_id).subscribe((result) => {
+
+     
+
+      this.deletecopy = false
+
+    })
+    this.onGetBooks();
+    this.router.navigate(['/books']);
+
+
+  }
+
+
+
+  onFileSeleceted(event: any) {
+    this.selectedFile = event.target.files[0];
+  
+  }
+
+
+
+
+
+
+
+  openDialog(book: any) {
+
+    const dialogRef = this.dialog.open(EditbookComponent, {
+      height: '50rem',
+      width: '40rem',
+      data: {
+        title: book.title,
+        category: book.category,
+        author: book.author,
+        copynumber: book.copynumber,
+        availablecopies: book.availablecopies,
+        yearpublish: book.yearpublish,
+        edition: book.edition,
+        book_id: book.book_id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+    
+    });
+  }
+
+
+
+  openDialog2(book: any) {
+
+    const dialogRef = this.dialog.open(DeletebookComponent, {
+      height: '50rem',
+      width: '40rem',
+      data: {
+
+        book_id: book.book_id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+  
+    });
+  }
+
+
+  openDialog3() {
+    const dialogRef = this.dialog.open(NewbookComponent, {
+      height: '50rem',
+      width: '40rem'
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+    
+    });
+  }
 }

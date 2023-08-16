@@ -9,9 +9,9 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class AddBorrowerComponent {
 
-addForm!:FormGroup;
+  addForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -24,15 +24,15 @@ addForm!:FormGroup;
 
     });
 
-    this.addForm.valueChanges.subscribe((change: any)=>{
-      console.log(change)
+    this.addForm.valueChanges.subscribe((change: any) => {
+     
     })
   }
 
-  submitaddBorrower(){
-    console.log(this.addForm.value);
+  submitaddBorrower() {
+    
 
-    // Just put the connection to the API here....
+   
 
 
   }

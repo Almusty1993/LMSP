@@ -16,165 +16,131 @@ import { NewuserComponent } from '../newuser/newuser.component';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  
-  users: any[] = []
-books:any[] = []
 
-star=1
-end=8
+  users: any[] = []
+  books: any[] = []
+
+  star = 1
+  end = 8
   borrowbooks: any[] = []
   overduebooks: any[] = []
   numberusers: any;
   numberbooks: any;
   numberoverdue: any;
   numberborrowed: any;
-  
- 
+
+
 
 
 
 
   currentDate = new Date();
-  constructor(private userObj : UserService,
-    private router : Router, 
+  constructor(private userObj: UserService,
+    private router: Router,
     private cookieservice: CookieService,
-    private http : HttpClient,
-    private route : ActivatedRoute,
+    private http: HttpClient,
+    private route: ActivatedRoute,
     public dialog: MatDialog
+
+  ) { }
+
+
+  ngOnInit(): void {
+    this.onGetusers();
+    this.onGetbooks();
+    this.onGetborrowedbooks();
+    this.onGetoverduebooks();
     
-    ){}
-
-
-    ngOnInit(): void {
-      this.onGetusers();
-      this.onGetbooks();
-      this.onGetborrowedbooks();
-      this.onGetoverduebooks();
-      // this.oncheckoverdue();
-  
-     
-      // setInterval(() => {
-      //   this.oncheckoverdue();
-      // }, 24 * 60 * 60 * 1000); 
-    }
+  }
 
 
 
 
-onGetusers(){
-  console.log("all users");
-  this.userObj.getUsers().subscribe((response: any)=>{
-    console.log("user response");
-    this.users=response
-    console.log(response)
-    console.log(this.users)
-    this.numberusers=this.users.length
-  })
-}
-
-
-onGetbooks(){
-  console.log("all books");
-  this.userObj.getbooks().subscribe((response: any)=>{
-    console.log("books response");
-    this.books=response
-    this.numberbooks=this.books.length
-  })
-}
-
-onGetoverduebooks(){
-  console.log("all overdue books");
-  this.userObj.getoverduebooks().subscribe((response: any)=>{
-    console.log("over due books response");
-    this.overduebooks=response;
-    this.numberoverdue=this.overduebooks.length
-  })
-}
-
-
-
-
-
-onGetborrowedbooks(){
-  console.log("all borrowed books");
-  this.userObj.getborrowedbooks().subscribe((response: any)=>{
-    console.log(" borrow response");
-    this.borrowbooks=response
-    console.log(response)
-    this.numberborrowed=this.borrowbooks.length
-  })
-}
-
-
- 
-
-
-
-//  oncheckoverdue(){
-//   for (let borrow of this.borrowbooks) {
-//           if (new Date() > borrow.duedate) {
-
-//             for (let overduebook of this.overduebooks) {
-
-
-//             if(overduebook.borrow_id= borrow.borrow_id){
-
-// console.log(" book already exist in overdue ")
-
-//               // this.userObj.updatefine(borrow.borrow_id,{duedate:borrow.duedate}).subscribe((response: any) => {
-//               //   console.log(borrow.title + "was updated in overdue table");
-//               // });
-//  }else{this.userObj.addOverdue(borrow).subscribe((response: any) => {
-//   console.log(borrow.title + " was added to overdue table");
-//   this.overduebooks=response
-// });
-
-//  }
-//             }}}
-
-
-//           }
-        
-        
+  onGetusers() {
+    
+    this.userObj.getUsers().subscribe((response: any) => {
       
+      this.users = response
+   
+      this.numberusers = this.users.length
+    })
+  }
 
-        
-        
-        
-        
-        
-          openDialog(){
-            const dialogRef = this.dialog.open(NewbookComponent, {
-              height: '50rem',
-              width: '40rem'
-            });
-    
-            dialogRef.afterClosed().subscribe((result: any) => {
-              console.log(`Dialog result: ${result}`);
-            });
-          }
-        
 
-          openDialog2(){
-            console.log("hit")
-            const dialogRef2 = this.dialog.open(NewuserComponent, {
-              height: '50rem',
-              width: '40rem'
-            });
+  onGetbooks() {
     
-            dialogRef2.afterClosed().subscribe((result: any) => {
-              console.log(`Dialog result: ${result}`);
-            });
-          }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        }
+    this.userObj.getbooks().subscribe((response: any) => {
+     
+      this.books = response
+      this.numberbooks = this.books.length
+    })
+  }
+
+  onGetoverduebooks() {
+    
+    this.userObj.getoverduebooks().subscribe((response: any) => {
+    
+      this.overduebooks = response;
+      this.numberoverdue = this.overduebooks.length
+    })
+  }
+
+
+
+
+
+  onGetborrowedbooks() {
+   
+    this.userObj.getborrowedbooks().subscribe((response: any) => {
+   
+      this.borrowbooks = response
+     
+      this.numberborrowed = this.borrowbooks.length
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+
+  openDialog() {
+    const dialogRef = this.dialog.open(NewbookComponent, {
+      height: '50rem',
+      width: '40rem'
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
+  openDialog2() {
+    console.log("hit")
+    const dialogRef2 = this.dialog.open(NewuserComponent, {
+      height: '50rem',
+      width: '40rem'
+    });
+
+    dialogRef2.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+}

@@ -1,0 +1,81 @@
+// Adjust the width of the first column
+.col-sm-2 {
+    width: 25%; // Adjust as needed
+  }
+  
+  // Adjust margin-right for elements in the second column
+  .col-sm-8 .row > div {
+    margin-right: 20px; // Adjust as needed
+  }
+  
+  // Responsive button styles
+  .btn {
+    max-width: 100%;
+    margin: 0 auto; // Center the buttons
+  }
+  
+  // Media query for screens smaller than 768px (typical tablet size)
+  @media (max-width: 768px) {
+    // Adjust font sizes
+    h1 {
+      font-size: 24px;
+    }
+    
+    // Adjust margins or padding
+    .col-sm-2 {
+      width: 30%;
+    }
+    
+    .col-sm-8 .row > div {
+      margin-right: 10px;
+    }
+  }
+  .book-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 7px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-image {
+    width: 180px;
+    height: 180px; 
+    margin-bottom: 5px;
+    border-radius: 7px;
+  }
+  
+  .book-title {
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+  
+  .book-category {
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+  
+  .book-author {
+    font-weight: 100;
+    font-size: 12px;
+    margin-top: 0;
+  }
+  
+  .book-button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px; /* Increase the margin between buttons */
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    opacity: 0.9;
+    border-radius: 7px;
+  }
+  

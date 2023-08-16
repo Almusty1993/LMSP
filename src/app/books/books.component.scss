@@ -1,0 +1,139 @@
+.col-sm-10 {
+  padding: 80px;
+
+  .navbar {
+    margin-bottom: 20px;
+
+    form {
+      input.form-control {
+        margin-right: 10px;
+        border-radius: 4px;
+      }
+
+      button.btn-outline-primary {
+        padding: 8px 16px;
+        background-color: #132355;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+          background-color: #0d1e44;
+        }
+      }
+    }
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .row[style*="background-color: #d9d9d9;"] {
+    padding: 20px;
+    border-radius: 7px;
+    margin-top: 20px;
+
+    .product-form {
+      margin-top: 20px;
+
+      .form-control {
+        margin-bottom: 15px;
+
+        label {
+          font-weight: bold;
+        }
+
+        input {
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 14px;
+        }
+
+        input[type="file"] {
+          border: none;
+          padding: 0;
+          margin-top: 5px;
+        }
+      }
+
+      button.btn-success,
+      button.btn-primary.btn-sm {
+        padding: 8px 16px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+          background-color: #218838;
+        }
+      }
+    }
+
+    table {
+
+      th,
+      td {
+        padding: 8px;
+      }
+
+      th {
+        font-weight: bold;
+      }
+
+      td {
+        font-size: 14px;
+        color: #132354;
+
+        a {
+          color: #000;
+          transition: color 0.3s ease-in-out;
+
+          &:hover {
+            color: #ff0000;
+          }
+        }
+      }
+
+      td[style*="color: #E63232;"] {
+        color: #e63232;
+      }
+    }
+
+    ul.pagination {
+      justify-content: flex-end;
+      margin-top: 20px;
+
+      li.page-item {
+        margin: 0 5px;
+
+        &.disabled {
+          .page-link {
+            pointer-events: none;
+          }
+        }
+
+        .page-link {
+          padding: 5px 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 14px;
+          color: #132354;
+          transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+          &:hover {
+            color: #0056b3;
+            background-color: #f0f0f0;
+          }
+        }
+      }
+    }
+  }
+}

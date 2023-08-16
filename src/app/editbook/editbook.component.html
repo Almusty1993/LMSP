@@ -1,92 +1,51 @@
+<div class="product-form">
 
-<div  class="product-form">
-
-
-    <div class="form-control">
-      <label for="title">Title</label>
-      <input 
-      [(ngModel)]="title"
-          type="text" 
-          name="title" 
-          id="title" 
-          value="book.title">
-  </div>
-
- 
-  <div class="form-control">
-      <label for="category">Category</label>
-      <input 
-      [(ngModel)]="category"
-          type="text" 
-          name="category" 
-          id="category" 
-          step="0.01" 
-          value="book.category">
-  </div>
- 
-<div class="form-control">
-  <label for="edition">Edition</label>
-  <input 
-  [(ngModel)]="edition"
-      type="edition" 
-      name="edition" 
-      id="edition" 
-      step="0.01" 
-      value="book.edition">
-      </div>
 
   <div class="form-control">
-      <label for="author">Author</label>
-    <input 
-    [(ngModel)]="author"
-        type="text" 
-        name="author" 
-        id="author" 
-        step="0.01" 
-        value="book.author">
-    </div>
-    <div class="form-control">
-        <label for="yearpublish">Publish year</label>
-      <input 
-      [(ngModel)]="yearpublish"
-          type="number" 
-          name="yearpublish" 
-          id="yearpublish" 
-          step="0.01" 
-          value="book.yearpublish">
-      </div>
-    <div class="form-control">
-      <label for="copynumber">Total Books</label>
-    <input 
-    [(ngModel)]="copynumber"
-        type="number" 
-        name="copynumber" 
-        id="copynumber" 
-        step="0.01" 
-        value="book.copynumber">
-    </div>
+    <label for="title">Title</label>
+    <input [(ngModel)]="title" type="text" name="title" id="title" value="book.title">
+  </div>
 
-    <div class="form-control">
-      <label for="availablecopies">Total Books Available</label>
-    <input 
-    [(ngModel)]="availablecopies"
-        type="number" 
-        name="availablecopies" 
-        id="availablecopies" 
-        step="0.01" 
-        value="book.availablecopies">
-    </div>
+
+  <div class="form-control">
+    <label for="category">Category</label>
+    <input [(ngModel)]="category" type="text" name="category" id="category" step="0.01" value="book.category">
+  </div>
+
+  <div class="form-control">
+    <label for="edition">Edition</label>
+    <input [(ngModel)]="edition" type="edition" name="edition" id="edition" step="0.01" value="book.edition">
+  </div>
+
+  <div class="form-control">
+    <label for="author">Author</label>
+    <input [(ngModel)]="author" type="text" name="author" id="author" step="0.01" value="book.author">
+  </div>
+  <div class="form-control">
+    <label for="yearpublish">Publish year</label>
+    <input [(ngModel)]="yearpublish" type="number" name="yearpublish" id="yearpublish" step="0.01"
+      value="book.yearpublish">
+  </div>
+  <div class="form-control">
+    <label for="copynumber">Total Books</label>
+    <input [(ngModel)]="copynumber" type="number" name="copynumber" id="copynumber" step="0.01" value="book.copynumber">
+  </div>
+
+  <div class="form-control">
+    <label for="availablecopies">Total Books Available</label>
+    <input [(ngModel)]="availablecopies" type="number" name="availablecopies" id="availablecopies" step="0.01"
+      value="book.availablecopies">
+  </div>
 
 
 
-    
 
-          <div class="form-control">
-      <label for="image">Image</label>
-      <input type="file" (change)="onFileSeleceted($event)">
-            
-        </div>
-        
-        <input type="hidden" value="<%= book.book_id %>" name="bookid" [(ngModel)]="bookid">
-        <button class="btn btn-success" type="submit" (click)="onUpdateBooks(book_id)">Update book</button>
-      
+
+  <div class="form-control">
+    <label for="image">Image</label>
+    <input type="file" (change)="onFileSeleceted($event)">
+
+  </div>
+
+  <input type="hidden" value="<%= book.book_id %>" name="bookid" [(ngModel)]="bookid">
+  <button class="btn btn-success" type="submit" (click)="onUpdateBooks(book_id)">Update book</button>

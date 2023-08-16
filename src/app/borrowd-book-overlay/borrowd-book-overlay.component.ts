@@ -10,36 +10,34 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BorrowdBookOverlayComponent {
   users: any;
-  books: any[]=[];
+  books: any[] = [];
 
-  constructor(private userObj : UserService,
-    private router : Router, 
-    private http : HttpClient,
-    private route : ActivatedRoute
-    
-    ){}
+  constructor(private userObj: UserService,
+    private router: Router,
+    private http: HttpClient,
+    private route: ActivatedRoute
+
+  ) { }
 
 
-  ngOnInit(): void {this.onGetborrow();
-  
-    
+  ngOnInit(): void {
+    this.onGetborrow();
+
+
   }
-  onGetborrow(){
-    this.users= this.userObj.user
-        console.log(this.users);
-      this.userObj.onGetborrow(this.users[0].user_id).subscribe((response: any)=>{
-        console.log(this.users[0].user_id)
-        console.log("borrow list response");
-        console.log(response)
-       
-        this.books=response
-       
-        console.log(this.books)
-      })
-    }
+  onGetborrow() {
+    this.users = this.userObj.user
   
-    
+    this.userObj.onGetborrow(this.users[0].user_id).subscribe((response: any) => {
+     
+
+      this.books = response
+
+    })
   }
+
+
+}
 
 
 

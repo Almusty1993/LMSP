@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-// import { Iusers } from '../users.model';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../user.service';
@@ -14,63 +14,62 @@ import { UserService } from '../user.service';
 export class LogInComponent {
 
 
-  user:any="";
+  user: any = "";
   login_email = '';
   login_password = '';
-  message="";
+  message = "";
 
 
   constructor(
-    private http : HttpClient,
+    private http: HttpClient,
     private userSrvObj: UserService,
-     private route : ActivatedRoute,
-      private router : Router,
-       private cookieService:CookieService
-       ){
+    private route: ActivatedRoute,
+    private router: Router,
+    private cookieService: CookieService
+  ) {
 
   }
-  new_email : any = '';
-  loggedIn : boolean = false;
-  currentUser : any = '';
-  errorMessage : string = '';
-  errorSignUpMessage : string = '';
+  new_email: any = '';
+  loggedIn: boolean = false;
+  currentUser: any = '';
+  errorMessage: string = '';
+  errorSignUpMessage: string = '';
 
-  onLogIn(){
+  onLogIn() {
 
     const body = {
-      email : this.login_email,
-      password : this.login_password
+      email: this.login_email,
+      password: this.login_password
     }
 
-    this.userSrvObj.LogIn(body).subscribe((result : any) => {
-      console.log(result);
-      console.log("was result in log in ")
-      if(result.login == true){
-        this.currentUser=result.user;
-       this.userSrvObj.loggedIn = true;
-       this.loggedIn = true;
+    this.userSrvObj.LogIn(body).subscribe((result: any) => {
+    
+      if (result.login == true) {
+        this.currentUser = result.user;
+        this.userSrvObj.loggedIn = true;
+        this.loggedIn = true;
 
-          this.userSrvObj.user = result.user;
-          this.message=result.message;
-        console.log('session id is '+ result.sessionId);
-        this.cookieService.set('sessionId',result.sessionId);
-        console.log(result.sessionId)
-     
-             if (result.user[0].position == 'admin') {
-            this.router.navigate(['/dashboard']);
-          } else {
-            this.router.navigate(['/userDashboard']);
-          }
+        this.userSrvObj.user = result.user;
+        this.message = result.message;
         
-      }else{
+        this.cookieService.set('sessionId', result.sessionId);
+  
+
+        if (result.user[0].position == 'admin') {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.router.navigate(['/userDashboard']);
+        }
+
+      } else {
         this.userSrvObj.loggedIn = false;
         this.errorMessage = result.message;
       }
     }, (err: any) => {
-        console.log(err);
-        this.userSrvObj.loggedIn = false;
-        this.loggedIn = false;
-        this.errorMessage = 'Invalid';
+     
+      this.userSrvObj.loggedIn = false;
+      this.loggedIn = false;
+      this.errorMessage = 'Invalid';
 
     })
 
@@ -84,27 +83,30 @@ export class LogInComponent {
 
   passwordReset = false;
 
-  onResetPwd(){
-    this.passwordReset = true;}
+  onResetPwd() {
+    this.passwordReset = true;
+  }
 
 
 
 
-    onResetPassword(email:any){
-    email=this.new_email;
-    console.log(email)
-    this.userSrvObj.updatename(email).subscribe((resut:any) => {
-      console.log('updated !!!');
+  onResetPassword(email: any) {
 
-  })
-}
-
-
-
-
+    email = this.new_email;
+ 
+    this.userSrvObj.updatename(email).subscribe((resut: any) => {
+     
+this.new_email="";
+this.message="Your new password has been sent to your email"
+    })
+  }
 
 
-  displayLogIn(){
+
+
+
+
+  displayLogIn() {
     this.passwordReset = false;
   }
 

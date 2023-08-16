@@ -5,17 +5,17 @@
     <label for="fullname" class="form-label" style="width: 500px;">Full name</label>
     <input [(ngModel)]="fullname" name="name" type="text" class="form-control" placeholder="fullname" id="fullname">
   </div>
-  
+
   <div class="mb-3">
     <label for="position" class="form-label">Psition</label>
     <select [(ngModel)]="position" name="position" class="form-select" aria-label="Default select category">
       <option value="0">Choose</option>
       <option value="1">user</option>
       <option value="2">admin</option>
-   
+
     </select>
   </div>
-  
+
   <div class="mb-3">
     <label for="address" class="form-label">Address</label>
     <input [(ngModel)]="address" name="address" type="text" class="form-control" placeholder="address" id="address">
@@ -33,20 +33,22 @@
 
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
-    <input [(ngModel)]="password" name="password" type="number" class="form-control" placeholder="password" id="password">
+    <input [(ngModel)]="password" name="password" type="number" class="form-control" placeholder="password"
+      id="password">
   </div>
 
   <div class="mb-3">
     <label for="confirmpassword" class="form-label">Confirm Password</label>
-    <input [(ngModel)]="confirmpassword" name="confirmpassword" type="number" class="form-control" placeholder="confirmpassword" id="confirmpassword">
+    <input [(ngModel)]="confirmpassword" name="confirmpassword" type="number" class="form-control"
+      placeholder="confirmpassword" id="confirmpassword">
   </div>
 
 
-  
+
 
   <div class="mb-3">
     <label for="dateofbirth" class="form-label">Date of Birth</label>
-    <input [(ngModel)]="dateofbirth" type="date" class="form-control" placeholder="" id="dateofbirth" >
+    <input [(ngModel)]="dateofbirth" type="date" class="form-control" placeholder="" id="dateofbirth">
   </div>
 
 
@@ -57,11 +59,12 @@
       <option value="1">free</option>
       <option value="2">expert</option>
       <option value="3">enterprise</option>
-   
+
     </select>
   </div>
 
 
-
   <button (click)="onAdd()" class="btn btn-outline-primary" type="submit">Add Now!</button>
+  {{errorSignUpMessage}}
+
 </div>
